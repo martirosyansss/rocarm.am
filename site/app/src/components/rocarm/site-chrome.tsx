@@ -9,7 +9,7 @@ export function SiteNav() {
     <header className="rc-nav">
       <div className="rc-nav__inner">
         <Link className="rc-nav__mark" to="/">
-          <img alt="Rocarm" src={`${ASSETS}/logo-rocarm.webp`} />
+          <img alt="Rocarm" height={458} src={`${ASSETS}/logo-rocarm.webp`} width={520} />
           <span className="rc-nav__wordmark">Rocarm</span>
         </Link>
         <nav aria-label="Sections" className="rc-nav__links">
@@ -40,8 +40,10 @@ export function SiteFooter() {
         <div>
           <img
             alt="Garni Crystalline"
+            height={436}
             src={`${ASSETS}/logo-garni.webp`}
             style={{ height: "46px", width: "auto" }}
+            width={520}
           />
           <p className="rc-body" style={{ marginTop: "18px", maxWidth: "38ch" }}>
             Rocarm LLC. Natural spring water and soft drinks, bottled in Armenia

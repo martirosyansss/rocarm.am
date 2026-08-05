@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { QuoteCta } from "@/components/rocarm/ctas";
 import { SiteFooter, SiteNav } from "@/components/rocarm/site-chrome";
 import { ASSETS, FLAVOURS } from "@/lib/catalog";
 
@@ -19,69 +18,97 @@ export const Route = createFileRoute("/soft-drinks")({
 });
 
 /** The approved slogan, in the three languages the brand book carries. */
-const SLOGAN = ["Your fruity mood", "Քո մրգային տրամադրությունը", "Твое фруктовое настроение"];
+const SLOGAN = [
+  "Your fruity mood",
+  "Քո մրգային տրամադրությունը",
+  "Твое фруктовое настроение",
+];
 
 const FORMATS = [
   {
-    detail: "Height 212 mm, diameter 67 mm. Label 216 by 40 mm.",
-    note: "The impulse format. Coolers, kiosks, lunch counters.",
-    vol: "0.5 L",
+    dims: "212 mm tall, 67 mm across",
+    label: "216 by 40 mm",
+    note: "The impulse buy. Coolers, kiosks, lunch counters.",
+    vol: "0.5",
   },
   {
-    detail: "Height 318 mm, diameter 93.6 mm. Label 302 by 57 mm.",
-    note: "The table format. Families, canteens, events.",
-    vol: "1.5 L",
+    dims: "318 mm tall, 93.6 mm across",
+    label: "302 by 57 mm",
+    note: "The table bottle. Families, canteens, events.",
+    vol: "1.5",
   },
+];
+
+/** Decorative fruit in the hero. Three only, so the motion stays readable. */
+const HERO_FRUIT = [
+  { file: "fruit-orange.webp", h: 640, pos: "a", w: 489 },
+  { file: "fruit-lime.webp", h: 640, pos: "b", w: 485 },
+  { file: "fruit-pineapple.webp", h: 640, pos: "c", w: 576 },
 ];
 
 function SoftDrinksPage() {
   return (
-    <div className="rc rc-fizz">
+    <div className="rc rc-kb">
       <SiteNav />
 
       <main>
-        {/* Hero */}
-        <section aria-labelledby="c-hero-h" className="rc-fizz__hero">
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--1" src={`${ASSETS}/fruit-orange.webp`} />
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--2" src={`${ASSETS}/fruit-lime.webp`} />
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--3" src={`${ASSETS}/fruit-cherry.webp`} />
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--4" src={`${ASSETS}/fruit-pineapple.webp`} />
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--5" src={`${ASSETS}/fruit-banana.webp`} />
-          <img alt="" aria-hidden="true" className="rc-fizz__drift rc-fizz__drift--6" src={`${ASSETS}/fruit-mango.webp`} />
+        {/* Hero: asymmetric, type as the hero, one bottle, three fruits */}
+        <section aria-labelledby="kb-hero-h" className="rc-kb__hero">
+          {HERO_FRUIT.map((fruit) => (
+            <img
+              alt=""
+              aria-hidden="true"
+              className={`rc-kb__fruit rc-kb__fruit--${fruit.pos}`}
+              height={fruit.h}
+              key={fruit.file}
+              src={`${ASSETS}/${fruit.file}`}
+              width={fruit.w}
+            />
+          ))}
 
-          <div className="rc-wrap rc-fizz__hero-body">
-            <h1 className="rc-fizz__shout" id="c-hero-h">
-              Your fruity mood
-            </h1>
-            <p className="rc-fizz__sub">
-              Seven flavours, two sizes, one very cold bottle. Garni Cola has
-              been the fun half of the plant since the water got serious.
-            </p>
-            <QuoteCta href="/#quote" label="Request a quote" />
-          </div>
+          <div className="rc-kb__hero-grid rc-wrap">
+            <div className="rc-kb__hero-type">
+              <p className="rc-kb__eyebrow">Garni Cola, bottled in Armenia</p>
+              <h1 className="rc-kb__shout" id="kb-hero-h">
+                Your
+                <br />
+                fruity
+                <br />
+                <span className="rc-kb__shout-flood">mood</span>
+              </h1>
+              <p className="rc-kb__sub">
+                Seven flavours. Two sizes. One very cold bottle. The loud half
+                of a plant that has been bottling since 1999.
+              </p>
+              <a className="rc-kb__cta" href="/#quote">
+                Request a quote
+                <span aria-hidden="true" className="rc-kb__cta-arrow">
+                  →
+                </span>
+              </a>
+            </div>
 
-          <div className="rc-fizz__lineup" role="presentation">
-            {FLAVOURS.map((flavour, i) => (
+            <div className="rc-kb__hero-shot">
               <img
-                alt=""
-                className="rc-fizz__bottle"
-                key={flavour.slug}
-                src={`${ASSETS}/${flavour.img}`}
-                style={{ animationDelay: `${i * 0.22}s` }}
+                alt="Garni Cola with orange flavour, 0.5 litre"
+                className="rc-kb__hero-bottle"
+                height={900}
+                src={`${ASSETS}/cola-orange.webp`}
+                width={900}
               />
-            ))}
+            </div>
           </div>
         </section>
 
-        {/* Slogan marquee */}
-        <div aria-hidden="true" className="rc-marquee">
-          <div className="rc-marquee__track">
+        {/* Marquee */}
+        <div aria-hidden="true" className="rc-kb__marquee">
+          <div className="rc-kb__marquee-track">
             {[0, 1].map((copy) => (
-              <span className="rc-marquee__group" key={copy}>
+              <span className="rc-kb__marquee-group" key={copy}>
                 {SLOGAN.map((line) => (
-                  <span className="rc-marquee__item" key={line}>
+                  <span className="rc-kb__marquee-item" key={line}>
                     {line}
-                    <i className="rc-marquee__dot" />
+                    <i className="rc-kb__marquee-dot" />
                   </span>
                 ))}
               </span>
@@ -90,58 +117,76 @@ function SoftDrinksPage() {
         </div>
 
         {/* Flavours */}
-        <section aria-labelledby="c-fl-h" className="rc-fizz__section">
-          <div className="rc-wrap">
-            <h2 className="rc-fizz__h2" id="c-fl-h">
+        <section aria-labelledby="kb-fl-h" className="rc-kb__section">
+          <div className="rc-wrap rc-kb__head">
+            <h2 className="rc-kb__h2" id="kb-fl-h">
               Seven flavours
             </h2>
-            <p className="rc-fizz__lede">
+            <p className="rc-kb__lede">
               One bottle shape across the family, one label system, seven hand
               painted fruits. Mixed pallets with the water range are standard.
             </p>
           </div>
 
-          <div className="rc-fizz__grid">
+          <ul className="rc-kb__grid">
             {FLAVOURS.map((flavour) => (
-              <article
-                className={`rc-tile rc-flavour--${flavour.slug}`}
-                key={flavour.slug}
-              >
+              <li className={`rc-kb__card rc-flavour--${flavour.slug}`} key={flavour.slug}>
                 <img
                   alt=""
                   aria-hidden="true"
-                  className="rc-tile__fruit"
+                  className="rc-kb__card-fruit"
+                  height={640}
                   loading="lazy"
                   src={`${ASSETS}/fruit-${flavour.fruit}.webp`}
+                  width={640}
                 />
                 <img
                   alt={`Garni Cola ${flavour.name}`}
-                  className="rc-tile__bottle"
+                  className="rc-kb__card-bottle"
+                  height={900}
                   loading="lazy"
                   src={`${ASSETS}/${flavour.img}`}
+                  width={900}
                 />
-                <div className="rc-tile__foot">
-                  <h3 className="rc-tile__name">{flavour.name}</h3>
-                  <p className="rc-tile__note">{flavour.note}</p>
+                <div className="rc-kb__card-foot">
+                  <h3 className="rc-kb__card-name">{flavour.name}</h3>
+                  <p className="rc-kb__card-note">{flavour.note}</p>
                 </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         {/* Formats */}
-        <section aria-labelledby="c-fmt-h" className="rc-fizz__section rc-fizz__section--dark">
-          <div className="rc-wrap">
-            <h2 className="rc-fizz__h2" id="c-fmt-h">
+        <section aria-labelledby="kb-fmt-h" className="rc-kb__section rc-kb__section--ink">
+          <div className="rc-wrap rc-kb__head">
+            <h2 className="rc-kb__h2" id="kb-fmt-h">
               Two sizes
             </h2>
-            <div className="rc-fmt">
+          </div>
+          <div className="rc-wrap">
+            <div className="rc-kb__formats">
               {FORMATS.map((f) => (
-                <article className="rc-fmt__card" key={f.vol}>
-                  <span className="rc-fmt__vol rc-figure">{f.vol}</span>
-                  <p className="rc-fmt__note">{f.note}</p>
-                  <p className="rc-fmt__detail rc-figure">{f.detail}</p>
-                  <span className="rc-fmt__mark">EAC</span>
+                <article className="rc-kb__format" key={f.vol}>
+                  <span aria-hidden="true" className="rc-kb__format-num">
+                    {f.vol}
+                    <i>L</i>
+                  </span>
+                  <p className="rc-kb__format-note">{f.note}</p>
+                  <dl className="rc-kb__spec">
+                    <div>
+                      <dt>Bottle</dt>
+                      <dd>{f.dims}</dd>
+                    </div>
+                    <div>
+                      <dt>Label</dt>
+                      <dd>{f.label}</dd>
+                    </div>
+                    <div>
+                      <dt>Marking</dt>
+                      <dd>EAC</dd>
+                    </div>
+                  </dl>
                 </article>
               ))}
             </div>
@@ -149,16 +194,21 @@ function SoftDrinksPage() {
         </section>
 
         {/* Private label */}
-        <section aria-labelledby="c-pl-h" className="rc-fizz__section rc-fizz__cta">
+        <section aria-labelledby="kb-pl-h" className="rc-kb__section rc-kb__section--flood">
           <div className="rc-wrap">
-            <h2 className="rc-fizz__h2" id="c-pl-h">
+            <h2 className="rc-kb__h2" id="kb-pl-h">
               Or put your own name on it
             </h2>
-            <p className="rc-fizz__lede">
+            <p className="rc-kb__lede">
               The whole flavour range can be filled as private label, from your
               artwork, on the same certified line as our own brands.
             </p>
-            <QuoteCta href="/#quote" label="Request a quote" />
+            <a className="rc-kb__cta rc-kb__cta--onflood" href="/#quote">
+              Request a quote
+              <span aria-hidden="true" className="rc-kb__cta-arrow">
+                →
+              </span>
+            </a>
           </div>
         </section>
       </main>
