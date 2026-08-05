@@ -1,0 +1,952 @@
+{
+  "index": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться"
+    ]
+  },
+  "o-nas": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться"
+    ]
+  },
+  "tekhnologii": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться"
+    ]
+  },
+  "garnicrystalline": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://twitter.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix/",
+        "label": "Instagram"
+      },
+      {
+        "href": "https://www.linkedin.com/company/wix-com/mycompany/",
+        "label": "LinkedIn"
+      },
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться",
+      "LEARN MORE",
+      "Отправить"
+    ]
+  },
+  "karyera": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться"
+    ]
+  },
+  "podat-zayavku": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться",
+      "Отправить"
+    ]
+  },
+  "inzhener-elektrik": {
+    "navLinks": [
+      {
+        "text": "Технологии",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "О нас",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "Карьера",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "Garni Crystalline",
+        "href": "https://www.rocarm.am/ru/garnicrystalline",
+        "label": null
+      },
+      {
+        "text": "Подписаться",
+        "href": "",
+        "label": "Подписаться"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "",
+        "href": "https://www.rocarm.am/ru",
+        "label": null
+      },
+      {
+        "text": "Телефон:",
+        "href": "https://www.rocarm.am/ru/tekhnologii",
+        "label": null
+      },
+      {
+        "text": "Электронная почта:",
+        "href": "https://www.rocarm.am/ru/o-nas",
+        "label": null
+      },
+      {
+        "text": "info@rocarm.am",
+        "href": "mailto:info@rocarm.am",
+        "label": null
+      },
+      {
+        "text": "Адрес",
+        "href": "https://www.rocarm.am/ru/karyera",
+        "label": null
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "text": "",
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "text": "",
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "langs": [
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "RU",
+        "href": null
+      },
+      {
+        "text": "EN",
+        "href": null
+      },
+      {
+        "text": "HY",
+        "href": null
+      }
+    ],
+    "socials": [
+      {
+        "href": "https://vk.com/",
+        "label": "Black Vkontakte Иконка"
+      },
+      {
+        "href": "https://www.facebook.com/WixRussian",
+        "label": "Facebook"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Twitter"
+      },
+      {
+        "href": "https://www.instagram.com/wix",
+        "label": "Instagram"
+      }
+    ],
+    "buttons": [
+      "Перейти к основному контенту",
+      "RU",
+      "Подписаться"
+    ]
+  }
+}

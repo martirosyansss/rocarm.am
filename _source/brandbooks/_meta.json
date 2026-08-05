@@ -1,0 +1,55 @@
+{
+  "garni-crystalline": {
+    "file": "Garni Crystalline Brand Guide.pdf",
+    "pages": 16,
+    "metadata": {
+      "format": "PDF 1.5",
+      "title": "Garni Crystalline Brand Guide",
+      "author": "",
+      "subject": "",
+      "keywords": "",
+      "creator": "Adobe Illustrator CC 23.0 (Windows)",
+      "producer": "Adobe PDF library 15.00",
+      "creationDate": "D:20220704110317+05'00'",
+      "modDate": "D:20220704110317+04'00'",
+      "trapped": "",
+      "encryption": null
+    },
+    "fonts": [
+      "CEFLBO+Montserrat-Regular",
+      "DOMHPM+NeueFrutigerWorld-It",
+      "EAZNDK+NeueFrutigerWorld-Black",
+      "FBPYRI+NeueFrutigerWorld-Thin",
+      "FJNYRI+NeueFrutigerWorld-ThinIt",
+      "FMHORI+NeueFrutigerWorld-XtraBlk",
+      "FUFORI+NeueFrutigerWorld-Book",
+      "HWQPTE+Montserrat-Regular",
+      "NNQUZS+NeueFrutigerWorld-Heavy",
+      "QUZMPM+Montserrat-Bold",
+      "RELNDK+NeueFrutigerWorld-BlackIt",
+      "RMJIDK+NeueFrutigerWorld-XtraBlkIt",
+      "RWINDK+NeueFrutigerWorld-BoldIt",
+      "SFBYRI+NeueFrutigerWorld-Bold",
+      "SNZYRI+NeueFrutigerWorld-Regular",
+      "WDBBVA+Montserrat-ExtraBold"
+    ]
+  },
+  "garni-cola": {
+    "file": "Brandbook_Garni_Cola_curved.pdf",
+    "pages": 28,
+    "metadata": {
+      "format": "PDF 1.5",
+      "title": "Brandbook_Garni_Cola_curved",
+      "author": "",
+      "subject": "",
+      "keywords": "",
+      "creator": "Adobe Illustrator CC 23.0 (Windows)",
+      "producer": "Adobe PDF library 15.00",
+      "creationDate": "D:20210825142801+05'00'",
+      "modDate": "D:20210826161938+04'00'",
+      "trapped": "",
+      "encryption": null
+    },
+    "fonts": []
+  }
+}

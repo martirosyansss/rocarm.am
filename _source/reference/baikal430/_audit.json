@@ -1,0 +1,646 @@
+{
+  "index": {
+    "cssVars": {
+      "--swiper-theme-color": "#007aff",
+      "--swiper-preloader-color": "#000",
+      "--icon-color": "var(--base)",
+      "--icon-hover-color": "var(--base)",
+      "--width-icon": "2.9333333333vw",
+      "--height-icon": "2.1333333333vw",
+      "--size-wrapper": "11.2vw",
+      "--padding": "4vw",
+      "--footer-offset-200": "4vw",
+      "--footer-offset-35": "6.9333333333vw",
+      "--footer-offset-20": "2.6666666667vw",
+      "--title-color": "var(--graphite-dark-3)",
+      "--hover-color": "var(--graphite-dark-5)",
+      "--bg-color": "var(--white)",
+      "--border-color": "var(--white)",
+      "--text-color": "var(--white)",
+      "--bg-color-hover": "var(--graphite-dark)",
+      "--border-color-hover": "var(--graphite-dark)",
+      "--text-color-hover": "var(--white)",
+      "--padding-vertical": "4.5333333333vw",
+      "--padding-horizontal": "4vw",
+      "--width": "32.8vw",
+      "--height": "22.4vw",
+      "--green-tint": "#468492",
+      "--base": "#92c8e5",
+      "--gray-tint": "#53839e",
+      "--dark": "#133243",
+      "--dark-gray": "#4f7e98",
+      "--extra-dark": "#092535",
+      "--light-gray": "#e6e7e9",
+      "--light-gray-bg": "#ededed",
+      "--light-gray-bg-5": "hsla(0,0%,93%,.5)",
+      "--white": "#fff",
+      "--white-5": "hsla(0,0%,100%,.5)",
+      "--white-4": "hsla(0,0%,100%,.4)",
+      "--white-3": "hsla(0,0%,100%,.3)",
+      "--white-2": "hsla(0,0%,100%,.2)",
+      "--white-1": "hsla(0,0%,100%,.1)",
+      "--black-1": "rgba(0,0,0,.1)",
+      "--graphite-dark": "#213033",
+      "--graphite-dark-5": "rgba(33,48,51,.5)",
+      "--graphite-dark-3": "rgba(33,48,51,.3)",
+      "--graphite-dark-2": "rgba(33,48,51,.2)",
+      "--graphite-dark-1": "rgba(33,48,51,.1)",
+      "--offset-230": "21.3333333333vw",
+      "--offset-150": "16vw",
+      "--offset-120": "13.3333333333vw",
+      "--offset-100": "12vw",
+      "--offset-70": "8vw",
+      "--offset-50": "4.8vw",
+      "--offset-40": "4.8vw",
+      "--offset-30": "4vw",
+      "--offset-20": "2.6666666667vw",
+      "--offset-8": "2.1333333333vw",
+      "--card-offset-20": "4vw",
+      "--btn-offset-60": "12.2666666667vw",
+      "--btn-offset-16": "4vw",
+      "--tab-offset-13": "2.6666666667vw",
+      "--tab-offset-18": "3.7333333333vw",
+      "--offset-200": "18.6666666667vw",
+      "--offsets": "5.3333333333vw",
+      "--offset-bottom": "8vw",
+      "--text-align": "center",
+      "--text-width": "56vw",
+      "--size": "26px",
+      "--row-gap": "8px"
+    },
+    "fonts": [
+      "Faberge, Arial, sans-serif",
+      "\"Roboto Flex\""
+    ],
+    "topColors": [
+      [
+        "rgb(255, 255, 255)",
+        113
+      ],
+      [
+        "rgb(33, 48, 51)",
+        95
+      ],
+      [
+        "rgb(79, 126, 152)",
+        19
+      ],
+      [
+        "BG rgba(255, 255, 255, 0.1)",
+        7
+      ],
+      [
+        "BG rgb(237, 237, 237)",
+        4
+      ],
+      [
+        "BG rgba(33, 48, 51, 0.1)",
+        4
+      ],
+      [
+        "BG rgb(9, 37, 53)",
+        4
+      ],
+      [
+        "BG rgba(255, 255, 255, 0.2)",
+        3
+      ],
+      [
+        "rgb(19, 50, 67)",
+        3
+      ],
+      [
+        "BG rgb(33, 48, 51)",
+        2
+      ],
+      [
+        "BG rgba(33, 48, 51, 0.2)",
+        1
+      ],
+      [
+        "BG rgb(2, 4, 19)",
+        1
+      ],
+      [
+        "BG rgb(255, 255, 255)",
+        1
+      ],
+      [
+        "BG rgb(19, 50, 67)",
+        1
+      ],
+      [
+        "rgb(146, 200, 229)",
+        1
+      ],
+      [
+        "BG rgb(146, 200, 229)",
+        1
+      ]
+    ],
+    "topSizes": [
+      [
+        "16px / 400",
+        96
+      ],
+      [
+        "14px / 500",
+        27
+      ],
+      [
+        "16.3333px / 500",
+        19
+      ],
+      [
+        "41.3333px / 400",
+        18
+      ],
+      [
+        "29.3333px / 500",
+        16
+      ],
+      [
+        "17px / 400",
+        15
+      ],
+      [
+        "66.6667px / 400",
+        13
+      ],
+      [
+        "18px / 400",
+        10
+      ],
+      [
+        "27px / 400",
+        5
+      ],
+      [
+        "29px / 400",
+        5
+      ],
+      [
+        "18.6667px / 400",
+        4
+      ],
+      [
+        "34.4444px / 400",
+        1
+      ],
+      [
+        "16.6667px / 500",
+        1
+      ],
+      [
+        "16.6667px / 400",
+        1
+      ]
+    ],
+    "nav": [
+      {
+        "text": "BAIKAL430",
+        "href": "/#hero-1"
+      },
+      {
+        "text": "UNIQUENESS",
+        "href": "/#hero-2"
+      },
+      {
+        "text": "SOURCES",
+        "href": "/#hero-3"
+      },
+      {
+        "text": "CONTACTS",
+        "href": "#contacts"
+      },
+      {
+        "text": "WHERE TO BUY",
+        "href": "/where-to-buy"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "BAIKAL430",
+        "href": "/#hero-1"
+      },
+      {
+        "text": "Uniqueness",
+        "href": "/#hero-2"
+      },
+      {
+        "text": "Sources",
+        "href": "/#hero-3"
+      },
+      {
+        "text": "Where to buy",
+        "href": "/where-to-buy"
+      },
+      {
+        "text": "112@baikal-sea.com\n112@baikal-sea.com",
+        "href": "mailto:112@baikal-sea.com"
+      },
+      {
+        "text": "+7 395 279-99-04\n+73952799904",
+        "href": "tel:+73952799904"
+      },
+      {
+        "text": "info@baikal-sea.com\ninfo@baikal-sea.com",
+        "href": "mailto:info@baikal-sea.com"
+      },
+      {
+        "text": "+7 495 363-35-83\n+74953633583",
+        "href": "tel:+74953633583"
+      },
+      {
+        "text": "+7 800 333 16 16\n+78003331616",
+        "href": "tel:+78003331616"
+      },
+      {
+        "text": "info@baikal-sea.com\ninfo@baikal-sea.com",
+        "href": "mailto:info@baikal-sea.com"
+      },
+      {
+        "text": "",
+        "href": "https://t.me/baikal430_media"
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/baikal430_media"
+      },
+      {
+        "text": "DECLARATION OF CONFORMITY",
+        "href": "/documents/declaration_BAIKAL_430.pdf"
+      },
+      {
+        "text": "CERTFICATE OF CONFORMITY",
+        "href": "/documents/certificate_BAIKAL_430.pdf"
+      },
+      {
+        "text": "",
+        "href": "https://www.fssc.com/public-register/RUS-1-4707-855749/"
+      },
+      {
+        "text": "Water Quality Report\n\nPDF 415.KB",
+        "href": "/documents/water_quality_report.pdf"
+      },
+      {
+        "text": "Important changes in the labeling\nof packaged water",
+        "href": "/documents/changes_in_labeling_of_packaged_water.pdf"
+      },
+      {
+        "text": "",
+        "href": "https://only.digital/"
+      }
+    ],
+    "bodyBg": "rgb(237, 237, 237)",
+    "bodyColor": "rgb(33, 48, 51)",
+    "bodyFont": "Faberge, Arial, sans-serif",
+    "title": "Baikal",
+    "metas": [
+      {
+        "n": "viewport",
+        "c": "width=device-width, initial-scale=1"
+      }
+    ],
+    "h": [
+      "H3: ",
+      "H3: ",
+      "H2: ",
+      "H2: Convenience in every\npackage",
+      "H3: 0,45 L",
+      "H3: Easy to carry along",
+      "H3: 0,85 L",
+      "H3: To satisfy thirst throughout the day",
+      "H3: PACKAGING OPTIONS",
+      "H2: For those who choose\nstability",
+      "H2: BAIKAL430 is for those who strive for inner peace and confidence in any circumstances",
+      "H2: ✦ GALLERY",
+      "H2: Where to buy",
+      "H2: BAIKALSEA® Company is a Russian producer of\nBaikal water in the premium segment. The\nCompa",
+      "H3: IRKUTSK",
+      "H3: MOSCOW",
+      "H3: HOTLINE",
+      "H3: EMAIL US YOUR QUESTION",
+      "H3: SOCIAL MEDIA"
+    ],
+    "videos": [
+      "https://baikal430.website/video/lead/lead-video.mp4"
+    ]
+  },
+  "where-to-buy": {
+    "cssVars": {
+      "--swiper-theme-color": "#007aff",
+      "--swiper-preloader-color": "#000",
+      "--icon-color": "var(--base)",
+      "--icon-hover-color": "var(--base)",
+      "--width-icon": "2.9333333333vw",
+      "--height-icon": "2.1333333333vw",
+      "--size-wrapper": "11.2vw",
+      "--padding": "4vw",
+      "--footer-offset-200": "4vw",
+      "--footer-offset-35": "6.9333333333vw",
+      "--footer-offset-20": "2.6666666667vw",
+      "--title-color": "var(--graphite-dark-3)",
+      "--hover-color": "var(--graphite-dark-5)",
+      "--bg-color": "var(--white)",
+      "--border-color": "var(--white)",
+      "--text-color": "var(--white)",
+      "--bg-color-hover": "var(--graphite-dark)",
+      "--border-color-hover": "var(--graphite-dark)",
+      "--text-color-hover": "var(--white)",
+      "--padding-vertical": "4.5333333333vw",
+      "--padding-horizontal": "4vw",
+      "--width": "32.8vw",
+      "--height": "22.4vw",
+      "--green-tint": "#468492",
+      "--base": "#92c8e5",
+      "--gray-tint": "#53839e",
+      "--dark": "#133243",
+      "--dark-gray": "#4f7e98",
+      "--extra-dark": "#092535",
+      "--light-gray": "#e6e7e9",
+      "--light-gray-bg": "#ededed",
+      "--light-gray-bg-5": "hsla(0,0%,93%,.5)",
+      "--white": "#fff",
+      "--white-5": "hsla(0,0%,100%,.5)",
+      "--white-4": "hsla(0,0%,100%,.4)",
+      "--white-3": "hsla(0,0%,100%,.3)",
+      "--white-2": "hsla(0,0%,100%,.2)",
+      "--white-1": "hsla(0,0%,100%,.1)",
+      "--black-1": "rgba(0,0,0,.1)",
+      "--graphite-dark": "#213033",
+      "--graphite-dark-5": "rgba(33,48,51,.5)",
+      "--graphite-dark-3": "rgba(33,48,51,.3)",
+      "--graphite-dark-2": "rgba(33,48,51,.2)",
+      "--graphite-dark-1": "rgba(33,48,51,.1)",
+      "--offset-230": "21.3333333333vw",
+      "--offset-150": "16vw",
+      "--offset-120": "13.3333333333vw",
+      "--offset-100": "12vw",
+      "--offset-70": "8vw",
+      "--offset-50": "4.8vw",
+      "--offset-40": "4.8vw",
+      "--offset-30": "4vw",
+      "--offset-20": "2.6666666667vw",
+      "--offset-8": "2.1333333333vw",
+      "--card-offset-20": "4vw",
+      "--btn-offset-60": "12.2666666667vw",
+      "--btn-offset-16": "4vw",
+      "--tab-offset-13": "2.6666666667vw",
+      "--tab-offset-18": "3.7333333333vw",
+      "--offset-200": "18.6666666667vw",
+      "--offsets": "5.3333333333vw",
+      "--offset-bottom": "8vw",
+      "--text-align": "center",
+      "--text-width": "56vw",
+      "--size": "26px",
+      "--row-gap": "8px"
+    },
+    "fonts": [
+      "Faberge, Arial, sans-serif",
+      "\"Roboto Flex\""
+    ],
+    "topColors": [
+      [
+        "rgb(255, 255, 255)",
+        73
+      ],
+      [
+        "rgb(33, 48, 51)",
+        64
+      ],
+      [
+        "rgb(79, 126, 152)",
+        19
+      ],
+      [
+        "BG rgb(33, 48, 51)",
+        11
+      ],
+      [
+        "BG rgb(237, 237, 237)",
+        4
+      ],
+      [
+        "BG rgb(9, 37, 53)",
+        4
+      ],
+      [
+        "rgb(19, 50, 67)",
+        3
+      ],
+      [
+        "BG rgba(33, 48, 51, 0.2)",
+        1
+      ],
+      [
+        "BG rgb(255, 255, 255)",
+        1
+      ],
+      [
+        "BG rgb(19, 50, 67)",
+        1
+      ],
+      [
+        "rgb(146, 200, 229)",
+        1
+      ],
+      [
+        "BG rgb(146, 200, 229)",
+        1
+      ]
+    ],
+    "topSizes": [
+      [
+        "16px / 400",
+        66
+      ],
+      [
+        "14px / 500",
+        32
+      ],
+      [
+        "29.3333px / 500",
+        16
+      ],
+      [
+        "17px / 400",
+        15
+      ],
+      [
+        "18px / 400",
+        10
+      ],
+      [
+        "27px / 400",
+        5
+      ],
+      [
+        "29px / 400",
+        5
+      ],
+      [
+        "33px / 400",
+        4
+      ],
+      [
+        "66.6667px / 400",
+        3
+      ],
+      [
+        "16.3333px / 500",
+        2
+      ],
+      [
+        "16.6667px / 500",
+        1
+      ],
+      [
+        "16.6667px / 400",
+        1
+      ]
+    ],
+    "nav": [
+      {
+        "text": "",
+        "href": "/"
+      },
+      {
+        "text": "BAIKAL430",
+        "href": "/#hero-1"
+      },
+      {
+        "text": "UNIQUENESS",
+        "href": "/#hero-2"
+      },
+      {
+        "text": "SOURCES",
+        "href": "/#hero-3"
+      },
+      {
+        "text": "CONTACTS",
+        "href": "#contacts"
+      },
+      {
+        "text": "WHERE TO BUY",
+        "href": "/where-to-buy"
+      }
+    ],
+    "footerLinks": [
+      {
+        "text": "BAIKAL430",
+        "href": "/#hero-1"
+      },
+      {
+        "text": "Uniqueness",
+        "href": "/#hero-2"
+      },
+      {
+        "text": "Sources",
+        "href": "/#hero-3"
+      },
+      {
+        "text": "112@baikal-sea.com\n112@baikal-sea.com",
+        "href": "mailto:112@baikal-sea.com"
+      },
+      {
+        "text": "+7 395 279-99-04\n+73952799904",
+        "href": "tel:+73952799904"
+      },
+      {
+        "text": "info@baikal-sea.com\ninfo@baikal-sea.com",
+        "href": "mailto:info@baikal-sea.com"
+      },
+      {
+        "text": "+7 495 363-35-83\n+74953633583",
+        "href": "tel:+74953633583"
+      },
+      {
+        "text": "+7 800 333 16 16\n+78003331616",
+        "href": "tel:+78003331616"
+      },
+      {
+        "text": "info@baikal-sea.com\ninfo@baikal-sea.com",
+        "href": "mailto:info@baikal-sea.com"
+      },
+      {
+        "text": "",
+        "href": "https://t.me/baikal430_media"
+      },
+      {
+        "text": "",
+        "href": "https://vk.com/baikal430_media"
+      },
+      {
+        "text": "DECLARATION OF CONFORMITY",
+        "href": "/documents/declaration_BAIKAL_430.pdf"
+      },
+      {
+        "text": "CERTFICATE OF CONFORMITY",
+        "href": "/documents/certificate_BAIKAL_430.pdf"
+      },
+      {
+        "text": "",
+        "href": "https://www.fssc.com/public-register/RUS-1-4707-855749/"
+      },
+      {
+        "text": "Water Quality Report\n\nPDF 415.KB",
+        "href": "/documents/water_quality_report.pdf"
+      },
+      {
+        "text": "Important changes in the labeling\nof packaged water",
+        "href": "/documents/changes_in_labeling_of_packaged_water.pdf"
+      },
+      {
+        "text": "",
+        "href": "https://only.digital/"
+      }
+    ],
+    "bodyBg": "rgb(237, 237, 237)",
+    "bodyColor": "rgb(33, 48, 51)",
+    "bodyFont": "Faberge, Arial, sans-serif",
+    "title": "Baikal",
+    "metas": [
+      {
+        "n": "viewport",
+        "c": "width=device-width, initial-scale=1"
+      }
+    ],
+    "h": [
+      "H3: ",
+      "H3: ",
+      "H1: Where to buy",
+      "H2: Marketplaces",
+      "H2: Online Stores",
+      "H2: Retail Stores",
+      "H2: HoReCa",
+      "H3: IRKUTSK",
+      "H3: MOSCOW",
+      "H3: HOTLINE",
+      "H3: EMAIL US YOUR QUESTION",
+      "H3: SOCIAL MEDIA"
+    ],
+    "videos": []
+  },
+  "_page_weight_bytes": {
+    "total": 43018839,
+    "by_type": {
+      "text/html": 0,
+      "text/css": 0,
+      "application/javascript": 3383,
+      "video/mp4": 16053660,
+      "image/svg+xml": 0,
+      "image/webp": 3501316,
+      "image/png": 62276,
+      "text/x-component": 0,
+      "font/woff2": 57904,
+      "image/jpeg": 23340300,
+      "font/ttf": 0,
+      "?": 0
+    }
+  },
+  "_pages_found": [
+    "/",
+    "/where-to-buy"
+  ]
+}

@@ -1,0 +1,332 @@
+[
+  {
+    "path": "cola/bottles/cola-05l-cola.png",
+    "bytes": 531933,
+    "source": "cola/cola_p27_4_1064x1064.png",
+    "description": "Garni Cola 0,5 л — COLA"
+  },
+  {
+    "path": "cola/bottles/cola-05l-orange.png",
+    "bytes": 420968,
+    "source": "cola/cola_p27_7_1064x1064.png",
+    "description": "Garni Cola 0,5 л — ORANGE"
+  },
+  {
+    "path": "cola/bottles/cola-05l-cherry.png",
+    "bytes": 532498,
+    "source": "cola/cola_p27_5_1064x1064.png",
+    "description": "Garni Cola 0,5 л — CHERRY (на этикетке CHEERY)"
+  },
+  {
+    "path": "cola/bottles/cola-05l-pear.png",
+    "bytes": 538391,
+    "source": "cola/cola_p27_6_1064x1064.png",
+    "description": "Garni Cola 0,5 л — PEAR"
+  },
+  {
+    "path": "cola/bottles/cola-05l-tarragon.png",
+    "bytes": 530722,
+    "source": "cola/cola_p27_3_1064x1064.png",
+    "description": "Garni Cola 0,5 л — TARRAGON"
+  },
+  {
+    "path": "cola/bottles/cola-05l-lime.png",
+    "bytes": 522701,
+    "source": "cola/cola_p27_2_1064x1064.png",
+    "description": "Garni Cola 0,5 л — LIME"
+  },
+  {
+    "path": "cola/bottles/cola-05l-tropic.png",
+    "bytes": 421906,
+    "source": "cola/cola_p27_1_1064x1064.png",
+    "description": "Garni Cola 0,5 л — TROPIC"
+  },
+  {
+    "path": "cola/bottles/cola-05l-cola-angled.png",
+    "bytes": 4454052,
+    "source": "cola/cola_p02_1_3678x3678.png",
+    "description": "Garni Cola 0,5 л COLA под углом, 3678×3678"
+  },
+  {
+    "path": "cola/bottles/cola-05l-orange-angled.jpg",
+    "bytes": 52849,
+    "source": "7fc872_d4f75c8e41534658aacf55455355344d-mv2.jpg",
+    "description": "Garni Cola 0,5 л ORANGE под углом (с сайта)"
+  },
+  {
+    "path": "cola/fruits/fruit-orange-whole.png",
+    "bytes": 4999509,
+    "source": "cola/cola_p25_1_2362x2362.png",
+    "description": "Апельсин целиком, 2362×2362"
+  },
+  {
+    "path": "cola/fruits/fruit-orange-slice.png",
+    "bytes": 5777968,
+    "source": "cola/cola_p25_2_2362x2362.png",
+    "description": "Долька апельсина, 2362×2362"
+  },
+  {
+    "path": "cola/fruits/fruit-orange-leaf.png",
+    "bytes": 851138,
+    "source": "cola/cola_p25_3_1321x1321.png",
+    "description": "Апельсин с листом"
+  },
+  {
+    "path": "cola/fruits/fruit-orange-half.png",
+    "bytes": 513622,
+    "source": "cola/cola_p25_4_1282x1293.png",
+    "description": "Половина апельсина"
+  },
+  {
+    "path": "cola/fruits/fruit-set-full.png",
+    "bytes": 3378496,
+    "source": "cola/cola_p27_8_3592x2759.png",
+    "description": "Набор: банан, тархун, груша, манго, лайм, ананас, вишня — 3592×2759"
+  },
+  {
+    "path": "cola/fruits/fruit-set-wide.png",
+    "bytes": 3352861,
+    "source": "cola/cola_p06_1_4583x3122.png",
+    "description": "Набор фруктов, широкая раскладка, 4583×3122"
+  },
+  {
+    "path": "cola/technical/bottle-05l-drawing.png",
+    "bytes": 694638,
+    "source": "cola/cola_p26_1_1206x1564.png",
+    "description": "Чертёж бутылки 0,5 л, 212 мм"
+  },
+  {
+    "path": "cola/technical/bottle-15l-drawing.png",
+    "bytes": 811235,
+    "source": "cola/cola_p26_2_1629x1998.png",
+    "description": "Чертёж бутылки 1,5 л, 318 мм"
+  },
+  {
+    "path": "cola/marketing/billboard-8-flavors.png",
+    "bytes": 4823336,
+    "source": "cola/cola_p23_1_2292x1598.png",
+    "description": "Билборд: все вкусы + «Your fruity mood»"
+  },
+  {
+    "path": "cola/marketing/rollup-banner.png",
+    "bytes": 1753759,
+    "source": "cola/cola_p22_1_1842x1841.png",
+    "description": "Ролл-ап 180×80 см"
+  },
+  {
+    "path": "cola/marketing/poster-a3-orange.png",
+    "bytes": 1426448,
+    "source": "cola/cola_p21_1_1772x1772.png",
+    "description": "Постер A3 — Orange"
+  },
+  {
+    "path": "cola/marketing/poster-a3-lime.png",
+    "bytes": 1657506,
+    "source": "cola/cola_p21_2_1826x1960.png",
+    "description": "Постер A3 — Lime"
+  },
+  {
+    "path": "cola/marketing/van-wrap.png",
+    "bytes": 2912061,
+    "source": "cola/cola_p23_2_2401x1601.png",
+    "description": "Брендированный фургон"
+  },
+  {
+    "path": "cola/marketing/serving-cocktails.png",
+    "bytes": 547010,
+    "source": "cola/cola_p10_2_626x433.png",
+    "description": "Подача: напитки в бокалах"
+  },
+  {
+    "path": "cola/marketing/fruit-photo-flatlay.png",
+    "bytes": 780864,
+    "source": "cola/cola_p10_1_626x456.png",
+    "description": "Фотофон: раскладка фруктов"
+  },
+  {
+    "path": "cola/collateral/badge.png",
+    "bytes": 955598,
+    "source": "cola/cola_p13_1_2384x1809.png",
+    "description": "Бейдж 90×126 мм"
+  },
+  {
+    "path": "cola/collateral/bag-white.png",
+    "bytes": 177340,
+    "source": "cola/cola_p14_1_787x787.png",
+    "description": "Пакет-майка белый 30×52 см"
+  },
+  {
+    "path": "cola/collateral/bag-black.png",
+    "bytes": 753652,
+    "source": "cola/cola_p14_2_1089x1452.png",
+    "description": "Пакет чёрный 30×42 см"
+  },
+  {
+    "path": "cola/collateral/letterhead.png",
+    "bytes": 1374665,
+    "source": "cola/cola_p15_1_1417x945.png",
+    "description": "Бланк A4 + конверт"
+  },
+  {
+    "path": "cola/collateral/folder.png",
+    "bytes": 639988,
+    "source": "cola/cola_p17_1_1710x1181.png",
+    "description": "Папка A4"
+  },
+  {
+    "path": "cola/collateral/notebook-front.png",
+    "bytes": 3291942,
+    "source": "cola/cola_p18_1_2500x2500.png",
+    "description": "Блокнот, обложка"
+  },
+  {
+    "path": "cola/collateral/notebook-open.png",
+    "bytes": 2362633,
+    "source": "cola/cola_p18_2_3077x2000.png",
+    "description": "Блокнот, разворот"
+  },
+  {
+    "path": "cola/collateral/notebook-back.png",
+    "bytes": 312249,
+    "source": "cola/cola_p18_3_778x777.png",
+    "description": "Блокнот, задняя сторона"
+  },
+  {
+    "path": "cola/collateral/pen.png",
+    "bytes": 1112201,
+    "source": "cola/cola_p19_1_1471x1104.png",
+    "description": "Ручка"
+  },
+  {
+    "path": "cola/collateral/tshirt.png",
+    "bytes": 8382715,
+    "source": "cola/cola_p20_1_5000x5000.png",
+    "description": "Футболка чёрная, 5000×5000"
+  },
+  {
+    "path": "water/bottles/water-033l-still.jpg",
+    "bytes": 195920,
+    "source": "7fc872_4ce100a5f2c244089422697c453fb06c-mv2.jpg",
+    "description": "Вода 0,33 л негазированная"
+  },
+  {
+    "path": "water/bottles/water-05l-still.jpg",
+    "bytes": 196116,
+    "source": "7fc872_2d9fbd61c0494c008697f5f3cccd3ce1-mv2.jpg",
+    "description": "Вода 0,5 л негазированная"
+  },
+  {
+    "path": "water/bottles/water-10l-still.jpg",
+    "bytes": 195182,
+    "source": "7fc872_9e64a5e0d7994a1c8b973c0be81943aa-mv2.jpg",
+    "description": "Вода 1,0 л негазированная"
+  },
+  {
+    "path": "water/bottles/water-15l-still.jpg",
+    "bytes": 108642,
+    "source": "7fc872_40d67e834f344bb8aa533cf894ddf1ad-mv2.jpg",
+    "description": "Вода 1,5 л негазированная"
+  },
+  {
+    "path": "water/bottles/water-05l-sparkling.jpg",
+    "bytes": 180621,
+    "source": "7fc872_ba406f2b451748cebffd92b31f22a152-mv2.jpg",
+    "description": "Вода 0,5 л газированная"
+  },
+  {
+    "path": "water/bottles/water-10l-sparkling.jpg",
+    "bytes": 195928,
+    "source": "7fc872_d7ea76196fb44e73acd66f84397e746e-mv2.jpg",
+    "description": "Вода 1,0 л газированная"
+  },
+  {
+    "path": "water/bottles/water-189l-a.jpg",
+    "bytes": 134900,
+    "source": "7fc872_19412cb9650a4665a983d890707866aa-mv2.jpg",
+    "description": "Бутыль 18,9 л, ракурс 1"
+  },
+  {
+    "path": "water/bottles/water-189l-b.jpg",
+    "bytes": 139049,
+    "source": "7fc872_559ef1a9836544898689f53065b0af41-mv2.jpg",
+    "description": "Бутыль 18,9 л, ракурс 2"
+  },
+  {
+    "path": "water/bottles/water-05l-angled.jpg",
+    "bytes": 47836,
+    "source": "7fc872_be77d0cff48e4b78be464990e7f81d79-mv2.jpg",
+    "description": "Вода 0,5 л под углом, крупный план"
+  },
+  {
+    "path": "water/lifestyle/bottle-at-spring.png",
+    "bytes": 5367961,
+    "source": "water/water_p13_2_1440x1440.png",
+    "description": "Бутылка у воды на камнях — лучший имиджевый кадр"
+  },
+  {
+    "path": "water/lifestyle/factory-tour-kids.png",
+    "bytes": 5044045,
+    "source": "water/water_p13_3_1726x1723.png",
+    "description": "Экскурсия школьников на завод"
+  },
+  {
+    "path": "water/lifestyle/bottle-in-backpack.png",
+    "bytes": 2401022,
+    "source": "water/water_p13_1_1127x1134.png",
+    "description": "Бутылка в рюкзаке"
+  },
+  {
+    "path": "water/lifestyle/bottle-caps-closeup.png",
+    "bytes": 1591996,
+    "source": "water/water_p13_5_927x928.png",
+    "description": "Крупный план синих крышек"
+  },
+  {
+    "path": "water/lifestyle/glass-shadow.png",
+    "bytes": 591723,
+    "source": "water/water_p13_4_1080x1080.png",
+    "description": "Стакан с тенью, студия"
+  },
+  {
+    "path": "water/lifestyle/crates-in-plant.jpg",
+    "bytes": 247899,
+    "source": "7fc872_0f8065960c484a90acdbbe44bde0e79af000.jpg",
+    "description": "Синие ящики «Գառնի Կրիստալլայն» в цеху, 1920×1080"
+  },
+  {
+    "path": "water/textures/water-surface-dark.png",
+    "bytes": 756292,
+    "source": "water/water_p08_1_727x727.png",
+    "description": "Тёмная водная поверхность"
+  },
+  {
+    "path": "water/textures/hands-with-water.png",
+    "bytes": 327162,
+    "source": "water/water_p08_2_700x512.png",
+    "description": "Руки с водой"
+  },
+  {
+    "path": "water/textures/water-surface-light.png",
+    "bytes": 360828,
+    "source": "water/water_p08_3_626x417.png",
+    "description": "Светлая водная рябь"
+  },
+  {
+    "path": "water/textures/gradient-purple.png",
+    "bytes": 150562,
+    "source": "water/water_p13_6_605x581.png",
+    "description": "Градиентный фон под логотип"
+  },
+  {
+    "path": "water/textures/spectrum.png",
+    "bytes": 391908,
+    "source": "water/water_p09_1_600x450.png",
+    "description": "Цветовой спектр"
+  },
+  {
+    "path": "water/textures/water-drop.png",
+    "bytes": 67742,
+    "source": "7fc872_e4e17c16c316496b87ed456c3d867dd9-mv2.png",
+    "description": "3D-капля воды"
+  }
+]

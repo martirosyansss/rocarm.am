@@ -1,0 +1,291 @@
+
+======================================================================
+=== СТРАНИЦА 1 ===
+======================================================================
+BRAND IDENTITY GUIDE
+
+======================================================================
+=== СТРАНИЦА 2 ===
+======================================================================
+
+
+======================================================================
+=== СТРАНИЦА 3 ===
+======================================================================
+THANK YOU FOR REVIEWING THIS IMPORTANT DOCUMENT.
+USED PROPERLY, THE GUIDELINES FOUND WITHIN IT WILL HELP MAINTAIN 
+GRAPHIC AND MESSAGE CONTINUITY, PROTECT OUR LOGO ASSETS, 
+AND HELP US BUILD POWERFUL, RELEVANT MESSAGING 
+ACROSS A BROAD ARRAY OF MEDIA.
+
+======================================================================
+=== СТРАНИЦА 4 ===
+======================================================================
+The Garni Cristalline brand also has a typographic-only mark (1) and an icon mark (2). These are to be used 
+particularly in situations where legibility at small screen sizes becomes an issue.
+1
+2
+
+======================================================================
+=== СТРАНИЦА 5 ===
+======================================================================
+The logo can also be used in Armenian. All 
+further usage principles will also apply to 
+the Armenian version.
+
+======================================================================
+=== СТРАНИЦА 6 ===
+======================================================================
+LEGIBILITY
+An exclusion zone around thelogo has 
+been created to protect itsintegrity and 
+make sure the logo is easy to read.
+The height of the “G” of the logo is taken 
+as a guide to deﬁne the exclusion zone.
+EXCLUSION ZONE
+Minimum size online
+80 px
+Minimum size oﬂine
+20 mm
+
+======================================================================
+=== СТРАНИЦА 7 ===
+======================================================================
+The monochromatic version have been speciﬁcally designed to meet some speciﬁc printing 
+requirements. They should not be used in other circumstances.
+POSITIVE & NEGATIVE
+Positive version
+BLACK VERSIONS
+WHITE VERSIONS
+Negative version
+PANTONE P 106-8 C
+C 100 M 52 Y 0 K 0
+R 0 G 111 B 186
+#006FBA
+#231F20
+PANTONE P Process Black C
+C 0 M 0 Y 0 K 100
+R 35 G 31 B 32
+
+======================================================================
+=== СТРАНИЦА 8 ===
+======================================================================
+The logo can be placed on a background with one of the colors from the primary or secondary color palette, as 
+well as white or black. Here are examples of the logo applied in these instances. The logo can also be placed on 
+images, but there must be enough contrast between the image and logo for acceptable readability. In most 
+instances, the logotype should be used in white when placed on imagery. except when the background is bright 
+enough for the type to be rendered in color.
+CORRECT LOGO USAGE
+
+======================================================================
+=== СТРАНИЦА 9 ===
+======================================================================
+The Garni Cristaline logo should not be adjusted or edited in any way. Here are some examples of what not to do:
+Do not change 
+the colors of the logo.
+Do not adjust the placement 
+of the logo icon.
+Do not place the logo on top 
+of an image with poor 
+contrast and readability.
+Do not resize any individual 
+elements of the logo.
+Do not rotate the logo.
+Do not place elements in 
+the logo clear space.
+Do not condense, expand, 
+or distort the logo unproportionally.
+Do not add a drop shadow, 
+bevel and emboss, inner glow, 
+or any other text effects to the logo.
+INCORRECT LOGO USAGE
+
+======================================================================
+=== СТРАНИЦА 10 ===
+======================================================================
+BRAND COLOR PALETTE
+OVERVIEW
+Our color palette has two sets: primary and secondary, each with its own mix of colors. 
+Lean heavily on the primary blue, but use supporting sets to build color  chemes that 
+are complementary and balanced.
+PRIMARY
+SECONDARY
+70 %
+30 %
+PANTONE P 106-8 C
+C 100 M 52 Y 0 K 0
+R 0 G 111 B 186
+#006FBA
+C 0 M 99 Y 91 K 0
+R 238 G 32 B 46
+#EE202E
+C 92 M 70 Y 22 K 6
+R 39 G 86 B 138
+#275689
+C 0 M 32 Y 24 K 0
+R 250 G 187 B 175
+#FABBAF
+C 64 M 13 Y 21 K 0
+R 85 G 175 B 193
+#55AFC1
+C 0 M 10 Y 16 K 0
+R 255 G 231 B 209
+#FFE7D1
+C 25 M 0 Y 10 K 0
+R 188 G 228 B 229
+#BCE4E5
+
+======================================================================
+=== СТРАНИЦА 11 ===
+======================================================================
+PRIMARY TYPEFACES
+Consistent use of typography helps to make the brand identity 
+strong and cohesive across all applications. 
+The typeface Neue Frutiger World was selected to complement the 
+voice and tone of Switcher's brand. This typeface is a websafe 
+font with ﬂ exibility built in ― there are a range of styles within 
+the font family. 
+Neue Frutiger World
+Neue Frutiger World
+Font Name
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+Thin
+Neue Frutiger World
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+Regular
+Neue Frutiger World
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+Bold
+Neue Frutiger World
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+Black
+Neue Frutiger World
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+(.,:;?!@#$%^&*) 0123456789
+ExtraBlack
+
+======================================================================
+=== СТРАНИЦА 12 ===
+======================================================================
+Neue Frutiger World
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+Thin
+Neue Frutiger World
+Regular
+Neue Frutiger World
+Bold
+Neue Frutiger World
+Black
+Neue Frutiger World
+ExtraBlack
+PRIMARY TYPEFACES
+Neue Frutiger World (arm)
+Font Name
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔԵՎՕՖ 
+աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ
+(.,:;?!@#$%^&*) 0123456789
+
+======================================================================
+=== СТРАНИЦА 13 ===
+======================================================================
+LOGO IN PHOTOS
+Lorem ipsum dolor 
+Lorem ipsum dolor
+
+======================================================================
+=== СТРАНИЦА 14 ===
+======================================================================
+PRINT MATERIALS
+Business Card - Blue 
+Envelope
+Business Card - White
+Pin -Blue 
+Front
+Back
+Name Surname
+“Rocarm” LLC
+Position
+Address: Mayak 44/1, Yerevan 0089, Phone: 060 504050 
+info@garnicrystalline.am   www.garnicrystalline.am 
+“Rocarm” LLC
+Address: Mayak 44/1, Yerevan 0089, Phone: 060 504050 
+info@garnicrystalline.am   www.garnicrystalline.am 
+Front
+Back
+Name Surname
+“Rocarm” LLC
+Position
+Address: Mayak 44/1, Yerevan 0089, Phone: 060 504050 
+info@garnicrystalline.am   www.garnicrystalline.am 
+Size 90 mm X 50 mm
+Size 90 mm X 50 mm
+Size  R  37mm
+Pin -White
+Size  R  37mm
+Size 114 mm X 162 mm
+
+======================================================================
+=== СТРАНИЦА 15 ===
+======================================================================
+“Rocarm” LLC
+Address: Mayak 44/1, Yerevan 0089, Phone: 060 504050 
+info@garnicrystalline.am   www.garnicrystalline.am 
+A4 letterhead
+T-shirts
+Size 210 mm X 297 mm
+PRINT MATERIALS
+
+======================================================================
+=== СТРАНИЦА 16 ===
+======================================================================
+
