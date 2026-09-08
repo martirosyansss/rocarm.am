@@ -11,16 +11,29 @@ The authoritative workflow is the `website-builder-flow` skill
 ## The engine is done — do not rewrite it
 
 `src/components/scroll-scrub/scroll-scrub.tsx` + `.css` ship the full runtime:
-Blob-backed seeking, seek coalescing, lazy nearby-segment loading, desktop and
-mobile sources, exact-frame posters held until a real painted frame, iOS
-gesture priming, `prefers-reduced-motion`, reverse scroll, and complete
-teardown (aborts, listeners, RAF, revoked Blob URLs).
+canvas frame-sequence rendering, lazy nearby-segment loading, desktop and
+mobile sources, exact-frame posters held until a real painted frame,
+`prefers-reduced-motion`, reverse scroll, and complete teardown (aborts,
+listeners, RAF, closed ImageBitmaps).
 
-Do NOT rebuild the controller, drive per-frame values through React state, or
-attach a second scroll timeline to the same video elements. Adapt composition
-and scene data instead. The engine intentionally ships **no** header, no shared
-button system, no scroll hint, and no per-scene eyebrow — compose the site's
-own nav and bespoke CTAs around it.
+**As of 2026-08-05 this is a canvas engine, not a `<video>` engine.** It used
+to seek an actual `<video>` element's `currentTime` per scroll frame; that was
+replaced because video seeking is decode-latency bound (~35–50ms per seek,
+Chromium keyframe/GOP dependent) and drifted behind fast scroll. The
+replacement follows the same technique Apple's product pages use: each scene
+is pre-cut into a numbered WebP frame sequence
+(`public/assets/world/frames/<sceneId>/f001.webp …`), every frame is
+prefetched and decoded off-thread via `createImageBitmap`, and scrubbing is
+just `ctx.drawImage(bitmap, 0, 0)` — synchronous, no seek latency, no drift.
+See `scroll-scrub.tsx`'s `loadFrames`/`updateFrames` for the implementation
+and the conversation history for the sourcing (ghosh.dev's technique
+comparison, CSS-Tricks' Apple-style tutorial).
+
+Do NOT rebuild the controller *again*, drive per-frame values through React
+state, or attach a second scroll timeline to the same canvas elements. Adapt
+composition and scene data instead. The engine intentionally ships **no**
+header, no shared button system, no scroll hint, and no per-scene eyebrow —
+compose the site's own nav and bespoke CTAs around it.
 
 ## What you fill in
 
@@ -28,7 +41,8 @@ own nav and bespoke CTAs around it.
 |---|---|
 | `src/scroll-scrub-scenes.ts` | Brand tokens + the scene array. Every `<...>` placeholder gets real copy. |
 | `src/routes/index.tsx` | Compose the page: nav, chapters, CTAs, and the content sections after the journey. |
-| `public/assets/world/` | The encoded clips and their exact-frame posters. |
+| `public/assets/world/` | The source clips (kept for re-extraction) and exact-frame posters. |
+| `public/assets/world/frames/<sceneId>[-mobile]/` | The extracted WebP frame sequences the engine actually renders — regenerate with `scripts/extract-scroll-scrub-frames.js` + `scripts/decode-scroll-scrub-frames.mjs` (browser-based extraction via the `browse` tool; no ffmpeg dependency) if a source clip changes. |
 | `src/styles.css` | The site's own token layer from the design brief. |
 | `src/app-meta.json` | `og_title`, `og_description`, `favicon_url`, `og_image_url`, `marketplace_cover_url`. |
 
@@ -38,17 +52,21 @@ own nav and bespoke CTAs around it.
   use q-prefixed tokens, never add "Sign in with Higgsfield", the fnf SDK, or
   any runtime generation. No "Powered by Higgsfield" anywhere in page content.
   The user's brand is the only brand on the page.
-- **Every `poster` is the exact first frame of the clip beside it.** Never a
-  design board, never an imagined destination still, never the next scene's
-  image. Generate posters from the ENCODED clip, after encoding.
-- **Provide `mobilePoster` whenever `mobileClip` is set.**
+- **Every `poster` is the exact first frame (`f001.webp`) of the frame
+  sequence beside it.** Never a design board, never an imagined destination
+  still, never the next scene's image. Generate posters from the extracted
+  frame sequence, after extraction.
+- **Provide `mobilePoster` whenever `mobileFrames` is set.**
 - **Keep `scrollScrubScenes` a module constant.** Changing its identity on
   every render rebuilds the controller.
-- **CSP:** the controller assigns Blob URLs to `<video src>`, so `media-src`
-  must include `blob:` and clip fetches stay same-origin (`connect-src 'self'`).
-- **Byte budget:** start at ≤32 MiB for all desktop clips and ≤16 MiB for all
-  mobile clips. Visited clips are retained for smooth reverse scroll, so
-  oversized clips cost memory as well as transfer.
+- **CSP:** frames load via same-origin `fetch()`, so `connect-src 'self'`
+  covers it — no `blob:` media-src needed (that was a video-src-only
+  requirement from the old engine; harmless to leave in place, not required).
+- **Byte budget:** start at ≤32 MiB for all desktop frame sequences and
+  ≤16 MiB for all mobile frame sequences combined. Visited segments keep
+  their decoded `ImageBitmap`s for smooth reverse scroll, so oversized
+  sequences cost memory as well as transfer — `unloadFrames` closes every
+  bitmap on teardown/source-switch to bound this.
 - **SSR safety:** no browser global at module top level or during render. A
   top-level `window` reference crashes SSR.
 - **No placeholders may ship.** Every `<...>` token is replaced before deploy.

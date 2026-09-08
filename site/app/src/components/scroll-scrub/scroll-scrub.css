@@ -20,7 +20,7 @@
 .scroll-scrub__layer,
 .scroll-scrub__picture,
 .scroll-scrub__poster,
-.scroll-scrub__video {
+.scroll-scrub__canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -43,7 +43,7 @@
 }
 
 .scroll-scrub__poster,
-.scroll-scrub__video {
+.scroll-scrub__canvas {
   display: block;
   object-fit: cover;
   object-position: var(--ss-object-position);
@@ -53,11 +53,11 @@
   z-index: 0;
 }
 
-.scroll-scrub__video {
+.scroll-scrub__canvas {
   z-index: 1;
 }
 
-.scroll-scrub__layer[data-video-painted="true"] .scroll-scrub__poster {
+.scroll-scrub__layer[data-frame-painted="true"] .scroll-scrub__poster {
   visibility: hidden;
 }
 
@@ -221,7 +221,7 @@
 
 @media (max-width: 860px) {
   .scroll-scrub__poster,
-  .scroll-scrub__video {
+  .scroll-scrub__canvas {
     object-position: var(--ss-mobile-position);
   }
 

@@ -12,15 +12,20 @@ export const WATER = [
   { img: "water-189.webp", meta: "Returnable, for coolers.", vol: "18.9 L" },
 ];
 
-/** Flavour accents live in styles.css as .rc-flavour--<slug>. */
+/**
+ * Flavour accents live in styles.css as .rc-flavour--<slug>.
+ * `img` is the 0.5 L bottle, `img15` the 1.5 L one. Both are rendered so the
+ * bottle fills the same share of the canvas, so their CSS heights compare
+ * directly — see FORMAT_SCALE in the soft drinks route.
+ */
 export const FLAVOURS = [
-  { fruit: "cherry", img: "cola-cola.webp", name: "Cola", note: "The classic, dark and dry.", slug: "cola" },
-  { fruit: "orange", img: "cola-orange.webp", name: "Orange", note: "Narinj. The best seller.", slug: "orange" },
-  { fruit: "cherry", img: "cola-cherry.webp", name: "Cherry", note: "Deep red, low on sugar.", slug: "cherry" },
-  { fruit: "pear", img: "cola-pear.webp", name: "Pear", note: "Tandz. Amber and soft.", slug: "pear" },
-  { fruit: "tarragon", img: "cola-tarragon.webp", name: "Tarragon", note: "Tarkhun. A Caucasus staple.", slug: "tarragon" },
-  { fruit: "lime", img: "cola-lime.webp", name: "Lime", note: "Sharp and green.", slug: "lime" },
-  { fruit: "pineapple", img: "cola-tropic.webp", name: "Tropic", note: "Pineapple, banana, mango.", slug: "tropic" },
+  { fruit: "cherry", img: "cola-cola.webp", img15: "cola-15-cola.webp", name: "Cola", note: "The classic, dark and dry.", slug: "cola" },
+  { fruit: "orange", img: "cola-orange.webp", img15: "cola-15-orange.webp", name: "Orange", note: "Narinj. The best seller.", slug: "orange" },
+  { fruit: "cherry", img: "cola-cherry.webp", img15: "cola-15-cherry.webp", name: "Cherry", note: "Deep red, low on sugar.", slug: "cherry" },
+  { fruit: "pear", img: "cola-pear.webp", img15: "cola-15-pear.webp", name: "Pear", note: "Tandz. Amber and soft.", slug: "pear" },
+  { fruit: "tarragon", img: "cola-tarragon.webp", img15: "cola-15-tarragon.webp", name: "Tarragon", note: "Tarkhun. A Caucasus staple.", slug: "tarragon" },
+  { fruit: "lime", img: "cola-lime.webp", img15: "cola-15-lime.webp", name: "Lime", note: "Sharp and green.", slug: "lime" },
+  { fruit: "pineapple", img: "cola-tropic.webp", img15: "cola-15-tropic.webp", name: "Tropic", note: "Pineapple, banana, mango.", slug: "tropic" },
 ];
 
 export const PARAMETERS = [

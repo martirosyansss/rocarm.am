@@ -561,9 +561,13 @@
   .rc-rail { scroll-snap-type: none; }
 }
 
-/* ---- source band (used once) ---------------------------------------------- */
+/* ---- source band (also reused for the home story bands) ------------------- */
 .rc-band { position: relative; }
 .rc-band__img { display: block; width: 100%; height: clamp(320px, 52vw, 620px); object-fit: cover; }
+.rc-band::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgb(8 19 27 / 0.82) 0%, transparent 46%);
+}
 .rc-band__cap {
   position: absolute; left: 0; right: 0; bottom: clamp(22px, 4vw, 56px);
   color: var(--rc-ink);
@@ -579,6 +583,20 @@
   border: 1px solid var(--rc-line);
 }
 @media (min-width: 980px) { .rc-band__inset { display: block; } }
+
+/* ---- home hero (static — replaces the old scroll-scrub sequence) ---------- */
+/* Named rc-home-hero, not rc-hero: that class already belongs to the smaller
+   "page hero" component below (water/soft-drinks), and shares its cascade. */
+.rc-home-hero { position: relative; min-height: 100dvh; display: flex; align-items: center; overflow: hidden; }
+.rc-home-hero__img { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+.rc-home-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgb(8 19 27 / 0.1) 0%, rgb(8 19 27 / 0.85) 82%);
+}
+.rc-home-hero__cap { position: relative; z-index: 2; text-shadow: 0 2px 24px rgb(8 19 27 / 0.9); }
+
+.rc-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
+.rc-tags li { padding: 8px 12px; border: 1px solid var(--rc-line); font-size: 13px; }
 
 /* ---- export section ground ------------------------------------------------ */
 .rc-export { background-size: cover; background-position: center; }
@@ -729,321 +747,9 @@
   .rc-map__pulse { animation: none; opacity: 0.35; }
 }
 
-
-/* ==========================================================================
-   GARNI COLA — Kinetic Brutalism, inverted to light.
-   Style per ui-ux-pro-max: oversized uppercase display, 0 radius, 2px borders,
-   infinite marquee, flood-on-interaction. The canvas is cream rather than the
-   style's default near-black, because the sibling water page already owns dark
-   and the brief asks for bright. Accent is the brand book red, not acid yellow.
-   ========================================================================== */
-
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("/fonts/space-grotesk.woff2") format("woff2");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-.rc-kb {
-  --kb-paper: #fff6e9;
-  --kb-ink: #0d0b0b;
-  --kb-line: #0d0b0b;
-  --kb-red: #da2128;
-  --kb-dim: #6b6360;
-  --kb-border: 2px;
-
-  background: var(--kb-paper);
-  color: var(--kb-ink);
-  font-family: "Space Grotesk", system-ui, sans-serif;
-}
-.rc-kb .rc-nav {
-  background: var(--kb-ink);
-  border-bottom: var(--kb-border) solid var(--kb-ink);
-}
-.rc-kb .rc-nav__wordmark,
-.rc-kb .rc-nav__link { font-family: "Space Grotesk", system-ui, sans-serif; }
-
-/* Touch targets: every nav link clears 44px on this page and the others. */
+/* Touch targets: every nav link clears 44px on every page. */
 .rc-nav__link { display: inline-flex; align-items: center; min-height: 44px; }
 
-/* Visible focus for keyboard users, on every interactive element. */
-.rc-kb a:focus-visible,
-.rc-kb button:focus-visible {
-  outline: 3px solid var(--kb-red);
-  outline-offset: 3px;
-}
-.rc-kb__section--ink a:focus-visible { outline-color: var(--kb-paper); }
-
-.rc-kb__section { padding-block: clamp(56px, 8vw, 118px); }
-.rc-kb__section--ink { background: var(--kb-ink); color: var(--kb-paper); }
-.rc-kb__section--flood { background: var(--kb-red); color: #fff; }
-.rc-kb__head { margin-bottom: clamp(26px, 3.4vw, 46px); }
-
-.rc-kb__eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--kb-red);
-  margin: 0 0 18px;
-}
-.rc-kb__h2 {
-  font-size: clamp(34px, 5.4vw, 76px);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin: 0;
-}
-.rc-kb__lede {
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.55;
-  max-width: 54ch;
-  margin: 18px 0 0;
-  color: var(--kb-dim);
-}
-.rc-kb__section--flood .rc-kb__lede { color: rgb(255 255 255 / 0.86); }
-.rc-kb__section--ink .rc-kb__lede { color: rgb(255 246 233 / 0.7); }
-
-/* ---- hero ----------------------------------------------------------------- */
-.rc-kb__hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: clamp(104px, 13vw, 168px) clamp(40px, 6vw, 80px);
-  border-bottom: var(--kb-border) solid var(--kb-line);
-}
-.rc-kb__hero-grid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  gap: clamp(24px, 4vw, 56px);
-  grid-template-columns: 1fr;
-  align-items: center;
-}
-@media (min-width: 900px) {
-  .rc-kb__hero-grid { grid-template-columns: 1.1fr 0.9fr; }
-}
-.rc-kb__shout {
-  font-size: clamp(52px, 11vw, 132px);
-  line-height: 0.84;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin: 0;
-}
-.rc-kb__shout-flood {
-  background: var(--kb-red);
-  color: #fff;
-  padding: 0 0.12em 0.04em;
-  display: inline-block;
-}
-.rc-kb__sub {
-  font-size: clamp(16px, 1.4vw, 20px);
-  line-height: 1.5;
-  max-width: 42ch;
-  margin: clamp(20px, 2.6vw, 32px) 0 clamp(24px, 3vw, 34px);
-  color: var(--kb-dim);
-}
-
-.rc-kb__hero-shot { display: flex; justify-content: center; }
-.rc-kb__hero-bottle {
-  width: clamp(200px, 34vw, 420px);
-  height: auto;
-  animation: rc-kb-bob 4s ease-in-out infinite;
-  filter: drop-shadow(0 26px 30px rgb(13 11 11 / 0.24));
-}
-@keyframes rc-kb-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-.rc-kb__fruit {
-  position: absolute;
-  z-index: 1;
-  height: auto;
-  pointer-events: none;
-  animation: rc-kb-drift 14s ease-in-out infinite;
-}
-.rc-kb__fruit--a { top: 14%; right: 4%; width: clamp(84px, 10vw, 160px); }
-.rc-kb__fruit--b { bottom: 8%; left: 2%; width: clamp(74px, 8vw, 130px); animation-delay: 4s; }
-.rc-kb__fruit--c { top: 6%; left: 38%; width: clamp(66px, 7vw, 116px); animation-delay: 8s; }
-@media (max-width: 900px) { .rc-kb__fruit--c { display: none; } }
-@keyframes rc-kb-drift {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50% { transform: translate3d(-10px, -18px, 0) rotate(-5deg); }
-}
-
-/* ---- CTA (bespoke to this page) ------------------------------------------- */
-.rc-kb__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 48px;
-  padding: 12px 22px;
-  border: var(--kb-border) solid var(--kb-ink);
-  background: var(--kb-ink);
-  color: var(--kb-paper);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 200ms ease, color 200ms ease;
-}
-.rc-kb__cta:hover { background: var(--kb-red); border-color: var(--kb-red); color: #fff; }
-.rc-kb__cta:active { transform: translateY(1px); }
-.rc-kb__cta--onflood { background: #fff; border-color: #fff; color: var(--kb-red); }
-.rc-kb__cta--onflood:hover { background: var(--kb-ink); border-color: var(--kb-ink); color: #fff; }
-.rc-kb__cta-arrow { transition: transform 200ms ease; }
-.rc-kb__cta:hover .rc-kb__cta-arrow { transform: translateX(4px); }
-
-/* ---- marquee --------------------------------------------------------------- */
-.rc-kb__marquee {
-  background: var(--kb-ink);
-  color: var(--kb-paper);
-  overflow: hidden;
-  padding-block: 16px;
-  border-block: var(--kb-border) solid var(--kb-line);
-}
-.rc-kb__marquee-track {
-  display: flex;
-  width: max-content;
-  animation: rc-kb-scroll 30s linear infinite;
-}
-.rc-kb__marquee-group { display: flex; }
-.rc-kb__marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  padding-inline: 24px;
-  font-size: clamp(17px, 2vw, 26px);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.rc-kb__marquee-dot { width: 9px; height: 9px; background: var(--kb-red); display: block; }
-@keyframes rc-kb-scroll { to { transform: translateX(-50%); } }
-
-/* ---- flavour cards --------------------------------------------------------- */
-.rc-kb__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: var(--kb-border) solid var(--kb-line);
-  border-left: var(--kb-border) solid var(--kb-line);
-}
-@media (min-width: 780px) { .rc-kb__grid { grid-template-columns: repeat(4, 1fr); } }
-
-.rc-kb__card {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: var(--kb-paper);
-  color: var(--kb-ink);
-  border-right: var(--kb-border) solid var(--kb-line);
-  border-bottom: var(--kb-border) solid var(--kb-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 200ms ease, color 200ms ease;
-}
-/* Flood on hover AND on focus-within, so it is never hover-only. */
-.rc-kb__card:hover,
-.rc-kb__card:focus-within { background: var(--rc-tone); color: var(--rc-tone-ink); }
-
-.rc-kb__card-fruit {
-  position: absolute;
-  top: -6%;
-  right: -12%;
-  width: 56%;
-  height: auto;
-  opacity: 0.92;
-  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.rc-kb__card:hover .rc-kb__card-fruit { transform: rotate(-10deg) scale(1.1); }
-.rc-kb__card-bottle {
-  position: relative;
-  z-index: 1;
-  width: auto;
-  height: 72%;
-  filter: drop-shadow(0 14px 18px rgb(13 11 11 / 0.2));
-  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.rc-kb__card:hover .rc-kb__card-bottle { transform: translateY(-10px); }
-
-.rc-kb__card-foot { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 14px; }
-.rc-kb__card-name {
-  font-size: clamp(18px, 1.9vw, 26px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  margin: 0;
-}
-.rc-kb__card-note { font-size: 13px; line-height: 1.4; margin: 5px 0 0; opacity: 0.74; }
-
-/* Per-flavour flood colour and the ink that clears AA on it. */
-.rc-flavour--cola     { --rc-tone: #da2128; --rc-tone-ink: #ffffff; }
-.rc-flavour--cherry   { --rc-tone: #dc1e3c; --rc-tone-ink: #ffffff; }
-.rc-flavour--orange   { --rc-tone: #f8971d; --rc-tone-ink: #0d0b0b; }
-.rc-flavour--pear     { --rc-tone: #d3c540; --rc-tone-ink: #0d0b0b; }
-.rc-flavour--tarragon { --rc-tone: #59bd4b; --rc-tone-ink: #0d0b0b; }
-.rc-flavour--lime     { --rc-tone: #bfd730; --rc-tone-ink: #0d0b0b; }
-.rc-flavour--tropic   { --rc-tone: #f1c01f; --rc-tone-ink: #0d0b0b; }
-
-/* ---- formats ---------------------------------------------------------------- */
-.rc-kb__formats {
-  display: grid;
-  gap: 0;
-  grid-template-columns: 1fr;
-  border-top: var(--kb-border) solid var(--kb-paper);
-  border-left: var(--kb-border) solid var(--kb-paper);
-}
-@media (min-width: 780px) { .rc-kb__formats { grid-template-columns: repeat(2, 1fr); } }
-.rc-kb__format {
-  border-right: var(--kb-border) solid var(--kb-paper);
-  border-bottom: var(--kb-border) solid var(--kb-paper);
-  padding: clamp(24px, 3.2vw, 44px);
-}
-.rc-kb__format-num {
-  display: block;
-  font-size: clamp(64px, 9vw, 132px);
-  line-height: 0.86;
-  letter-spacing: -0.05em;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.rc-kb__format-num i { font-style: normal; font-size: 0.36em; margin-left: 0.1em; color: var(--kb-red); }
-.rc-kb__format-note { font-size: 16px; line-height: 1.5; margin: 18px 0 0; color: rgb(255 246 233 / 0.72); }
-.rc-kb__spec { margin: 26px 0 0; display: grid; gap: 0; }
-.rc-kb__spec > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
-  border-top: 1px solid rgb(255 246 233 / 0.22);
-}
-.rc-kb__spec dt {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgb(255 246 233 / 0.55);
-}
-.rc-kb__spec dd { margin: 0; font-size: 14px; text-align: right; font-variant-numeric: tabular-nums; }
-
-@media (prefers-reduced-motion: reduce) {
-  .rc-kb__hero-bottle,
-  .rc-kb__fruit,
-  .rc-kb__marquee-track { animation: none; }
-  .rc-kb__card,
-  .rc-kb__card-fruit,
-  .rc-kb__card-bottle,
-  .rc-kb__cta,
-  .rc-kb__cta-arrow { transition: none; }
-}
+/* Soft-drinks page styles live in routes/soft-drinks.css (colocated, imported
+   directly by the route) — this file was getting long, and that block is
+   exclusive to one page. */

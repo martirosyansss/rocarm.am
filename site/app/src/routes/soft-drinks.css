@@ -1,0 +1,500 @@
+/* ==========================================================================
+   GARNI COLA — Retro Soda Stand.
+
+   A 1970s soda-ad revival. One deep cocoa ground, cream paper, a single
+   butter-yellow accent, and the seven flavour tones doing the shouting.
+   Chunky rounded display type, pill geometry, thick ink outlines, hard
+   offset shadows, and a hand-drawn sun scene behind the hero bottle.
+
+   Fonts load from Google in the route head(); the CSP already allows it.
+   Bagel Fat One carries no Armenian, so the Armenian slogan falls through
+   to Noto Sans Armenian by design — it is second in every display stack.
+   ========================================================================== */
+
+.rc-gc {
+  --gc-cocoa: #2a1512;
+  --gc-cocoa-lift: #45231c;
+  --gc-cream: #fff6e9;
+  --gc-cream-deep: #ffe7c9;
+  --gc-butter: #f7c223;
+  --gc-butter-lift: #ffd558;
+  --gc-red: #da2128;
+  --gc-bw: 3px;
+
+  --gc-display: "Bagel Fat One", "Noto Sans Armenian", "Rubik", Georgia, serif;
+  --gc-body: "Outfit", "Noto Sans Armenian", "Rubik", system-ui, sans-serif;
+  --gc-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Travel of the bottle's idle float; halved under reduce-motion. */
+  --gc-lift: 14px;
+
+  background: var(--gc-cream);
+  color: var(--gc-cocoa);
+  font-family: var(--gc-body);
+  overflow-x: clip;
+}
+
+/* ---- shared chrome, repainted for this page ------------------------------ */
+.rc-gc .rc-nav {
+  background: var(--gc-cream);
+  backdrop-filter: none;
+  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
+}
+.rc-gc .rc-nav__wordmark {
+  font-family: var(--gc-display);
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--gc-cocoa);
+}
+.rc-gc .rc-nav__link {
+  border-bottom: none;
+  color: var(--gc-cocoa);
+  font: 500 15px var(--gc-body);
+}
+.rc-gc .rc-nav__link:hover { color: var(--gc-red); }
+.rc-gc .rc-quote-cta {
+  padding: 9px 20px; border-radius: 999px;
+  border: var(--gc-bw) solid var(--gc-cocoa);
+  background: var(--gc-butter); color: var(--gc-cocoa);
+  font-family: var(--gc-body); font-weight: 700;
+  transition: background 180ms ease, transform 180ms var(--gc-pop), box-shadow 180ms ease;
+}
+.rc-gc .rc-quote-cta:hover {
+  background: var(--gc-butter-lift);
+  box-shadow: 0 4px 0 var(--gc-cocoa);
+  transform: translateY(-2px);
+}
+
+/* The shared footer is drawn for the dark site theme: its Garni wordmark is
+   white and its body copy is a pale slate. Both vanish on cream, so this page
+   closes on cocoa instead of fighting the artwork. */
+.rc-gc .rc-foot {
+  background: var(--gc-cocoa);
+  color: var(--gc-cream);
+  border-top: var(--gc-bw) solid var(--gc-cocoa);
+}
+.rc-gc .rc-foot .rc-h3 {
+  font-family: var(--gc-display);
+  font-weight: 400;
+  color: var(--gc-butter);
+}
+.rc-gc .rc-foot .rc-body,
+.rc-gc .rc-foot .rc-note { color: rgb(255 246 233 / 0.76); }
+.rc-gc .rc-foot a { color: var(--gc-cream); text-underline-offset: 3px; }
+.rc-gc .rc-foot a:hover { color: var(--gc-butter); }
+
+.rc-gc a:focus-visible,
+.rc-gc button:focus-visible {
+  outline: var(--gc-bw) solid var(--gc-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- type scale ---------------------------------------------------------- */
+.rc-gc__display {
+  margin: 0;
+  font-family: var(--gc-display);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.rc-gc__h1 { font-size: clamp(46px, 6.4vw, 92px); }
+.rc-gc__h2 { font-size: clamp(36px, 5vw, 72px); }
+.rc-gc__lede {
+  margin: 0;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.6;
+}
+.rc-gc__eyebrow {
+  display: inline-block; align-self: flex-start; margin: 0; padding: 7px 16px;
+  border: 2px solid currentColor; border-radius: 999px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ---- CTA pill ------------------------------------------------------------ */
+.rc-gc__cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 52px; padding: 13px 28px;
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 999px;
+  background: var(--gc-butter); color: var(--gc-cocoa);
+  font-size: 16px; font-weight: 700; text-decoration: none;
+  transition: background 180ms ease, transform 180ms var(--gc-pop), box-shadow 180ms ease;
+}
+.rc-gc__cta:hover {
+  background: var(--gc-butter-lift);
+  box-shadow: 0 5px 0 var(--gc-cocoa);
+  transform: translateY(-3px);
+}
+.rc-gc__cta:active { box-shadow: none; transform: translateY(0); }
+.rc-gc__cta--cream { background: var(--gc-cream); }
+.rc-gc__cta--cream:hover { background: #fff; }
+.rc-gc__cta-arrow { transition: transform 180ms ease; }
+.rc-gc__cta:hover .rc-gc__cta-arrow { transform: translateX(4px); }
+
+/* ---- hero ---------------------------------------------------------------- */
+.rc-gc__hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
+}
+@media (min-width: 940px) {
+  .rc-gc__hero { grid-template-columns: 1fr 1fr; min-height: min(86vh, 820px); }
+}
+
+.rc-gc__hero-copy {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  gap: clamp(18px, 2.2vw, 28px);
+  padding: clamp(104px, 11vw, 132px) clamp(24px, 5vw, 76px) clamp(48px, 6vw, 72px);
+  background: var(--gc-cocoa); color: var(--gc-cream);
+}
+@media (min-width: 940px) {
+  .rc-gc__hero-copy { padding-block: clamp(96px, 8vw, 120px); }
+}
+.rc-gc__hero-sub { max-width: 34ch; color: rgb(255 246 233 / 0.82); }
+
+/* The stage is a butter panel holding one ink-outlined arch, with the retro
+   scene painted inside it and the bottle standing on the grass.
+   Proportions are the whole game here. The bottle is a tall narrow object
+   (273 × 900 intrinsic), so a wide arch strands it in empty sky: at 3/4 it
+   covered a quarter of the arch width and read as a sticker. The arch is now
+   portrait, the bottle is sized off the arch rather than the viewport, and the
+   clouds and horizon carry the width the bottle cannot. */
+.rc-gc__hero-stage {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  padding: clamp(30px, 4vw, 58px) clamp(20px, 4vw, 56px);
+  background: var(--gc-butter); border-top: var(--gc-bw) solid var(--gc-cocoa);
+  overflow: hidden;
+}
+@media (min-width: 940px) {
+  .rc-gc__hero-stage { border-top: 0; border-left: var(--gc-bw) solid var(--gc-cocoa); }
+}
+
+.rc-gc__arch {
+  position: relative; width: min(100%, 400px); aspect-ratio: 5 / 7; overflow: hidden;
+  border: var(--gc-bw) solid var(--gc-cocoa);
+  border-radius: 50% 50% 24px 24px / 42% 42% 18px 18px;
+  background: linear-gradient(180deg, #ffcf94 0%, #ffe3bd 46%, var(--gc-cream) 100%);
+}
+.rc-gc__arch > span { position: absolute; }
+
+/* Butter wedges on peach: the old red-at-16%-alpha version just muddied the
+   sky. Centred on the halo so the burst reads as coming from behind the bottle. */
+.rc-gc__rays {
+  left: 50%; top: 56%; width: 250%; aspect-ratio: 1;
+  translate: -50% -50%; border-radius: 50%;
+  background: repeating-conic-gradient(from 7deg,
+    rgb(247 194 35 / 0.9) 0deg 10deg, transparent 10deg 22deg);
+}
+
+/* A pale disc, not a sun. The product is orange soda; a warm disc behind it
+   dissolved its silhouette, so the ground directly behind the bottle is the
+   lightest value in the scene and the outline does the rest. */
+.rc-gc__halo {
+  left: 50%; top: 51%; width: 74%; aspect-ratio: 1; translate: -50% -50%;
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #fffdf8, var(--gc-cream) 78%);
+}
+
+/* Clouds are kept wholly inside the dome: hung off the arch edge they were
+   sliced into rectangles by the overflow clip and read as a bug. The radius is
+   asymmetric on purpose — rounder across the top, flatter along the bottom —
+   because an even pill reads as a UI chip rather than weather. */
+.rc-gc__cloud {
+  aspect-ratio: 8 / 5;
+  border: var(--gc-bw) solid var(--gc-cocoa);
+  border-radius: 52% 48% 44% 56% / 68% 72% 32% 28%;
+  background: var(--gc-cream);
+}
+.rc-gc__cloud--l { top: 16%; left: 6%; width: 25%; }
+.rc-gc__cloud--r { top: 29%; right: 5%; width: 18%; rotate: -6deg; }
+
+.rc-gc__knoll {
+  left: -16%; bottom: 16%; width: 76%; aspect-ratio: 2 / 1;
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 50% 50% 0 0;
+  background: #bfd730;
+}
+/* A horizon band, not a wall — at 28% the green slab outweighed the product. */
+.rc-gc__ground {
+  left: -6%; bottom: 0; width: 112%; height: 23%;
+  border-top: var(--gc-bw) solid var(--gc-cocoa);
+  border-radius: 44% 56% 0 0 / 30% 30% 0 0;
+  background: #59bd4b;
+}
+/*
+ * Contact shadow. Its position is derived, not eyeballed: the bottle artwork
+ * carries 5% transparent padding top and bottom (measured off the alpha
+ * channel of cola-orange.webp, opaque rows 90..1710 of 1800), so the visible
+ * base sits well above the image box. Anchoring the shadow to the image edge
+ * left a visible gap and the bottle read as hovering. The re-export doubled
+ * the pixels but kept those fractions, so this figure still holds.
+ *   visible base = stand-bottom + 0.05 × image height
+ *                = 17% + 0.05 × 0.96 × 83% ≈ 21% of the arch
+ * so the shadow is centred there, and the grass line at 23% closes over it.
+ */
+.rc-gc__cast {
+  left: 50%; bottom: 19%; width: 32%; height: 3%; translate: -50% 0;
+  border-radius: 50%; background: rgb(42 21 18 / 0.34); filter: blur(5px);
+}
+
+/* Fizz, drawn rather than lit: outlined rings match the linework of the scene,
+   where soft white blobs would vanish against the cream halo behind them. */
+.rc-gc__bub {
+  --bub-rise: clamp(90px, 20vw, 180px);
+  bottom: 21%; left: var(--bub-x); width: var(--bub-size); aspect-ratio: 1;
+  border: 2px solid rgb(42 21 18 / 0.5); border-radius: 50%; opacity: 0;
+}
+
+/*
+ * The bottle is measured against the arch, not the viewport, so the two can
+ * never drift apart. The wrapper carries the definite height that makes the
+ * image's percentage resolve, and centres without `translate` — the entrance
+ * keyframes own translate, and centring with it would snap the bottle sideways
+ * as they finish.
+ */
+.rc-gc__stand {
+  position: absolute; inset: 0 0 17% 0;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.rc-gc__hero-bottle {
+  height: 96%;
+  width: auto;
+  filter: drop-shadow(0 14px 18px rgb(42 21 18 / 0.32));
+}
+
+/* ---- ticker -------------------------------------------------------------- */
+.rc-gc__ticker {
+  overflow: hidden;
+  padding-block: 15px;
+  background: var(--gc-cream-deep);
+  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
+}
+.rc-gc__ticker-track { display: flex; width: max-content; }
+.rc-gc__ticker-group { display: flex; }
+.rc-gc__ticker-item {
+  display: inline-flex; align-items: center; gap: 26px; padding-inline: 26px;
+  font-family: var(--gc-display); font-size: clamp(17px, 1.9vw, 27px);
+  white-space: nowrap;
+}
+.rc-gc__ticker-star { color: var(--gc-red); font-size: 0.7em; }
+
+/* ---- sections ------------------------------------------------------------ */
+.rc-gc__section { padding-block: clamp(60px, 8vw, 116px); }
+.rc-gc__section--cocoa { background: var(--gc-cocoa); color: var(--gc-cream); }
+.rc-gc__section--butter {
+  background: var(--gc-butter);
+  border-block: var(--gc-bw) solid var(--gc-cocoa);
+}
+.rc-gc__head { text-align: center; max-width: 62ch; margin-inline: auto; }
+.rc-gc__head .rc-gc__lede { margin-top: 18px; }
+.rc-gc__section--cocoa .rc-gc__lede { color: rgb(255 246 233 / 0.78); }
+
+/* ---- flavour rail -------------------------------------------------------- */
+.rc-gc__tabs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin: clamp(26px, 3.4vw, 40px) auto clamp(28px, 3.6vw, 44px);
+  /* Block only — the element also carries .rc-wrap, and a padding shorthand
+     here would wipe its gutters and push the last pill off a phone screen. */
+  padding-block: 0;
+  list-style: none;
+}
+.rc-gc__tab {
+  min-height: 44px; padding: 9px 20px; cursor: pointer;
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 999px;
+  background: transparent; color: var(--gc-cocoa);
+  font: 700 15px var(--gc-body);
+  transition: background 160ms ease, color 160ms ease, transform 160ms var(--gc-pop);
+}
+.rc-gc__tab:hover { background: var(--rc-tone); color: var(--rc-tone-ink); transform: translateY(-2px); }
+.rc-gc__tab[aria-current="true"] { background: var(--gc-cocoa); color: var(--gc-cream); }
+
+.rc-gc__rail {
+  display: flex; gap: clamp(16px, 2vw, 26px);
+  margin: 0; padding: 6px clamp(20px, 5vw, 72px) 26px; list-style: none;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.rc-gc__rail::-webkit-scrollbar { display: none; }
+
+.rc-gc__card {
+  position: relative; flex: 0 0 auto; width: min(78vw, 320px); aspect-ratio: 3 / 4;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 22px; overflow: hidden; scroll-snap-align: center;
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 30px;
+  background: var(--rc-tone); color: var(--rc-tone-ink);
+  transition: transform 260ms var(--gc-pop), box-shadow 260ms ease;
+}
+.rc-gc__card:hover,
+.rc-gc__card:focus-within { transform: translateY(-8px); box-shadow: 0 10px 0 var(--gc-cocoa); }
+.rc-gc__card-no {
+  position: absolute; top: 14px; right: 20px;
+  font-family: var(--gc-display); font-size: 34px; opacity: 0.42;
+}
+.rc-gc__card-fruit {
+  position: absolute; top: -8%; left: -12%; width: 58%; height: auto;
+  opacity: 0.9; rotate: -12deg;
+  transition: rotate 320ms var(--gc-pop), scale 320ms var(--gc-pop);
+}
+.rc-gc__card:hover .rc-gc__card-fruit { rotate: 4deg; scale: 1.08; }
+.rc-gc__card-bottle {
+  position: absolute; left: 50%; top: 46%; translate: -50% -50%;
+  height: 60%; width: auto;
+  filter: drop-shadow(0 14px 18px rgb(42 21 18 / 0.3));
+  transition: translate 320ms var(--gc-pop);
+}
+.rc-gc__card:hover .rc-gc__card-bottle { translate: -50% -58%; }
+.rc-gc__card-name {
+  position: relative; margin: 0; line-height: 1;
+  font: 400 clamp(26px, 2.6vw, 36px) var(--gc-display);
+}
+.rc-gc__card-note {
+  position: relative;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  opacity: 0.82;
+}
+
+/* Per-flavour ground and the ink that clears AA on it. */
+.rc-flavour--cola     { --rc-tone: #da2128; --rc-tone-ink: #fff6e9; }
+.rc-flavour--cherry   { --rc-tone: #dc1e3c; --rc-tone-ink: #fff6e9; }
+.rc-flavour--orange   { --rc-tone: #f8971d; --rc-tone-ink: #2a1512; }
+.rc-flavour--pear     { --rc-tone: #d3c540; --rc-tone-ink: #2a1512; }
+.rc-flavour--tarragon { --rc-tone: #59bd4b; --rc-tone-ink: #2a1512; }
+.rc-flavour--lime     { --rc-tone: #bfd730; --rc-tone-ink: #2a1512; }
+.rc-flavour--tropic   { --rc-tone: #f1c01f; --rc-tone-ink: #2a1512; }
+
+/* ---- facts (the cocoa band) ---------------------------------------------- */
+.rc-gc__facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(14px, 1.8vw, 22px);
+  margin: clamp(34px, 4vw, 52px) 0 0; padding: 0; list-style: none;
+}
+.rc-gc__fact { padding: 24px; border: var(--gc-bw) solid var(--gc-cream); border-radius: 24px; }
+.rc-gc__fact dt {
+  font-family: var(--gc-display);
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1;
+  color: var(--gc-butter);
+}
+.rc-gc__fact dd { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: rgb(255 246 233 / 0.78); }
+
+/* ---- formats ------------------------------------------------------------- */
+.rc-gc__formats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2.4vw, 30px);
+  margin-top: clamp(32px, 4vw, 52px);
+}
+@media (min-width: 820px) { .rc-gc__formats { grid-template-columns: repeat(2, 1fr); } }
+
+.rc-gc__format {
+  display: flex; align-items: flex-end;
+  gap: clamp(16px, 2.4vw, 34px); padding: clamp(22px, 2.8vw, 38px);
+  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 30px;
+  background: var(--gc-cream);
+}
+.rc-gc__format-shot { flex: 0 0 auto; display: flex; align-items: flex-end; }
+/*
+ * The tallest bottle gets the full shot height and the shorter one is scaled
+ * by --rc-format-scale, so the pair reads as a true size comparison. Both
+ * cards are grid siblings of equal height and both bottles sit on the same
+ * baseline across the gap.
+ */
+.rc-gc__format-bottle {
+  height: calc(clamp(160px, 20vw, 280px) * var(--rc-format-scale, 1));
+  width: auto;
+  filter: drop-shadow(0 14px 20px rgb(42 21 18 / 0.28));
+}
+.rc-gc__format-body { flex: 1 1 auto; min-width: 0; }
+.rc-gc__format-num {
+  display: block;
+  font-family: var(--gc-display);
+  font-size: clamp(52px, 6.4vw, 92px);
+  line-height: 0.9;
+}
+.rc-gc__format-num i { font-style: normal; font-size: 0.4em; margin-left: 0.08em; color: var(--gc-red); }
+.rc-gc__format-note { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }
+.rc-gc__spec { margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.rc-gc__spec > div {
+  display: inline-flex; align-items: baseline; gap: 8px; padding: 7px 14px;
+  border: 2px solid var(--gc-cocoa); border-radius: 999px; font-size: 13px;
+}
+.rc-gc__spec dt { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.rc-gc__spec dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+/* ---- private label ------------------------------------------------------- */
+.rc-gc__closer { text-align: center; }
+.rc-gc__closer .rc-gc__lede { margin: 18px auto 0; max-width: 52ch; }
+.rc-gc__closer .rc-gc__cta { margin-top: clamp(26px, 3vw, 36px); }
+
+/* ---- motion -------------------------------------------------------------- */
+@keyframes rc-gc-turn { to { rotate: 360deg; } }
+@keyframes rc-gc-slide { to { transform: translateX(-50%); } }
+@keyframes rc-gc-drop {
+  from { opacity: 0; translate: 0 -60px; scale: 0.88; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+/* The bottle breathes; the shadow tightens as it lifts, which is what sells
+   the lift as height rather than as the whole sticker sliding. */
+@keyframes rc-gc-float {
+  0%, 100% { translate: 0 0; rotate: -0.7deg; }
+  50% { translate: 0 calc(var(--gc-lift) * -1); rotate: 0.7deg; }
+}
+@keyframes rc-gc-cast { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 0.82; opacity: 0.55; } }
+@keyframes rc-gc-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.035; } }
+/* Clouds wander instead of traversing: the dome clips its children, and a
+   cloud crossing that edge gets sliced into a rectangle. */
+@keyframes rc-gc-wander { 0%, 100% { translate: 0 0; } 50% { translate: 16px -6px; } }
+@keyframes rc-gc-fizz {
+  0% { opacity: 0; translate: 0 0; scale: 0.5; }
+  14% { opacity: 0.85; }
+  76% { opacity: 0.5; }
+  100% { opacity: 0; translate: 0 calc(var(--bub-rise) * -1); scale: 1.15; }
+}
+
+/*
+ * Ambient motion is split by what actually triggers vestibular discomfort
+ * rather than by one blanket switch. Small-amplitude, single-axis drift — the
+ * bottle breathing, the fizz, the ticker — runs for everyone, so the scene is
+ * never wholly dead. Spin, parallax drift and entrance travel are the risky
+ * class, and those stay behind the query.
+ */
+.rc-gc__hero-bottle { animation: rc-gc-float 5.5s 940ms ease-in-out infinite; }
+.rc-gc__cast { animation: rc-gc-cast 5.5s 940ms ease-in-out infinite; }
+.rc-gc__bub { animation: rc-gc-fizz var(--bub-dur) ease-in var(--bub-delay) infinite; }
+.rc-gc__ticker-track { animation: rc-gc-slide 30s linear infinite; }
+
+/*
+ * Entrance stays opt-in, not opt-out: the hidden state only exists where motion
+ * is welcome, so a reduce-motion visitor — or a browser where the observer
+ * never fires — gets the finished composition rather than a blank page.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .rc-gc__rise {
+    opacity: 0; translate: 0 26px;
+    transition: opacity 620ms ease, translate 620ms var(--gc-pop);
+  }
+  .rc-gc__rise[data-in="true"] { opacity: 1; translate: 0 0; }
+  .rc-gc__rise--2 { transition-delay: 90ms; }
+  .rc-gc__rise--3 { transition-delay: 180ms; }
+
+  .rc-gc__hero-copy > * { animation: rc-gc-drop 720ms var(--gc-pop) backwards; }
+  .rc-gc__hero-copy > *:nth-child(2) { animation-delay: 80ms; }
+  .rc-gc__hero-copy > *:nth-child(3) { animation-delay: 160ms; }
+  .rc-gc__hero-copy > *:nth-child(4) { animation-delay: 240ms; }
+
+  /* Entrance rides the wrapper and the idle float rides the image, so the two
+     never fight over `translate` and the bottle never snaps at the handover. */
+  .rc-gc__stand { animation: rc-gc-drop 820ms 120ms var(--gc-pop) backwards; }
+
+  .rc-gc__rays { animation: rc-gc-turn 34s linear infinite; }
+  .rc-gc__halo { animation: rc-gc-breathe 7s ease-in-out infinite; }
+  .rc-gc__cloud--l { animation: rc-gc-wander 11s ease-in-out infinite; }
+  .rc-gc__cloud--r { animation: rc-gc-wander 15s ease-in-out 2s infinite reverse; }
+}
+
+/* Reduced, not frozen: the same drift at roughly half the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .rc-gc { --gc-lift: 6px; }
+}

@@ -9,55 +9,57 @@ Not lifestyle, not "refreshment". Proof.
 
 ## Concept spine
 
-**Journey to the source.** The visitor walks the colonnade of the Garni Temple and arrives
-at the opening where the water comes from. Every chapter is a waypoint on that walk, and
-the commercial sections after it are the same walk continued: source, plant, certificate,
-pallet, port. The brand's own logo is that colonnade, so the spine is not decoration.
+**Proof, not journey.** *(Revised 2026-09-08 — superseded the `cinema` scroll-scrub
+concept below. The scroll-driven chapter walk shipped, then read as unprofessional for a
+B2B compliance buyer and was removed. Kept for the record, not as a target to rebuild.)*
+The colonnade still opens the site — one static frame, one headline, one claim — but the
+walk does not continue as a scrolling film. What follows it is the paperwork a distributor
+actually asks for before the site's first line of trust talk: lab values, certificate
+marks, real plant photography. The site earns the visitor's confidence with data they can
+verify, not with a mood they have to take on faith.
 
 ## Delivery tier
 
-`cinema` — Lenis + GSAP, Tier-1 scroll-scrub hero, scroll chapters.
+`static` — no scroll-scrub, no pinned chapters, no GSAP/Lenis dependency for the hero. One
+full-bleed static hero, ordinary document-flow sections after it.
 
 ## Animation mode
 
-`animated-website` — user picked Animated at intake.
+`minimal` — CSS transitions on hover/focus states only. No scroll-linked motion on the home
+page. *(Was `animated-website` / Tier-1 scroll-scrub at intake; reversed after shipping —
+see Concept spine.)*
 
-### Journey shape
+### What the hero keeps from the old journey
 
-`single-shot` — ONE continuous ~15s forward dolly down the temple colonnade, scrubbed end
-to end. One subject, one move, no seams. The story is one place seen ever more closely, so
-`multi-leg` would buy nothing but cost and risk.
+The five chapters' copy (source, composition, production, documents, logistics) was real
+content, not decoration — it did not get deleted, it moved:
 
-### Journey (chapters over the one film)
+| # | Kicker | Headline | Where it lives now |
+|---|---|---|---|
+| 1 | Since 1999 | Water from a historical source | Home hero (`rc-home-hero`), static, single colonnade frame |
+| 2 | Composition | What the rock leaves behind | Home "Composition and certificates" section — real `PARAMETERS` table |
+| 3 | Production | European lines, Armenian water | Folded into the same section's lede copy |
+| 4 | Documents | Cleared for your market | Same section — ISO/EAC cert badges + `DocCta` |
+| 5 | Logistics | On a pallet, in a container | MOQ figure in the Export section's `FIGURES` strip; FOB/CIF in its lede |
 
-| # | Kicker | Headline | Body | Tags |
-|---|---|---|---|---|
-| 1 | Since 1999 | Water from a historical source | The spring feeds the gorge below the Garni Temple, where basalt has filtered it since before the temple was built. | Armenia · Natural spring |
-| 2 | Composition | What the rock leaves behind | Low mineralisation, stable year round, verified batch by batch in our own laboratory. | Lab verified |
-| 3 | Production | European lines, Armenian water | Climaveneta, Kaeser, STM and Siat run the plant. The water never meets air between the source and the cap. | ISO 22000 · ISO 9001 |
-| 4 | Documents | Cleared for your market | EAC for the Eurasian Union, ISO for everyone else, and a quality report you can hand to your own compliance team. | EAC · Downloadable |
-| 5 | Logistics | On a pallet, in a container | From 1,000 units. PET and glass, still and sparkling, private label on request. | MOQ 1,000 · FOB / CIF |
+### World grammar (hero frame only — no longer a film)
 
-### World grammar
+The hero image: the inner colonnade of the Garni Temple, wet near-black basalt columns
+receding into darkness on both sides, hard cold dawn shafts from the upper left, wet
+reflective floor, snow-capped Armenian mountains and a misty gorge glowing pale in the far
+opening. One frame, not a sequence — no flicker, no cuts, no on-screen text baked into the
+image (headline is real DOM text, overlaid).
 
-One byte-identical preamble across every generated frame: the inner colonnade of the Garni
-Temple, wet near-black basalt columns receding into darkness on both sides, hard cold dawn
-shafts from the upper left, wet reflective floor, snow-capped Armenian mountains and a
-misty gorge glowing pale in the far opening. Locked exposure, no flicker, no cuts, no
-on-screen text. Perspective stays low and centred; the camera only ever moves forward.
-
-**The film carries no product.** Generative models redraw small type, so the label would
+**The image carries no product.** Generative models redraw small type, so the label would
 come back wrong. Every bottle on this site is the company's own render, composited or used
 directly. This is a hard rule, not a preference.
 
-### Mobile framing
+### Proof section imagery
 
-Every focal point stays inside the centre-safe area; the corridor's vanishing point is
-centred so a 9:16 crop still reads as the same walk. Mobile encode capped at 720p.
-
-### Delivery budget
-
-≤32 MiB desktop clips, ≤16 MiB mobile clips.
+The "Composition and certificates" section leans on real, non-generated photography: the
+actual ISO 22000 / ISO 9001 / EAC certificate artwork, and real plant-floor photos
+(`photo-crates.webp`, `photo-plant-tour.webp`) already in hand — not renders, not
+generated plates. Proof-forward means the imagery itself has to be verifiable.
 
 ## Locked palette
 
@@ -95,10 +97,10 @@ Each layout family appears once. Eyebrow ration: 6 sections, ceiling 2.
 
 | # | Section | Layout family |
 |---|---|---|
-| 1 | Scroll-scrub journey, 5 chapters | full-bleed film with overlaid semantic chapters |
-| 2 | Two brands, one plant | asymmetric diptych, water left, cola right |
-| 3 | Water range | horizontal scroll of real bottle renders |
-| 4 | Composition and certificates | data table plus downloadable document list |
+| 1 | Static hero, one frame | full-bleed static image, headline over a bottom scrim |
+| 2 | Composition and certificates | data table plus real cert marks and plant photography |
+| 3 | Two brands, one plant | asymmetric diptych, water left, cola right |
+| 4 | Water range | horizontal scroll of real bottle renders |
 | 5 | Cola flavours | gapless colour-blocked grid, 7 real renders |
 | 6 | Export terms and request | oversized figures strip above a single form |
 

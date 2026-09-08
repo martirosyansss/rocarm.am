@@ -7,6 +7,10 @@
  * match at a join: slice N's last frame is slice N+1's first frame by
  * construction.
  *
+ * Each scene plays as a preloaded frame sequence (40 WebP frames per scene,
+ * desktop and mobile) painted to canvas — see AGENTS.md for why this replaced
+ * video-element seeking.
+ *
  * Every `poster` is generated from its own ENCODED clip, after encoding.
  * Keep this array a module constant.
  */
@@ -23,14 +27,26 @@ export const scrollScrubTheme: ScrollScrubTheme = {
   muted: "#8AA0AE",
 };
 
+const FRAME_COUNT = 40;
+
+const frames = (sceneId: string) => ({
+  base: `/assets/world/frames/${sceneId}`,
+  count: FRAME_COUNT,
+});
+
+const mobileFrames = (sceneId: string) => ({
+  base: `/assets/world/frames/${sceneId}-mobile`,
+  count: FRAME_COUNT,
+});
+
 export const scrollScrubScenes: ScrollScrubScene[] = [
   {
     body: "The spring rises in the gorge below the Garni Temple, filtered through basalt long before the temple was built.",
-    clip: "/assets/world/scene-01.mp4",
+    frames: frames("scene-01"),
     id: "source",
     kicker: "Bottling since 1999",
     label: "Source",
-    mobileClip: "/assets/world/scene-01-mobile.mp4",
+    mobileFrames: mobileFrames("scene-01"),
     mobilePoster: "/assets/world/scene-01-mobile-poster.png",
     poster: "/assets/world/scene-01-poster.png",
     scroll: 1.6,
@@ -39,10 +55,10 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
   },
   {
     body: "Low mineralisation, stable through the year, verified batch by batch in our own laboratory before a pallet leaves.",
-    clip: "/assets/world/scene-02.mp4",
+    frames: frames("scene-02"),
     id: "composition",
     label: "Composition",
-    mobileClip: "/assets/world/scene-02-mobile.mp4",
+    mobileFrames: mobileFrames("scene-02"),
     mobilePoster: "/assets/world/scene-02-mobile-poster.png",
     poster: "/assets/world/scene-02-poster.png",
     scroll: 1.5,
@@ -51,10 +67,10 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
   },
   {
     body: "Climaveneta, Kaeser, STM and Siat run the plant. The water meets no open air between the source and the cap.",
-    clip: "/assets/world/scene-03.mp4",
+    frames: frames("scene-03"),
     id: "production",
     label: "Production",
-    mobileClip: "/assets/world/scene-03-mobile.mp4",
+    mobileFrames: mobileFrames("scene-03"),
     mobilePoster: "/assets/world/scene-03-mobile-poster.png",
     poster: "/assets/world/scene-03-poster.png",
     scroll: 1.5,
@@ -63,10 +79,10 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
   },
   {
     body: "EAC for the Eurasian Union, ISO for everyone else, and a quality report your compliance team can actually read.",
-    clip: "/assets/world/scene-04.mp4",
+    frames: frames("scene-04"),
     id: "documents",
     label: "Documents",
-    mobileClip: "/assets/world/scene-04-mobile.mp4",
+    mobileFrames: mobileFrames("scene-04"),
     mobilePoster: "/assets/world/scene-04-mobile-poster.png",
     poster: "/assets/world/scene-04-poster.png",
     scroll: 1.5,
@@ -75,10 +91,10 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
   },
   {
     body: "From 1,000 units. PET and glass, still and sparkling, private label on request, FOB Poti or CIF your port.",
-    clip: "/assets/world/scene-05.mp4",
+    frames: frames("scene-05"),
     id: "logistics",
     label: "Logistics",
-    mobileClip: "/assets/world/scene-05-mobile.mp4",
+    mobileFrames: mobileFrames("scene-05"),
     mobilePoster: "/assets/world/scene-05-mobile-poster.png",
     poster: "/assets/world/scene-05-poster.png",
     scroll: 1.7,
