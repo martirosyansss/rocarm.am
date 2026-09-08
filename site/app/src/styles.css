@@ -220,6 +220,10 @@
   --rc-ground-2: #0e1f2c;
   --rc-ground-3: #12293a;
   --rc-accent: #006fba;
+  /* --rc-accent lightened for small text on --rc-ground: #006fba there is 3.56:1,
+     below WCAG AA's 4.5:1 for sub-18px text. Fills, borders and icons keep the
+     locked brand accent; only text color should use this. */
+  --rc-accent-text: #0087e3;
   --rc-navy: #275689;
   --rc-aqua: #bce4e5;
   --rc-cream: #ffe7d1;
@@ -258,7 +262,7 @@
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--rc-accent);
+  color: var(--rc-accent-text);
 }
 
 .rc-h1 {
