@@ -1,0 +1,37 @@
+.rc-water-shot {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 25% 15%, #ffffff, transparent 75%),
+    linear-gradient(180deg, #fafbf9, #f3f5f3);
+}
+
+/* Each full-frame image already contains the intended bottle scale and ground.
+   Preserve the photograph's contact shadow and bottle proportions. */
+.rc-water-shot .rc-water-shot__bottle {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: brightness(1.06);
+}
+
+/* Render original photographs at native proportions, without tonal filters. */
+.rc-water-shot[data-source="original"] .rc-water-shot__bottle {
+  inset: auto;
+  left: 50%;
+  bottom: var(--photo-bottom);
+  width: auto;
+  max-width: none;
+  height: var(--photo-height);
+  transform: translateX(-50%);
+  object-fit: contain;
+  filter: none;
+}

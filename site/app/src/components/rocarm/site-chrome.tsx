@@ -1,10 +1,35 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import { QuoteCta } from "@/components/rocarm/ctas";
 import { ASSETS } from "@/lib/catalog";
 
 /** Shared header. One line at desktop, 72px tall. */
-export function SiteNav() {
+export function SiteNav({ quoteHref = "/#quote" }: { quoteHref?: string }) {
+  const menu = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const close = () => {
+      if (menu.current) menu.current.open = false;
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && menu.current?.open) {
+        close();
+        menu.current.querySelector("summary")?.focus();
+      }
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (!menu.current?.contains(event.target as Node)) close();
+    };
+    const desktop = window.matchMedia("(min-width: 900px)");
+    desktop.addEventListener("change", close);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      desktop.removeEventListener("change", close);
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, []);
   return (
     <header className="rc-nav">
       <div className="rc-nav__inner">
@@ -26,7 +51,48 @@ export function SiteNav() {
             Export
           </Link>
         </nav>
-        <QuoteCta href="/#quote" />
+        <QuoteCta href={quoteHref} />
+        <details
+          className="rc-nav__mobile"
+          ref={menu}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget))
+              event.currentTarget.open = false;
+          }}
+        >
+          <summary aria-label="Navigation menu">
+            Menu <span aria-hidden="true">＋</span>
+          </summary>
+          <nav
+            aria-label="Mobile sections"
+            className="rc-nav__drawer"
+            onClick={(event) => {
+              if ((event.target as HTMLElement).closest("a") && menu.current) {
+                menu.current.open = false;
+                menu.current.querySelector("summary")?.focus();
+              }
+            }}
+          >
+            <Link to="/water">
+              Water <span aria-hidden="true">↗</span>
+            </Link>
+            <Link to="/soft-drinks">
+              Soft drinks <span aria-hidden="true">↗</span>
+            </Link>
+            <Link to="/water" hash="quality">
+              Quality <span aria-hidden="true">↗</span>
+            </Link>
+            <Link to="/" hash="export">
+              Export <span aria-hidden="true">↗</span>
+            </Link>
+            <Link to="/" hash="private-label">
+              Private label <span aria-hidden="true">↗</span>
+            </Link>
+            <a href={quoteHref}>
+              Request a quote <span aria-hidden="true">→</span>
+            </a>
+          </nav>
+        </details>
       </div>
     </header>
   );
@@ -46,8 +112,7 @@ export function SiteFooter() {
             width={520}
           />
           <p className="rc-body" style={{ marginTop: "18px", maxWidth: "38ch" }}>
-            Rocarm LLC. Natural spring water and soft drinks, bottled in Armenia
-            since 1999.
+            Rocarm LLC. Natural spring water and soft drinks, bottled in Armenia since 1999.
           </p>
         </div>
         <div>

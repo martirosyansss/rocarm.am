@@ -90,7 +90,7 @@ export function ExportMap() {
               cx={p.x}
               cy={p.y}
               key={m.name}
-              r="2.6"
+              r="3"
             >
               <title>{m.name}</title>
             </circle>

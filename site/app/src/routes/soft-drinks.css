@@ -1,500 +1,322 @@
-/* ==========================================================================
-   GARNI COLA — Retro Soda Stand.
-
-   A 1970s soda-ad revival. One deep cocoa ground, cream paper, a single
-   butter-yellow accent, and the seven flavour tones doing the shouting.
-   Chunky rounded display type, pill geometry, thick ink outlines, hard
-   offset shadows, and a hand-drawn sun scene behind the hero bottle.
-
-   Fonts load from Google in the route head(); the CSP already allows it.
-   Bagel Fat One carries no Armenian, so the Armenian slogan falls through
-   to Noto Sans Armenian by design — it is second in every display stack.
-   ========================================================================== */
-
+﻿/* Garni Cola: warm paper, green ink and a sunlit fruit studio.
+   Route-scoped styles. Bottle dimensions and transparent margins are preserved. */
 .rc-gc {
-  --gc-cocoa: #2a1512;
-  --gc-cocoa-lift: #45231c;
-  --gc-cream: #fff6e9;
-  --gc-cream-deep: #ffe7c9;
-  --gc-butter: #f7c223;
-  --gc-butter-lift: #ffd558;
-  --gc-red: #da2128;
-  --gc-bw: 3px;
-
-  --gc-display: "Bagel Fat One", "Noto Sans Armenian", "Rubik", Georgia, serif;
+  --gc-cocoa: #17483c; --gc-cocoa-lift: #376457; --gc-cream: #fff8ee;
+  --gc-cream-deep: #f4eddd; --gc-red: #a44025; --gc-bw: 3px;
+  --gc-display: "Fraunces", "Noto Sans Armenian", "Rubik", Georgia, serif;
   --gc-body: "Outfit", "Noto Sans Armenian", "Rubik", system-ui, sans-serif;
-  --gc-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
-  /* Travel of the bottle's idle float; halved under reduce-motion. */
-  --gc-lift: 14px;
-
-  background: var(--gc-cream);
-  color: var(--gc-cocoa);
-  font-family: var(--gc-body);
-  overflow-x: clip;
+  --gc-photo-light: contrast(.94) brightness(1.025) saturate(.98);
+  --gc-ease: cubic-bezier(.22, 1, .36, 1);
+  --rc-ink: var(--gc-cocoa); --rc-muted: var(--gc-cocoa-lift);
+  --rc-ground-2: var(--gc-cream); --rc-line: rgb(23 72 60 / .22);
+  --rc-aqua: var(--gc-cocoa); --rc-accent: var(--gc-cocoa);
+  background: var(--gc-cream); color: var(--gc-cocoa); font-family: var(--gc-body); overflow-x: clip;
 }
-
-/* ---- shared chrome, repainted for this page ------------------------------ */
-.rc-gc .rc-nav {
-  background: var(--gc-cream);
-  backdrop-filter: none;
-  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
-}
-.rc-gc .rc-nav__wordmark {
-  font-family: var(--gc-display);
-  font-size: 21px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--gc-cocoa);
-}
-.rc-gc .rc-nav__link {
-  border-bottom: none;
-  color: var(--gc-cocoa);
-  font: 500 15px var(--gc-body);
-}
+.rc-gc .rc-nav { background: var(--gc-cream); backdrop-filter: none; border-bottom: 1px solid var(--rc-line); }
+.rc-gc .rc-nav__wordmark { font: 800 21px var(--gc-display); letter-spacing: .02em; text-transform: none; color: var(--gc-cocoa); }
+.rc-gc .rc-nav__link { color: var(--gc-cocoa); font: 500 15px var(--gc-body); border-bottom: 0; }
+.rc-gc .rc-nav__link[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
 .rc-gc .rc-nav__link:hover { color: var(--gc-red); }
-.rc-gc .rc-quote-cta {
-  padding: 9px 20px; border-radius: 999px;
-  border: var(--gc-bw) solid var(--gc-cocoa);
-  background: var(--gc-butter); color: var(--gc-cocoa);
-  font-family: var(--gc-body); font-weight: 700;
-  transition: background 180ms ease, transform 180ms var(--gc-pop), box-shadow 180ms ease;
-}
-.rc-gc .rc-quote-cta:hover {
-  background: var(--gc-butter-lift);
-  box-shadow: 0 4px 0 var(--gc-cocoa);
-  transform: translateY(-2px);
-}
-
-/* The shared footer is drawn for the dark site theme: its Garni wordmark is
-   white and its body copy is a pale slate. Both vanish on cream, so this page
-   closes on cocoa instead of fighting the artwork. */
-.rc-gc .rc-foot {
-  background: var(--gc-cocoa);
-  color: var(--gc-cream);
-  border-top: var(--gc-bw) solid var(--gc-cocoa);
-}
-.rc-gc .rc-foot .rc-h3 {
-  font-family: var(--gc-display);
-  font-weight: 400;
-  color: var(--gc-butter);
-}
-.rc-gc .rc-foot .rc-body,
-.rc-gc .rc-foot .rc-note { color: rgb(255 246 233 / 0.76); }
-.rc-gc .rc-foot a { color: var(--gc-cream); text-underline-offset: 3px; }
-.rc-gc .rc-foot a:hover { color: var(--gc-butter); }
-
-.rc-gc a:focus-visible,
-.rc-gc button:focus-visible {
-  outline: var(--gc-bw) solid var(--gc-red);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ---- type scale ---------------------------------------------------------- */
-.rc-gc__display {
-  margin: 0;
-  font-family: var(--gc-display);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-}
-.rc-gc__h1 { font-size: clamp(46px, 6.4vw, 92px); }
-.rc-gc__h2 { font-size: clamp(36px, 5vw, 72px); }
-.rc-gc__lede {
-  margin: 0;
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.6;
-}
-.rc-gc__eyebrow {
-  display: inline-block; align-self: flex-start; margin: 0; padding: 7px 16px;
-  border: 2px solid currentColor; border-radius: 999px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-}
-
-/* ---- CTA pill ------------------------------------------------------------ */
-.rc-gc__cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  min-height: 52px; padding: 13px 28px;
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 999px;
-  background: var(--gc-butter); color: var(--gc-cocoa);
-  font-size: 16px; font-weight: 700; text-decoration: none;
-  transition: background 180ms ease, transform 180ms var(--gc-pop), box-shadow 180ms ease;
-}
-.rc-gc__cta:hover {
-  background: var(--gc-butter-lift);
-  box-shadow: 0 5px 0 var(--gc-cocoa);
-  transform: translateY(-3px);
-}
-.rc-gc__cta:active { box-shadow: none; transform: translateY(0); }
-.rc-gc__cta--cream { background: var(--gc-cream); }
-.rc-gc__cta--cream:hover { background: #fff; }
-.rc-gc__cta-arrow { transition: transform 180ms ease; }
-.rc-gc__cta:hover .rc-gc__cta-arrow { transform: translateX(4px); }
-
-/* ---- hero ---------------------------------------------------------------- */
-.rc-gc__hero {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
-}
-@media (min-width: 940px) {
-  .rc-gc__hero { grid-template-columns: 1fr 1fr; min-height: min(86vh, 820px); }
-}
-
-.rc-gc__hero-copy {
-  display: flex; flex-direction: column;
-  align-items: flex-start; justify-content: center;
-  gap: clamp(18px, 2.2vw, 28px);
-  padding: clamp(104px, 11vw, 132px) clamp(24px, 5vw, 76px) clamp(48px, 6vw, 72px);
-  background: var(--gc-cocoa); color: var(--gc-cream);
-}
-@media (min-width: 940px) {
-  .rc-gc__hero-copy { padding-block: clamp(96px, 8vw, 120px); }
-}
-.rc-gc__hero-sub { max-width: 34ch; color: rgb(255 246 233 / 0.82); }
-
-/* The stage is a butter panel holding one ink-outlined arch, with the retro
-   scene painted inside it and the bottle standing on the grass.
-   Proportions are the whole game here. The bottle is a tall narrow object
-   (273 × 900 intrinsic), so a wide arch strands it in empty sky: at 3/4 it
-   covered a quarter of the arch width and read as a sticker. The arch is now
-   portrait, the bottle is sized off the arch rather than the viewport, and the
-   clouds and horizon carry the width the bottle cannot. */
-.rc-gc__hero-stage {
-  position: relative; display: flex; align-items: center; justify-content: center;
-  padding: clamp(30px, 4vw, 58px) clamp(20px, 4vw, 56px);
-  background: var(--gc-butter); border-top: var(--gc-bw) solid var(--gc-cocoa);
-  overflow: hidden;
-}
-@media (min-width: 940px) {
-  .rc-gc__hero-stage { border-top: 0; border-left: var(--gc-bw) solid var(--gc-cocoa); }
-}
-
-.rc-gc__arch {
-  position: relative; width: min(100%, 400px); aspect-ratio: 5 / 7; overflow: hidden;
-  border: var(--gc-bw) solid var(--gc-cocoa);
-  border-radius: 50% 50% 24px 24px / 42% 42% 18px 18px;
-  background: linear-gradient(180deg, #ffcf94 0%, #ffe3bd 46%, var(--gc-cream) 100%);
-}
-.rc-gc__arch > span { position: absolute; }
-
-/* Butter wedges on peach: the old red-at-16%-alpha version just muddied the
-   sky. Centred on the halo so the burst reads as coming from behind the bottle. */
-.rc-gc__rays {
-  left: 50%; top: 56%; width: 250%; aspect-ratio: 1;
-  translate: -50% -50%; border-radius: 50%;
-  background: repeating-conic-gradient(from 7deg,
-    rgb(247 194 35 / 0.9) 0deg 10deg, transparent 10deg 22deg);
-}
-
-/* A pale disc, not a sun. The product is orange soda; a warm disc behind it
-   dissolved its silhouette, so the ground directly behind the bottle is the
-   lightest value in the scene and the outline does the rest. */
-.rc-gc__halo {
-  left: 50%; top: 51%; width: 74%; aspect-ratio: 1; translate: -50% -50%;
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 50%;
-  background: radial-gradient(circle at 50% 42%, #fffdf8, var(--gc-cream) 78%);
-}
-
-/* Clouds are kept wholly inside the dome: hung off the arch edge they were
-   sliced into rectangles by the overflow clip and read as a bug. The radius is
-   asymmetric on purpose — rounder across the top, flatter along the bottom —
-   because an even pill reads as a UI chip rather than weather. */
-.rc-gc__cloud {
-  aspect-ratio: 8 / 5;
-  border: var(--gc-bw) solid var(--gc-cocoa);
-  border-radius: 52% 48% 44% 56% / 68% 72% 32% 28%;
-  background: var(--gc-cream);
-}
-.rc-gc__cloud--l { top: 16%; left: 6%; width: 25%; }
-.rc-gc__cloud--r { top: 29%; right: 5%; width: 18%; rotate: -6deg; }
-
-.rc-gc__knoll {
-  left: -16%; bottom: 16%; width: 76%; aspect-ratio: 2 / 1;
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 50% 50% 0 0;
-  background: #bfd730;
-}
-/* A horizon band, not a wall — at 28% the green slab outweighed the product. */
-.rc-gc__ground {
-  left: -6%; bottom: 0; width: 112%; height: 23%;
-  border-top: var(--gc-bw) solid var(--gc-cocoa);
-  border-radius: 44% 56% 0 0 / 30% 30% 0 0;
-  background: #59bd4b;
-}
-/*
- * Contact shadow. Its position is derived, not eyeballed: the bottle artwork
- * carries 5% transparent padding top and bottom (measured off the alpha
- * channel of cola-orange.webp, opaque rows 90..1710 of 1800), so the visible
- * base sits well above the image box. Anchoring the shadow to the image edge
- * left a visible gap and the bottle read as hovering. The re-export doubled
- * the pixels but kept those fractions, so this figure still holds.
- *   visible base = stand-bottom + 0.05 × image height
- *                = 17% + 0.05 × 0.96 × 83% ≈ 21% of the arch
- * so the shadow is centred there, and the grass line at 23% closes over it.
- */
-.rc-gc__cast {
-  left: 50%; bottom: 19%; width: 32%; height: 3%; translate: -50% 0;
-  border-radius: 50%; background: rgb(42 21 18 / 0.34); filter: blur(5px);
-}
-
-/* Fizz, drawn rather than lit: outlined rings match the linework of the scene,
-   where soft white blobs would vanish against the cream halo behind them. */
-.rc-gc__bub {
-  --bub-rise: clamp(90px, 20vw, 180px);
-  bottom: 21%; left: var(--bub-x); width: var(--bub-size); aspect-ratio: 1;
-  border: 2px solid rgb(42 21 18 / 0.5); border-radius: 50%; opacity: 0;
-}
-
-/*
- * The bottle is measured against the arch, not the viewport, so the two can
- * never drift apart. The wrapper carries the definite height that makes the
- * image's percentage resolve, and centres without `translate` — the entrance
- * keyframes own translate, and centring with it would snap the bottle sideways
- * as they finish.
- */
-.rc-gc__stand {
-  position: absolute; inset: 0 0 17% 0;
-  display: flex; align-items: flex-end; justify-content: center;
-}
-.rc-gc__hero-bottle {
-  height: 96%;
-  width: auto;
-  filter: drop-shadow(0 14px 18px rgb(42 21 18 / 0.32));
-}
-
-/* ---- ticker -------------------------------------------------------------- */
-.rc-gc__ticker {
-  overflow: hidden;
-  padding-block: 15px;
-  background: var(--gc-cream-deep);
-  border-bottom: var(--gc-bw) solid var(--gc-cocoa);
-}
+.rc-gc .rc-nav__drawer { background: var(--gc-cream); border-color: var(--rc-line); }
+.rc-gc .rc-nav__drawer a { color: var(--gc-cocoa); }
+.rc-gc .rc-quote-cta { padding: 10px 20px; border: 1px solid var(--gc-cocoa); border-radius: 999px; background: var(--gc-cocoa); color: var(--gc-cream); font-family: var(--gc-body); font-weight: 700; }
+.rc-gc .rc-quote-cta:hover { background: #245b4b; }
+.rc-gc :is(a, button, summary):focus-visible { outline: 3px solid var(--gc-red); outline-offset: 4px; }
+.rc-gc__skip { position: fixed; z-index: 100; top: 12px; left: 20px; padding: 14px 22px; color: var(--gc-cream); background: var(--gc-cocoa); border-radius: 8px; translate: 0 -160%; }
+.rc-gc__skip:focus { translate: 0; }
+.rc-gc__display { margin: 0; font-family: var(--gc-display); font-weight: 800; line-height: 1; letter-spacing: -.055em; text-wrap: balance; }
+.rc-gc__h2 { font-size: clamp(38px, 4.5vw, 64px); }
+.rc-gc .rc-gc__h2 { scroll-margin-top: 128px; }
+.rc-gc #gc-enquiry { scroll-margin-top: 72px; }
+.rc-gc__lede { margin: 0; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.6; }
+.rc-gc__eyebrow { margin: 0 0 16px; font: 700 11px/1.5 var(--gc-body); letter-spacing: .14em; text-transform: uppercase; }
+.rc-gc__cta { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 52px; padding: 13px 28px; border: 1px solid var(--gc-cocoa); border-radius: 999px; background: var(--gc-cocoa); color: var(--gc-cream); font: 700 16px/1.5 var(--gc-body); text-decoration: none; transition: background 180ms ease; }
+.rc-gc__cta:hover { background: #245b4b; }
+.rc-gc__cta-arrow { transition: translate 180ms ease; }
+.rc-gc__cta:hover .rc-gc__cta-arrow { translate: 3px 0; }
+.rc-gc__text-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--gc-cocoa); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.rc-gc__text-link:hover { color: var(--gc-red); }
+/* One photographic floor and consistent contact shadows. */
+.rc-gc__hero { position: relative; isolation: isolate; display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(0px, 2vw, 32px); min-height: min(820px, calc(100svh - 72px)); padding: 76px clamp(24px, 5vw, 80px) 40px; overflow: hidden; background: #ffe67b; }
+.rc-gc__hero-copy { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.rc-gc__hero-copy .rc-gc__eyebrow { margin: 0; }
+.rc-gc__h1 { font-size: clamp(80px, 8.3vw, 126px); line-height: .9; letter-spacing: -.065em; }
+.rc-gc__h1 > span { display: block; }
+.rc-gc__hero-accent { color: #af421f; }
+.rc-gc__hero-sub { max-width: 32ch; }
+.rc-gc__hero-detail { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 12px; letter-spacing: .025em; }
+.rc-gc__detail-dot { width: 6px; height: 6px; background: var(--gc-cocoa); border-radius: 50%; }
+.rc-gc__hero-art { --gc-hero-bottle: clamp(360px, 43vw, 610px); position: relative; isolation: isolate; min-width: 0; height: clamp(520px, 47vw, 680px); }
+.rc-gc__motion-toggle { position: absolute; z-index: 5; top: 0; right: 0; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid rgb(23 72 60 / .25); border-radius: 999px; color: var(--gc-cocoa); background: rgb(255 248 238 / .8); font: 500 12px var(--gc-body); cursor: pointer; }
+.rc-gc__motion-toggle:hover { background: var(--gc-cream); }
+.rc-gc__hero-scene { position: absolute; inset: 0; display: block; width: 100%; height: 100%; translate: 0 34px; object-fit: cover; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 12%, black 94%, transparent), linear-gradient(to bottom, transparent, black 12%, black 96%, transparent); mask-composite: intersect; }
+.rc-gc__hero-pack { position: absolute; bottom: 6%; left: 50%; translate: -50% 0; height: var(--gc-hero-bottle); width: calc(var(--gc-hero-bottle) * .30333333); transform-origin: 50% 88%; }
+.rc-gc__hero-pack::before { content: ''; position: absolute; bottom: 4.2%; left: 11%; width: 84%; height: 1.7%; border-radius: 50%; background: rgb(88 54 4 / .34); filter: blur(3px); box-shadow: 14px 3px 13px 4px rgb(88 54 4 / .14); transform: skewX(-24deg); }
+.rc-gc__hero-pack--cherry { left: 24%; rotate: -7deg; z-index: 1; }
+.rc-gc__hero-pack--lime { left: 77%; rotate: 7deg; z-index: 1; }
+.rc-gc__hero-pack--orange { left: 51%; rotate: 0deg; z-index: 2; }
+.rc-gc__hero-pack-photo { position: absolute; top: -1.190253%; left: 50%; translate: -48.883333% 0; display: block; width: auto; height: 99.66716%; max-width: none; aspect-ratio: 1; filter: var(--gc-photo-light) drop-shadow(5px 5px 3px rgb(89 62 9 / .07)); }
+.rc-gc__ticker { overflow: hidden; padding: 20px 0; background: #dff444; border-block: 1px solid rgb(23 72 60 / .1); }
 .rc-gc__ticker-track { display: flex; width: max-content; }
-.rc-gc__ticker-group { display: flex; }
-.rc-gc__ticker-item {
-  display: inline-flex; align-items: center; gap: 26px; padding-inline: 26px;
-  font-family: var(--gc-display); font-size: clamp(17px, 1.9vw, 27px);
-  white-space: nowrap;
-}
-.rc-gc__ticker-star { color: var(--gc-red); font-size: 0.7em; }
-
-/* ---- sections ------------------------------------------------------------ */
-.rc-gc__section { padding-block: clamp(60px, 8vw, 116px); }
-.rc-gc__section--cocoa { background: var(--gc-cocoa); color: var(--gc-cream); }
-.rc-gc__section--butter {
-  background: var(--gc-butter);
-  border-block: var(--gc-bw) solid var(--gc-cocoa);
-}
-.rc-gc__head { text-align: center; max-width: 62ch; margin-inline: auto; }
-.rc-gc__head .rc-gc__lede { margin-top: 18px; }
-.rc-gc__section--cocoa .rc-gc__lede { color: rgb(255 246 233 / 0.78); }
-
-/* ---- flavour rail -------------------------------------------------------- */
-.rc-gc__tabs {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-  margin: clamp(26px, 3.4vw, 40px) auto clamp(28px, 3.6vw, 44px);
-  /* Block only — the element also carries .rc-wrap, and a padding shorthand
-     here would wipe its gutters and push the last pill off a phone screen. */
-  padding-block: 0;
-  list-style: none;
-}
-.rc-gc__tab {
-  min-height: 44px; padding: 9px 20px; cursor: pointer;
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 999px;
-  background: transparent; color: var(--gc-cocoa);
-  font: 700 15px var(--gc-body);
-  transition: background 160ms ease, color 160ms ease, transform 160ms var(--gc-pop);
-}
-.rc-gc__tab:hover { background: var(--rc-tone); color: var(--rc-tone-ink); transform: translateY(-2px); }
-.rc-gc__tab[aria-current="true"] { background: var(--gc-cocoa); color: var(--gc-cream); }
-
-.rc-gc__rail {
-  display: flex; gap: clamp(16px, 2vw, 26px);
-  margin: 0; padding: 6px clamp(20px, 5vw, 72px) 26px; list-style: none;
-  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-}
+.rc-gc__ticker-group { display: flex; flex-shrink: 0; min-width: 100vw; justify-content: space-around; gap: 40px; padding-inline: 28px; }
+.rc-gc__ticker-item { display: flex; align-items: center; gap: 40px; white-space: nowrap; font: 700 clamp(18px, 1.75vw, 25px)/1.3 var(--gc-display); letter-spacing: -.02em; }
+.rc-gc__ticker-item i { font-style: normal; color: var(--gc-red); }
+.rc-gc__section { padding-block: clamp(60px, 7vw, 100px); }
+.rc-gc__head { max-width: 68ch; margin-inline: auto; text-align: center; }
+.rc-gc__head .rc-gc__lede { margin-top: 18px; color: var(--gc-cocoa-lift); }
+.rc-gc__tabs { display: flex; flex-wrap: nowrap; justify-content: center; gap: 10px; margin: 32px auto 20px; padding-block: 5px; list-style: none; }
+.rc-gc__tabs li { flex-shrink: 0; }
+.rc-gc__tab { display: flex; align-items: center; gap: 9px; min-height: 44px; padding: 9px 18px; cursor: pointer; border: 1px solid rgb(23 72 60 / .3); border-radius: 999px; background: transparent; color: var(--gc-cocoa); font: 500 15px var(--gc-body); transition: background 160ms ease, color 160ms ease; }
+.rc-gc__tab:hover { background: var(--gc-scene); }
+.rc-gc__tab[aria-current="true"] { background: var(--gc-cocoa); border-color: var(--gc-cocoa); color: var(--gc-cream); }
+.rc-gc__flavour-dot { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--rc-tone); box-shadow: inset 0 0 0 1px rgb(0 0 0 / .06); }
+.rc-gc__range-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 16px; }
+.rc-gc__range-controls > span { font: 400 12px var(--gc-body); font-variant-numeric: tabular-nums; color: var(--gc-cocoa-lift); }
+.rc-gc__range-controls b { color: var(--gc-cocoa); }
+.rc-gc__range-name { margin-left: 18px; }
+.rc-gc__range-controls > div { display: flex; gap: 8px; }
+.rc-gc__range-controls button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gc-cocoa); background: transparent; color: var(--gc-cocoa); font: 400 23px var(--gc-body); cursor: pointer; transition: background 160ms ease, color 160ms ease; }
+.rc-gc__range-controls button:not(:disabled):hover { background: var(--gc-cocoa); color: var(--gc-cream); }
+.rc-gc__range-controls button:disabled { opacity: .3; cursor: default; }
+.rc-gc__rail { display: flex; gap: clamp(16px, 2vw, 28px); margin: 0; padding: 0 clamp(20px, 5vw, 72px) 20px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: clamp(20px, 5vw, 72px); }
 .rc-gc__rail::-webkit-scrollbar { display: none; }
-
-.rc-gc__card {
-  position: relative; flex: 0 0 auto; width: min(78vw, 320px); aspect-ratio: 3 / 4;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 22px; overflow: hidden; scroll-snap-align: center;
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 30px;
-  background: var(--rc-tone); color: var(--rc-tone-ink);
-  transition: transform 260ms var(--gc-pop), box-shadow 260ms ease;
-}
-.rc-gc__card:hover,
-.rc-gc__card:focus-within { transform: translateY(-8px); box-shadow: 0 10px 0 var(--gc-cocoa); }
-.rc-gc__card-no {
-  position: absolute; top: 14px; right: 20px;
-  font-family: var(--gc-display); font-size: 34px; opacity: 0.42;
-}
-.rc-gc__card-fruit {
-  position: absolute; top: -8%; left: -12%; width: 58%; height: auto;
-  opacity: 0.9; rotate: -12deg;
-  transition: rotate 320ms var(--gc-pop), scale 320ms var(--gc-pop);
-}
-.rc-gc__card:hover .rc-gc__card-fruit { rotate: 4deg; scale: 1.08; }
-.rc-gc__card-bottle {
-  position: absolute; left: 50%; top: 46%; translate: -50% -50%;
-  height: 60%; width: auto;
-  filter: drop-shadow(0 14px 18px rgb(42 21 18 / 0.3));
-  transition: translate 320ms var(--gc-pop);
-}
-.rc-gc__card:hover .rc-gc__card-bottle { translate: -50% -58%; }
-.rc-gc__card-name {
-  position: relative; margin: 0; line-height: 1;
-  font: 400 clamp(26px, 2.6vw, 36px) var(--gc-display);
-}
-.rc-gc__card-note {
-  position: relative;
-  margin: 8px 0 0;
-  font-size: 14px;
-  line-height: 1.45;
-  opacity: 0.82;
-}
-
-/* Per-flavour ground and the ink that clears AA on it. */
-.rc-flavour--cola     { --rc-tone: #da2128; --rc-tone-ink: #fff6e9; }
-.rc-flavour--cherry   { --rc-tone: #dc1e3c; --rc-tone-ink: #fff6e9; }
-.rc-flavour--orange   { --rc-tone: #f8971d; --rc-tone-ink: #2a1512; }
-.rc-flavour--pear     { --rc-tone: #d3c540; --rc-tone-ink: #2a1512; }
-.rc-flavour--tarragon { --rc-tone: #59bd4b; --rc-tone-ink: #2a1512; }
-.rc-flavour--lime     { --rc-tone: #bfd730; --rc-tone-ink: #2a1512; }
-.rc-flavour--tropic   { --rc-tone: #f1c01f; --rc-tone-ink: #2a1512; }
-
-/* ---- facts (the cocoa band) ---------------------------------------------- */
-.rc-gc__facts {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: clamp(14px, 1.8vw, 22px);
-  margin: clamp(34px, 4vw, 52px) 0 0; padding: 0; list-style: none;
-}
-.rc-gc__fact { padding: 24px; border: var(--gc-bw) solid var(--gc-cream); border-radius: 24px; }
-.rc-gc__fact dt {
-  font-family: var(--gc-display);
-  font-size: clamp(30px, 3.2vw, 44px);
-  line-height: 1;
-  color: var(--gc-butter);
-}
-.rc-gc__fact dd { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: rgb(255 246 233 / 0.78); }
-
-/* ---- formats ------------------------------------------------------------- */
-.rc-gc__formats {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(18px, 2.4vw, 30px);
-  margin-top: clamp(32px, 4vw, 52px);
-}
-@media (min-width: 820px) { .rc-gc__formats { grid-template-columns: repeat(2, 1fr); } }
-
-.rc-gc__format {
-  display: flex; align-items: flex-end;
-  gap: clamp(16px, 2.4vw, 34px); padding: clamp(22px, 2.8vw, 38px);
-  border: var(--gc-bw) solid var(--gc-cocoa); border-radius: 30px;
-  background: var(--gc-cream);
-}
+/* Widths, borders, aspect ratio and image offsets retain the approved size. */
+.rc-gc__campaign-card { flex: 0 0 auto; width: min(82vw, 390px); scroll-snap-align: start; border: var(--gc-bw) solid transparent; background: transparent; }
+.rc-gc__campaign-frame { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 3 / 4; border-bottom: var(--gc-bw) solid transparent; border-radius: 18px; background: radial-gradient(ellipse at 40% 24%, var(--gc-scene), color-mix(in srgb, var(--gc-scene) 55%, var(--rc-tone)) 52%, var(--rc-tone)); }
+.rc-gc__campaign-frame { background-origin: border-box; background-repeat: no-repeat; }
+.rc-gc__campaign-frame::after { content: ''; position: absolute; left: 37%; bottom: 4.2%; width: 28%; height: 1.4%; border-radius: 50%; background: rgb(43 48 24 / .27); filter: blur(3px); box-shadow: 9px 3px 10px 3px rgb(43 48 24 / .1); }
+.rc-gc__campaign-image { position: absolute; z-index: 1; top: -1.190253%; left: 50%; translate: -48.883333% 0; display: block; width: auto; height: 99.66716%; max-width: none; object-fit: contain; aspect-ratio: 1; filter: var(--gc-photo-light); }
+.rc-gc__taste-note { position: absolute; top: 18px; left: 18px; z-index: 2; max-width: 8ch; font-size: 10px; font-weight: 500; line-height: 1.5; letter-spacing: .06em; text-transform: uppercase; }
+.rc-gc__campaign-caption { padding: 20px 12px 12px; text-align: center; }
+.rc-gc__campaign-heading { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+.rc-gc__campaign-heading h3 { margin: 0; font: 800 clamp(28px, 2.8vw, 38px)/1.1 var(--gc-display); letter-spacing: -.04em; }
+.rc-gc__campaign-heading > span { order: -1; font: 500 11px var(--gc-body); letter-spacing: .1em; }
+.rc-gc__campaign-caption p { min-height: 42px; max-width: 34ch; margin: 9px auto 0; font: 400 14px/1.5 var(--gc-body); color: var(--gc-cocoa-lift); text-wrap: pretty; }
+.rc-gc__campaign-caption .rc-gc__text-link { margin-top: 4px; font-size: 13px; }
+.rc-gc__collection-note { margin-block: 20px 0; text-align: center; color: var(--gc-cocoa-lift); font-size: 14px; }
+.rc-gc__collection-note a { display: inline-flex; align-items: center; min-height: 44px; margin-left: 8px; color: var(--gc-cocoa); text-underline-offset: 4px; }
+.rc-gc .rc-flavour--cola { --rc-tone: #ff5551; --gc-scene: #ffb07c; }
+.rc-gc .rc-flavour--orange { --rc-tone: #ff8046; --gc-scene: #ffd796; }
+.rc-gc .rc-flavour--cherry { --rc-tone: #ff3980; --gc-scene: #ffafd3; }
+.rc-gc .rc-flavour--pear { --rc-tone: #c9df36; --gc-scene: #f2ffab; }
+.rc-gc .rc-flavour--tarragon { --rc-tone: #34cb72; --gc-scene: #baf3a6; }
+.rc-gc .rc-flavour--lime { --rc-tone: #a7df16; --gc-scene: #ecff8b; }
+.rc-gc .rc-flavour--tropic { --rc-tone: #ffcb20; --gc-scene: #fff4a1; }
+/* Format details use progressive disclosure; bottle scale is unchanged. */
+.rc-gc__sizes { background: #f6efdf; }
+.rc-gc__formats { display: grid; grid-template-columns: 1fr; gap: clamp(18px, 2.4vw, 30px); margin-top: clamp(32px, 4vw, 52px); }
+.rc-gc__format { display: flex; align-items: flex-end; gap: clamp(16px, 2.4vw, 34px); padding: clamp(22px, 2.8vw, 38px); border: 1px solid rgb(23 72 60 / .15); border-radius: 20px; background: var(--gc-cream); }
 .rc-gc__format-shot { flex: 0 0 auto; display: flex; align-items: flex-end; }
-/*
- * The tallest bottle gets the full shot height and the shorter one is scaled
- * by --rc-format-scale, so the pair reads as a true size comparison. Both
- * cards are grid siblings of equal height and both bottles sit on the same
- * baseline across the gap.
- */
-.rc-gc__format-bottle {
-  height: calc(clamp(160px, 20vw, 280px) * var(--rc-format-scale, 1));
-  width: auto;
-  filter: drop-shadow(0 14px 20px rgb(42 21 18 / 0.28));
-}
+.rc-gc__format-bottle { height: calc(clamp(160px, 20vw, 280px) * var(--rc-format-scale, 1)); width: auto; filter: drop-shadow(3px 9px 7px rgb(82 57 11 / .15)); }
 .rc-gc__format-body { flex: 1 1 auto; min-width: 0; }
-.rc-gc__format-num {
-  display: block;
-  font-family: var(--gc-display);
-  font-size: clamp(52px, 6.4vw, 92px);
-  line-height: 0.9;
+.rc-gc__format-num { margin: 0; font: 800 clamp(52px, 6.4vw, 92px)/.9 var(--gc-display); letter-spacing: -.045em; }
+.rc-gc__format-num i { font-style: normal; font-size: .4em; margin-left: .08em; color: var(--gc-red); }
+.rc-gc__format-title { margin: 20px 0 8px; font-size: 17px; line-height: 1.4; font-weight: 500; text-wrap: balance; }
+.rc-gc__spec { margin-top: 20px; border-top: 1px solid var(--rc-line); font-size: 13px; }
+.rc-gc__spec summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; cursor: pointer; list-style: none; }
+.rc-gc__spec summary::-webkit-details-marker { display: none; }
+.rc-gc__spec summary span { font-size: 20px; }
+.rc-gc__spec[open] summary span { rotate: 45deg; }
+.rc-gc__spec dl { display: grid; gap: 8px; margin: 8px 0 0; }
+.rc-gc__spec dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; }
+.rc-gc__spec dt { font-weight: 500; }
+.rc-gc__spec dd { margin: 0; font-variant-numeric: tabular-nums; color: var(--gc-cocoa-lift); }
+/* Blend the supplied white-ground artwork into the warm page without cropping. */
+.rc-gc__glass { background: var(--gc-cream); }
+.rc-gc__glass-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.rc-gc__glass-art { min-width: 0; background: var(--gc-cream); }
+.rc-gc__glass-art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+.rc-gc__glass-copy .rc-gc__h2 { max-width: 10ch; }
+.rc-gc__glass-copy .rc-gc__lede { max-width: 34ch; margin-top: 24px; color: var(--gc-cocoa-lift); }
+.rc-gc__glass-copy .rc-gc__text-link { margin-top: 20px; }
+.rc-gc__glass-flavours { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 20px 0 0; padding: 0; list-style: none; }
+.rc-gc__glass-flavours li { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.rc-gc__glass-flavours li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #72a347; }
+.rc-gc__glass-flavours [data-flavour="orange"]::before { background: #ed922f; }
+.rc-gc__glass-flavours [data-flavour="tarragon"]::before { background: #24a955; }
+.rc-gc__glass-flavours [data-flavour="pear"]::before { background: #b39f3a; }
+@media (max-width: 819px) {
+  .rc-gc__glass-grid { grid-template-columns: 1fr; gap: 28px; }
+  .rc-gc__glass-copy { text-align: center; }
+  .rc-gc__glass-flavours { justify-content: center; }
+  .rc-gc__glass-copy .rc-gc__h2 { max-width: 14ch; margin-inline: auto; }
+  .rc-gc__glass-copy .rc-gc__lede { margin: 18px auto 0; }
+  .rc-gc__glass-art { width: min(100%, 620px); margin-inline: auto; }
 }
-.rc-gc__format-num i { font-style: normal; font-size: 0.4em; margin-left: 0.08em; color: var(--gc-red); }
-.rc-gc__format-note { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }
-.rc-gc__spec { margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.rc-gc__spec > div {
-  display: inline-flex; align-items: baseline; gap: 8px; padding: 7px 14px;
-  border: 2px solid var(--gc-cocoa); border-radius: 999px; font-size: 13px;
+.rc-gc__section--cocoa { background: #e4f5a3; }
+.rc-gc__trade-head { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 40px; }
+.rc-gc__trade-head .rc-gc__lede { max-width: 42ch; padding-bottom: 4px; }
+.rc-gc__facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 48px 0 0; padding: 0; }
+.rc-gc__fact { padding-top: 22px; border-top: 1px solid rgb(23 72 60 / .3); }
+.rc-gc__fact dt { font: 800 clamp(30px, 3.2vw, 44px)/1 var(--gc-display); letter-spacing: -.025em; }
+.rc-gc__fact dd { margin: 14px 0 0; font-size: 14px; line-height: 1.55; }
+.rc-gc__fact strong { display: block; font-weight: 500; margin-bottom: 5px; }
+.rc-gc__fact dd span { color: var(--gc-cocoa-lift); }
+/* Existing enquiry flow, with the selected flavour carried into the request. */
+.rc-gc__section--butter { background: #ffe568; }
+.rc-gc__enquiry-grid { display: grid; grid-template-columns: 1fr 1.1fr; align-items: start; gap: clamp(30px, 6vw, 90px); }
+.rc-gc__enquiry-copy { padding-top: 22px; }
+.rc-gc__enquiry-copy .rc-gc__lede { max-width: 36ch; margin-top: 26px; }
+.rc-gc__enquiry-copy .rc-gc__text-link { margin-top: 24px; font-size: 18px; }
+.rc-gc__enquiry-form { min-width: 0; padding: clamp(22px, 3vw, 38px); border-radius: 20px; background: var(--gc-cream); }
+.rc-gc .rc-form { gap: 18px; }
+.rc-gc .rc-field :is(input, select, textarea) { border: 1px solid rgb(23 72 60 / .3); border-radius: 6px; background: #fffdf8; color: var(--gc-cocoa); color-scheme: light; font-family: var(--gc-body); }
+.rc-gc .rc-field label { color: var(--gc-cocoa); }
+.rc-gc .rc-field :is(input, select, textarea)::placeholder { color: #61786c; }
+.rc-gc .rc-form :is(input, select, textarea, button, summary):focus-visible { outline: 2px solid var(--gc-cocoa); outline-offset: 3px; }
+.rc-gc .rc-form__intro { color: var(--gc-cocoa-lift); font-size: 13px; }
+.rc-gc .rc-form__optional { border-color: var(--rc-line); }
+.rc-gc .rc-form__optional summary { font-size: 14px; }
+.rc-gc .rc-form .rc-quote-cta { min-height: 50px; justify-content: center; }
+.rc-gc .rc-field__err { color: #a32b25; }
+.rc-gc .rc-form .rc-note { font-size: 12px; line-height: 1.6; }
+.rc-gc__selection { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; padding: 6px 10px 6px 16px; background: #e4f5a3; border-radius: 8px; font-size: 13px; }
+.rc-gc__selection button { flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--gc-cocoa); font-size: 24px; cursor: pointer; }
+.rc-gc .rc-foot { background: var(--gc-cocoa); color: var(--gc-cream); border: 0; }
+.rc-gc .rc-foot .rc-h3 { font-family: var(--gc-body); font-weight: 700; color: #e6f392; }
+.rc-gc .rc-foot :is(.rc-body, .rc-note) { color: rgb(255 248 238 / .8); }
+.rc-gc .rc-foot a { color: var(--gc-cream); text-underline-offset: 4px; }
+.rc-gc .rc-foot a:hover { text-decoration: underline; }
+@media (min-width: 1100px) { .rc-gc__campaign-card { width: calc((100vw - 10vw - 56px) / 3); max-width: 460px; } }
+@media (min-width: 820px) { .rc-gc__formats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 1099px) {
+  .rc-gc__tabs { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; max-width: none; width: 100%; }
+  .rc-gc__tabs::-webkit-scrollbar { display: none; }
+  .rc-gc__enquiry-grid { gap: 30px; }
 }
-.rc-gc__spec dt { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
-.rc-gc__spec dd { margin: 0; font-variant-numeric: tabular-nums; }
-
-/* ---- private label ------------------------------------------------------- */
-.rc-gc__closer { text-align: center; }
-.rc-gc__closer .rc-gc__lede { margin: 18px auto 0; max-width: 52ch; }
-.rc-gc__closer .rc-gc__cta { margin-top: clamp(26px, 3vw, 36px); }
-
-/* ---- motion -------------------------------------------------------------- */
-@keyframes rc-gc-turn { to { rotate: 360deg; } }
-@keyframes rc-gc-slide { to { transform: translateX(-50%); } }
-@keyframes rc-gc-drop {
-  from { opacity: 0; translate: 0 -60px; scale: 0.88; }
-  to { opacity: 1; translate: 0 0; scale: 1; }
+@media (max-width: 939px) {
+  .rc-gc__hero { grid-template-columns: 1fr; gap: 4px; padding-top: 108px; padding-bottom: 12px; min-height: 0; }
+  .rc-gc__hero-copy { align-items: center; text-align: center; gap: 20px; }
+  .rc-gc__h1 { font-size: clamp(56px, 8vw, 84px); line-height: .94; letter-spacing: -.06em; }
+  .rc-gc__h1 > span:not(:last-child) { display: inline; }
+  .rc-gc__hero-sub { max-width: 34ch; font-size: 16px; }
+  .rc-gc__hero-art { --gc-hero-bottle: 400px; width: min(100%, 550px); height: 460px; margin-inline: auto; margin-top: 24px; }
+  .rc-gc__motion-toggle { top: -24px; }
+  .rc-gc__hero-pack { bottom: 7%; }
+  .rc-gc__facts { grid-template-columns: repeat(2, 1fr); }
+  .rc-gc__enquiry-grid { grid-template-columns: 1fr; }
+  .rc-gc__enquiry-copy { padding-top: 0; }
+  .rc-gc__enquiry-copy .rc-gc__lede { max-width: 54ch; }
 }
-/* The bottle breathes; the shadow tightens as it lifts, which is what sells
-   the lift as height rather than as the whole sticker sliding. */
-@keyframes rc-gc-float {
-  0%, 100% { translate: 0 0; rotate: -0.7deg; }
-  50% { translate: 0 calc(var(--gc-lift) * -1); rotate: 0.7deg; }
+@media (max-width: 599px) {
+  .rc-gc__section { padding-block: 40px; }
+  .rc-gc__collection { padding-top: 44px; }
+  .rc-gc__eyebrow { font-size: 10px; margin-bottom: 12px; }
+  .rc-gc__head .rc-gc__lede { margin-top: 14px; }
+  .rc-gc__desktop-break { display: none; }
+  .rc-gc__tabs { margin-block: 22px 12px; gap: 8px; }
+  .rc-gc__tab { padding-inline: 15px; font-size: 14px; }
+  .rc-gc__collection-note { margin-top: 4px; font-size: 13px; }
+  .rc-gc__trade-head { grid-template-columns: 1fr; gap: 22px; }
+  .rc-gc__facts { gap: 26px 24px; margin-top: 32px; }
+  .rc-gc__fact dd { font-size: 13px; }
+  .rc-gc__formats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; align-items: start; }
+  .rc-gc__format { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding: 20px 12px 10px; text-align: center; }
+  .rc-gc__format-body { display: contents; }
+  .rc-gc__format-num { order: 0; font-size: 48px; }
+  .rc-gc__format-shot { order: 1; justify-content: center; height: 160px; margin-top: 18px; }
+  .rc-gc__format-title { order: 2; margin: 16px 0 0; font-size: 14px; }
+  .rc-gc__spec { order: 3; margin-top: 14px; font-size: 12px; text-align: left; }
+  .rc-gc__spec summary { gap: 4px; }
+  .rc-gc__spec dl { gap: 12px; padding-bottom: 8px; }
+  .rc-gc__spec dl > div { flex-direction: column; }
+  .rc-gc__enquiry-grid { gap: 22px; }
+  .rc-gc__enquiry-copy .rc-gc__lede { margin-top: 18px; }
+  .rc-gc__enquiry-copy .rc-gc__text-link { margin-top: 10px; }
+  .rc-gc__enquiry-form { padding: 20px 16px; }
+  .rc-gc .rc-form { gap: 14px; }
+  .rc-gc .rc-form__optional summary { min-height: 44px; padding-block: 12px; }
+  .rc-gc__glass-grid { gap: 20px; }
+  .rc-gc__glass-copy .rc-gc__text-link { margin-top: 12px; }
+  .rc-gc__facts { gap: 22px 20px; margin-top: 24px; }
+  .rc-gc__fact { padding-top: 16px; }
+  .rc-gc__fact dd { margin-top: 10px; }
+  .rc-gc .rc-foot { padding-block: 36px 28px; }
+  .rc-gc .rc-foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
+  .rc-gc .rc-foot__grid > :first-child { grid-column: 1 / -1; }
 }
-@keyframes rc-gc-cast { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 0.82; opacity: 0.55; } }
-@keyframes rc-gc-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.035; } }
-/* Clouds wander instead of traversing: the dome clips its children, and a
-   cloud crossing that edge gets sliced into a rectangle. */
-@keyframes rc-gc-wander { 0%, 100% { translate: 0 0; } 50% { translate: 16px -6px; } }
-@keyframes rc-gc-fizz {
-  0% { opacity: 0; translate: 0 0; scale: 0.5; }
-  14% { opacity: 0.85; }
-  76% { opacity: 0.5; }
-  100% { opacity: 0; translate: 0 calc(var(--bub-rise) * -1); scale: 1.15; }
+@media (max-width: 480px) {
+  .rc-gc__hero { padding-inline: 24px; }
+  .rc-gc__h1 { font-size: clamp(51px, 14.5vw, 68px); }
+  .rc-gc__hero-copy { gap: 18px; }
+  .rc-gc__hero-art { --gc-hero-bottle: 350px; height: 405px; margin-top: 30px; }
+  .rc-gc__hero-scene { top: auto; bottom: -6px; height: auto; translate: 0 12px; aspect-ratio: 1; object-fit: contain; }
+  .rc-gc__hero-pack--cherry { rotate: -6deg; }
+  .rc-gc__hero-pack--lime { rotate: 6deg; }
+  .rc-gc__hero-detail { font-size: 11px; }
+  .rc-gc__ticker { padding-block: 15px; }
+  .rc-gc__ticker-group { padding-inline: 24px; gap: 28px; }
+  .rc-gc__ticker-item { font-size: 18px; gap: 28px; }
 }
-
-/*
- * Ambient motion is split by what actually triggers vestibular discomfort
- * rather than by one blanket switch. Small-amplitude, single-axis drift — the
- * bottle breathing, the fizz, the ticker — runs for everyone, so the scene is
- * never wholly dead. Spin, parallax drift and entrance travel are the risky
- * class, and those stay behind the query.
- */
-.rc-gc__hero-bottle { animation: rc-gc-float 5.5s 940ms ease-in-out infinite; }
-.rc-gc__cast { animation: rc-gc-cast 5.5s 940ms ease-in-out infinite; }
-.rc-gc__bub { animation: rc-gc-fizz var(--bub-dur) ease-in var(--bub-delay) infinite; }
-.rc-gc__ticker-track { animation: rc-gc-slide 30s linear infinite; }
-
-/*
- * Entrance stays opt-in, not opt-out: the hidden state only exists where motion
- * is welcome, so a reduce-motion visitor — or a browser where the observer
- * never fires — gets the finished composition rather than a blank page.
- */
+/* Translate artwork without scaling. Ambient loops start automatically while
+   visible, as requested, and have an explicit pause control. */
+@keyframes gc-enter {
+  from { opacity: .4; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gc-bottle-arrive {
+  0% { opacity: 0; transform: translateY(28px); }
+  65% { opacity: 1; transform: translateY(-6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes gc-flavour-pick {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-8px); }
+}
+@keyframes gc-bottle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes gc-ticker-travel {
+  to { transform: translateX(-50%); }
+}
+.rc-gc__hero-pack-photo { animation: gc-bottle-float 4.8s ease-in-out infinite; animation-play-state: paused; }
+.rc-gc__hero-pack--cherry .rc-gc__hero-pack-photo { animation-delay: -.7s; }
+.rc-gc__hero-pack--orange .rc-gc__hero-pack-photo { animation-delay: -2.1s; }
+.rc-gc__hero-pack--lime .rc-gc__hero-pack-photo { animation-delay: -3.5s; }
+.rc-gc__ticker-track { animation: gc-ticker-travel 32s linear infinite; animation-play-state: paused; }
+.rc-gc[data-motion="on"][data-tab-visible="true"] .rc-gc__hero-art[data-visible="true"] .rc-gc__hero-pack-photo,
+.rc-gc[data-motion="on"][data-tab-visible="true"] .rc-gc__ticker[data-visible="true"] .rc-gc__ticker-track { animation-play-state: running; }
 @media (prefers-reduced-motion: no-preference) {
-  .rc-gc__rise {
-    opacity: 0; translate: 0 26px;
-    transition: opacity 620ms ease, translate 620ms var(--gc-pop);
-  }
-  .rc-gc__rise[data-in="true"] { opacity: 1; translate: 0 0; }
-  .rc-gc__rise--2 { transition-delay: 90ms; }
-  .rc-gc__rise--3 { transition-delay: 180ms; }
-
-  .rc-gc__hero-copy > * { animation: rc-gc-drop 720ms var(--gc-pop) backwards; }
-  .rc-gc__hero-copy > *:nth-child(2) { animation-delay: 80ms; }
-  .rc-gc__hero-copy > *:nth-child(3) { animation-delay: 160ms; }
-  .rc-gc__hero-copy > *:nth-child(4) { animation-delay: 240ms; }
-
-  /* Entrance rides the wrapper and the idle float rides the image, so the two
-     never fight over `translate` and the bottle never snaps at the handover. */
-  .rc-gc__stand { animation: rc-gc-drop 820ms 120ms var(--gc-pop) backwards; }
-
-  .rc-gc__rays { animation: rc-gc-turn 34s linear infinite; }
-  .rc-gc__halo { animation: rc-gc-breathe 7s ease-in-out infinite; }
-  .rc-gc__cloud--l { animation: rc-gc-wander 11s ease-in-out infinite; }
-  .rc-gc__cloud--r { animation: rc-gc-wander 15s ease-in-out 2s infinite reverse; }
+  .rc-gc__campaign-rail, .rc-gc__tabs { scroll-behavior: smooth; }
+  .rc-gc__hero-copy > * { animation: gc-enter 650ms var(--gc-ease) backwards; }
+  .rc-gc__hero-copy > :nth-child(2) { animation-delay: 80ms; }
+  .rc-gc__hero-copy > :nth-child(3) { animation-delay: 160ms; }
+  .rc-gc__hero-copy > :nth-child(4) { animation-delay: 240ms; }
+  .rc-gc__hero-copy > :nth-child(5) { animation-delay: 320ms; }
+  .rc-gc__hero-art[data-in="true"] .rc-gc__hero-pack { animation: gc-bottle-arrive 1050ms var(--gc-ease) backwards; }
+  .rc-gc__hero-art[data-in="true"] .rc-gc__hero-pack--cherry { animation-delay: 140ms; }
+  .rc-gc__hero-art[data-in="true"] .rc-gc__hero-pack--orange { animation-delay: 260ms; }
+  .rc-gc__hero-art[data-in="true"] .rc-gc__hero-pack--lime { animation-delay: 380ms; }
+  .rc-gc__rise[data-in="true"]:not(.rc-gc__stagger):not(.rc-gc__hero-art) { animation: gc-enter 600ms var(--gc-ease) backwards; }
+  .rc-gc__stagger[data-in="true"] > :is(.rc-gc__formats, .rc-gc__facts) > * { animation: gc-enter 600ms var(--gc-ease) backwards; }
+  .rc-gc__stagger[data-in="true"] > * > :nth-child(2) { animation-delay: 90ms; }
+  .rc-gc__stagger[data-in="true"] > * > :nth-child(3) { animation-delay: 180ms; }
+  .rc-gc__stagger[data-in="true"] > * > :nth-child(4) { animation-delay: 270ms; }
+  .rc-gc__campaign-card[data-active="true"] .rc-gc__campaign-image { animation: gc-flavour-pick 550ms ease-in-out; }
+  .rc-gc__selection { animation: gc-enter 280ms var(--gc-ease); }
+  .rc-gc__spec[open] dl { animation: gc-enter 240ms var(--gc-ease); }
+  .rc-gc__spec summary span { transition: rotate 220ms var(--gc-ease); }
+  .rc-gc__hero-pack-photo, .rc-gc__campaign-image, .rc-gc__format-bottle { transition: transform 420ms var(--gc-ease); }
+  .rc-gc__campaign-frame::after { transition: opacity 420ms var(--gc-ease); }
+  .rc-gc__text-link > span[aria-hidden="true"] { transition: translate 220ms var(--gc-ease); }
+  .rc-gc__cta, .rc-gc .rc-quote-cta, .rc-gc__tab, .rc-gc__range-controls button { transition: background 180ms ease, color 180ms ease, translate 220ms var(--gc-ease); }
+  .rc-gc__campaign-card:focus-within .rc-gc__campaign-image,
+  .rc-gc__format:focus-within .rc-gc__format-bottle { transform: translateY(-6px); }
+  .rc-gc__text-link:focus-visible > span[aria-hidden="true"] { translate: 3px -3px; }
+  .rc-gc__cta:active, .rc-gc .rc-quote-cta:active,
+  .rc-gc__tab:active, .rc-gc__range-controls button:not(:disabled):active { translate: 0 1px; }
 }
-
-/* Reduced, not frozen: the same drift at roughly half the travel. */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .rc-gc__campaign-card:hover .rc-gc__campaign-image,
+  .rc-gc__format:hover .rc-gc__format-bottle { transform: translateY(-6px); }
+  .rc-gc__campaign-card:hover .rc-gc__campaign-frame::after { opacity: .65; }
+  .rc-gc__text-link:hover > span[aria-hidden="true"] { translate: 3px -3px; }
+  .rc-gc__cta:hover, .rc-gc .rc-quote-cta:hover,
+  .rc-gc__tab:hover, .rc-gc__range-controls button:not(:disabled):hover { translate: 0 -2px; }
+  .rc-gc__cta:active, .rc-gc .rc-quote-cta:active,
+  .rc-gc__tab:active, .rc-gc__range-controls button:not(:disabled):active { translate: 0 1px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .rc-gc { --gc-lift: 6px; }
+  .rc-gc:not([data-motion="on"]) *, .rc-gc:not([data-motion="on"]) *::before, .rc-gc:not([data-motion="on"]) *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

@@ -1,5 +1,32 @@
 # ROCARM — design brief
 
+## Bottle identity constraint (2026-09-10)
+
+The user explicitly requires the original bottle proportions and packaging design
+to stay unchanged. Photo work may improve the background, lighting and clarity.
+Preserve the source silhouette, height-to-width ratio, neck, shoulder, moulded ribs,
+base, cap, label dimensions and placement, artwork, lettering and colours. Preserve
+the card dimensions. The user's later request explicitly permits changing displayed
+scale to distinguish volumes: use proportional scaling, ascending volume order
+and a common baseline. The small formats should look smaller than the large ones.
+This is an illustrative hierarchy, not a claim of measured physical dimensions.
+Do not standardise
+different volumes to one bottle shape or substitute another package design.
+Source product photographs are the identity reference; generated studio photos are
+lighting/background references only. Do not treat regenerated label artwork as a
+new approved packaging design. Compare any future output to its source before use.
+
+## Water page refinement (2026-09-10)
+
+The `/water` page now presents Garni Crystalline as a complete brand collection:
+a still-water basalt portrait, Fraunces display type, and a pale mineral-toned
+catalogue between dark source and quality sections. Seven existing product photos
+can be filtered by still, sparkling, or cooler format. Selecting a bottle carries
+its volume and category into the on-page trade enquiry without clearing user input.
+The supplied Garni Crystalline film loads from YouTube only after playback is
+requested. Batch parameters remain available through a disclosure; numerical
+composition values are supplied through the report request, never invented.
+
 ## Design read
 
 For an import buyer at a distributor, retail chain or HoReCa group in the US, the EU,
@@ -18,7 +45,38 @@ actually asks for before the site's first line of trust talk: lab values, certif
 marks, real plant photography. The site earns the visitor's confidence with data they can
 verify, not with a mood they have to take on faith.
 
+**Visual execution, take two (2026-09-09).** The concept above (proof leads, same photos)
+held; its first execution — a blue-accented table-and-card layout — did not, on the user's
+explicit call for something radically different while keeping every photo. The homepage
+(`index.tsx` + colocated `home.css`, scoped to `.rc-dossier`) now reads as an actual export
+dossier: Fraunces serif display type, a letterhead strip, numbered "Exhibit A–E" sections,
+hairline rules and dotted-leader manifest lines, cert marks and photos framed as captioned
+exhibits ("Fig. 01", "Fig. 02"...), and a fill-in-the-blank application form.
+
+That layout first shipped on a warm paper ground with dark ink type. The user preferred the
+established dark palette, so **the dossier layout stays and the colours are the site's own**:
+`home.css` consumes the global tokens (`--rc-ground`, `--rc-ink`, `--rc-muted`, `--rc-line`,
+`--rc-accent`) rather than carrying a parallel set, and the shared components (nav, footer,
+CTAs, form, export map) are left on their own defaults — those were written for this ground
+and need no repainting. Locked palette above is unchanged and still governs.
+`/water` and `/soft-drinks` were never touched: this is a homepage-only layout fork.
+
 ## Delivery tier
+
+### Homepage refinement (2026-09-10)
+
+The homepage now uses a quieter editorial composition: the temple, dark palette and
+Fraunces headings remain; file numbers, exhibit labels and numbered clauses are removed.
+The hero names both product categories and private label, with direct product and quote
+links. Equal square product photographs lead into the seven-flavour Garni Cola family.
+Quality is a compact block with native disclosures for tests and shipping documents,
+paired with the plant photograph. Export map and ordering terms share a desktop row;
+private label and enquiries have distinct split compositions.
+
+The shared header includes a keyboard-accessible mobile disclosure menu. The enquiry form
+has visible field boundaries, 16px inputs and optional order details behind a disclosure.
+The home quality-report link carries that request into the submitted message without
+replacing the buyer's own text. No sample report or analysis values are invented.
 
 `static` — no scroll-scrub, no pinned chapters, no GSAP/Lenis dependency for the hero. One
 full-bleed static hero, ordinary document-flow sections after it.

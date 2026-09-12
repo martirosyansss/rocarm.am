@@ -4,7 +4,7 @@
  * shared button utility class.
  */
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 /** Primary. Framed accent block; the arrow slides on hover. */
 export function QuoteCta({
@@ -25,13 +25,7 @@ export function QuoteCta({
 }
 
 /** Range link. An oversized line whose baseline rule extends across on hover. */
-export function RangeCta({
-  children,
-  to,
-}: {
-  children: ReactNode;
-  to: string;
-}) {
+export function RangeCta({ children, to }: { children: ReactNode; to: string }) {
   return (
     <Link className="rc-range-cta" to={to}>
       {children}
@@ -44,13 +38,15 @@ export function DocCta({
   href,
   label,
   tag,
+  onClick,
 }: {
   href: string;
   label: string;
   tag: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   return (
-    <a className="rc-doc-cta" href={href}>
+    <a className="rc-doc-cta" href={href} onClick={onClick}>
       {label}
       <span className="rc-doc-cta__tag">{tag}</span>
     </a>
@@ -58,15 +54,7 @@ export function DocCta({
 }
 
 /** Closing banner. The ground inverts to accent on hover. */
-export function BannerCta({
-  href,
-  note,
-  title,
-}: {
-  href: string;
-  note: string;
-  title: string;
-}) {
+export function BannerCta({ href, note, title }: { href: string; note: string; title: string }) {
   return (
     <a className="rc-banner-cta" href={href}>
       {title}
