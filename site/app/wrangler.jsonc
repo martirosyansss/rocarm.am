@@ -14,7 +14,7 @@
   // uncomment the matching block in the OPT-IN INFRA section below.
   //
   // `name` must stay a valid Cloudflare name (lowercase + dashes, 3–63 chars).
-  "name": "app-slug-placeholder",
+  "name": "rocarm-am",
 
   // The Worker entry is the TanStack Start SSR server bundle — `vite build`
   // emits dist/server/server.js (`export default { fetch }`). The deploy CI
@@ -38,20 +38,20 @@
   // Non-secret identity for local dev/build; the deploy sets the real values.
   // SECRETS (e.g. the fnf token) are NEVER here and NEVER in the Worker — the
   // platform Outbound Worker injects them on server-side egress.
-  "vars": { "HF_ENV": "dev", "APP_SLUG": "app-slug-placeholder" },
+  "vars": { "HF_ENV": "production", "APP_SLUG": "rocarm-am" },
+
+  // D1 — bound directly since this Worker deploys via our own GitHub Actions
+  // pipeline, not the Higgsfield deploy CI. ONE database shared by preview +
+  // prod. Schema in migrations/000N_*.sql (additive).
+  "d1_databases": [
+    { "binding": "DB", "database_name": "rocarm-am-db",
+      "database_id": "8ecdd835-0b1a-4771-bb6d-61db00085dff" }
+  ],
 
   // ── OPT-IN INFRA (off by default) ────────────────────────────────
   // Declare the service in app.manifest.json; the deploy injects the real
   // binding. For local `wrangler dev` of an opted-in resource, uncomment the
   // matching block here with a placeholder id (the deploy overwrites it anyway).
-  //
-  // D1 — app.manifest.json "db": true → env.DB. ONE database SHARED by preview +
-  // prod (HF_ENV splits CODE, not DATA — a destructive preview migration hits
-  // prod data). Schema in migrations/000N_*.sql (additive).
-  //   "d1_databases": [
-  //     { "binding": "DB", "database_name": "app-slug-placeholder-db",
-  //       "database_id": "00000000-0000-0000-0000-000000000000" }
-  //   ],
   //
   // R2 — app.manifest.json "r2": true → env.STORAGE. Shared by preview + prod.
   //   "r2_buckets": [
