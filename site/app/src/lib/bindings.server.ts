@@ -24,10 +24,12 @@ type AppEnv = {
   CONTAINER?: DurableObjectNamespace;
   HF_ENV?: string;
   APP_SLUG?: string;
-  // Enquiry notification (Resend). RESEND_API_KEY is a secret: `wrangler secret put`.
-  RESEND_API_KEY?: string;
+  // Enquiry notification over SMTP. SMTP_PASSWORD is a secret: `wrangler secret put`.
+  SMTP_HOST?: string;
+  SMTP_PORT?: string;
+  SMTP_USER?: string;
+  SMTP_PASSWORD?: string;
   NOTIFY_TO?: string;
-  NOTIFY_FROM?: string;
 };
 
 export function bindings(): AppEnv {

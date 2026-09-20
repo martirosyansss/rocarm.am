@@ -1,5 +1,6 @@
-// Email notification for a new export enquiry, sent through the Resend HTTP API.
-// Kept free of Workers-only imports so it can be unit-tested with bun.
+// Email notification for a new export enquiry, sent over SMTP (Mail.ru) from the Worker
+// using Cloudflare TCP sockets. Kept free of static Workers-only imports so it can be
+// unit-tested with bun.
 
 export type QuoteEmailData = {
   company: string;
@@ -15,10 +16,23 @@ export type QuoteEmailData = {
 };
 
 export type NotifyEnv = {
-  RESEND_API_KEY?: string;
+  SMTP_HOST?: string;
+  SMTP_PORT?: string;
+  SMTP_USER?: string;
+  SMTP_PASSWORD?: string;
   NOTIFY_TO?: string;
-  NOTIFY_FROM?: string;
 };
+
+export type OutgoingMail = {
+  from: { name: string; email: string };
+  to: string[];
+  reply: string;
+  subject: string;
+  text: string;
+};
+
+type SmtpConfig = { host: string; port: number; username: string; password: string };
+export type SendMail = (config: SmtpConfig, mail: OutgoingMail) => Promise<void>;
 
 const oneLine = (value: string, max: number) => value.replace(/[\r\n]+/g, " ").slice(0, max);
 
@@ -46,35 +60,49 @@ export function buildQuoteEmail(data: QuoteEmailData) {
   };
 }
 
+// Dynamic import: `cloudflare:sockets` exists only in the Workers runtime.
+const sendViaSmtp: SendMail = async (config, mail) => {
+  const { WorkerMailer } = await import("worker-mailer");
+  await WorkerMailer.send(
+    {
+      host: config.host,
+      port: config.port,
+      secure: config.port === 465,
+      credentials: { username: config.username, password: config.password },
+      authType: "plain",
+      socketTimeoutMs: 8000,
+      responseTimeoutMs: 8000,
+    },
+    mail,
+  );
+};
+
 /** Best-effort: the enquiry is already stored, so a mail failure must never fail the request. */
-export async function sendQuoteNotification(env: NotifyEnv, data: QuoteEmailData): Promise<boolean> {
-  const { RESEND_API_KEY, NOTIFY_TO, NOTIFY_FROM } = env;
-  if (!RESEND_API_KEY || !NOTIFY_TO || !NOTIFY_FROM) {
-    console.warn("quote notification skipped: RESEND_API_KEY / NOTIFY_TO / NOTIFY_FROM not set");
+export async function sendQuoteNotification(
+  env: NotifyEnv,
+  data: QuoteEmailData,
+  send: SendMail = sendViaSmtp,
+): Promise<boolean> {
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, NOTIFY_TO } = env;
+  const port = Number(SMTP_PORT);
+  if (!SMTP_HOST || !Number.isInteger(port) || !SMTP_USER || !SMTP_PASSWORD || !NOTIFY_TO) {
+    console.warn("quote notification skipped: SMTP_* / NOTIFY_TO not configured");
     return false;
   }
 
   try {
     const { subject, text } = buildQuoteEmail(data);
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${RESEND_API_KEY}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        from: NOTIFY_FROM,
+    await send(
+      { host: SMTP_HOST, port, username: SMTP_USER, password: SMTP_PASSWORD },
+      {
+        // Mail.ru only accepts the authenticated mailbox as the sender address.
+        from: { name: "Rocarm Website", email: SMTP_USER },
         to: NOTIFY_TO.split(",").map((address) => address.trim()),
-        reply_to: data.email,
+        reply: data.email,
         subject,
         text,
-      }),
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!response.ok) {
-      console.error(`quote notification failed: Resend responded ${response.status}`);
-      return false;
-    }
+      },
+    );
     return true;
   } catch (error) {
     console.error("quote notification failed", error);

@@ -41,10 +41,12 @@
   "vars": {
     "HF_ENV": "production",
     "APP_SLUG": "rocarm-am",
-    // Enquiry email. NOTIFY_FROM must be on a domain verified in Resend.
-    // The API key is a secret (`wrangler secret put RESEND_API_KEY`), never here.
-    "NOTIFY_TO": "info@rocarm.am",
-    "NOTIFY_FROM": "Rocarm Website <noreply@rocarm.am>"
+    // Enquiry email over SMTP (Mail.ru). The password is a secret
+    // (`wrangler secret put SMTP_PASSWORD`), never here.
+    "SMTP_HOST": "smtp.mail.ru",
+    "SMTP_PORT": "465",
+    "SMTP_USER": "garnijur@rocarm.am",
+    "NOTIFY_TO": "info@rocarm.am"
   },
 
   // D1 — bound directly since this Worker deploys via our own GitHub Actions
