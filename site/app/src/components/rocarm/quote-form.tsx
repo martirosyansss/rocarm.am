@@ -58,6 +58,7 @@ export function QuoteForm({
           privateLabel: value("privateLabel"),
           product: value("product"),
           role: value("role"),
+          trap: value("trap"),
           volume: value("volume"),
           website: value("website"),
         },
@@ -93,6 +94,10 @@ export function QuoteForm({
       onSubmit={onSubmit}
       aria-busy={status === "sending"}
     >
+      <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", height: 0, overflow: "hidden" }}>
+        <label htmlFor="trap">Leave this field empty</label>
+        <input autoComplete="off" id="trap" name="trap" tabIndex={-1} type="text" />
+      </div>
       <p className="rc-form__intro">* Required fields. Order details can follow later.</p>
       {qualityRequest ? (
         <div className="rc-form__request" role="status">

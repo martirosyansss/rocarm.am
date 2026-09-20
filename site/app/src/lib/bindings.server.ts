@@ -24,6 +24,10 @@ type AppEnv = {
   CONTAINER?: DurableObjectNamespace;
   HF_ENV?: string;
   APP_SLUG?: string;
+  // Enquiry notification (Resend). RESEND_API_KEY is a secret: `wrangler secret put`.
+  RESEND_API_KEY?: string;
+  NOTIFY_TO?: string;
+  NOTIFY_FROM?: string;
 };
 
 export function bindings(): AppEnv {

@@ -38,7 +38,14 @@
   // Non-secret identity for local dev/build; the deploy sets the real values.
   // SECRETS (e.g. the fnf token) are NEVER here and NEVER in the Worker — the
   // platform Outbound Worker injects them on server-side egress.
-  "vars": { "HF_ENV": "production", "APP_SLUG": "rocarm-am" },
+  "vars": {
+    "HF_ENV": "production",
+    "APP_SLUG": "rocarm-am",
+    // Enquiry email. NOTIFY_FROM must be on a domain verified in Resend.
+    // The API key is a secret (`wrangler secret put RESEND_API_KEY`), never here.
+    "NOTIFY_TO": "info@rocarm.am",
+    "NOTIFY_FROM": "Rocarm Website <noreply@rocarm.am>"
+  },
 
   // D1 — bound directly since this Worker deploys via our own GitHub Actions
   // pipeline, not the Higgsfield deploy CI. ONE database shared by preview +
