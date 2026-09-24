@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowDown, ArrowUpRight, Check, Play, Plus, X } from "lucide-react";
 
-import { DocCta } from "@/components/rocarm/ctas";
+import { DocCta, ProductSheetLink } from "@/components/rocarm/ctas";
 import { QuoteForm } from "@/components/rocarm/quote-form";
 import { SiteFooter, SiteNav } from "@/components/rocarm/site-chrome";
 import { WaterProductPhoto } from "@/components/rocarm/water-product-photo";
-import { useReveal } from "@/hooks/use-reveal";
 import { ASSETS, PARAMETERS, WATER } from "@/lib/catalog";
 
 import "./water.css";
@@ -13,19 +13,11 @@ import "./water.css";
 export const Route = createFileRoute("/water")({
   component: WaterPage,
   head: () => ({
-    links: [
-      { href: "https://fonts.googleapis.com", rel: "preconnect" },
-      { crossOrigin: "anonymous", href: "https://fonts.gstatic.com", rel: "preconnect" },
-      {
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap",
-        rel: "stylesheet",
-      },
-    ],
     meta: [
       { title: "Garni Crystalline — Armenian Natural Water | Rocarm" },
       {
         content:
-          "Discover Garni Crystalline natural water, drawn from 140 metres beneath the Garni mountains, Armenia. PET, 0.5 litre glass and large formats up to 18.9 litres. Export and private label enquiries.",
+          "Meet Garni Crystalline natural Armenian water. Still or sparkling, in PET, glass and large formats from 0.33 to 18.9 litres. Explore the range and request an export quote.",
         name: "description",
       },
     ],
@@ -42,9 +34,7 @@ function category(water: Water): "Still" | "Sparkling" | "For coolers" {
 }
 
 function productName(water: Water) {
-  if (water.vol === "6 L" || water.vol === "10 L") {
-    return `Garni Crystalline ${water.vol}`;
-  }
+  if (water.vol === "6 L" || water.vol === "10 L") return `Garni Crystalline ${water.vol}`;
   if (water.meta.startsWith("Glass")) {
     return `Garni Crystalline 0.5 L glass ${category(water).toLowerCase()}`;
   }
@@ -62,7 +52,6 @@ function WaterPage() {
   const [product, setProduct] = useState("Garni Crystalline still");
   const [qualityRequest, setQualityRequest] = useState(false);
   const [filmPlaying, setFilmPlaying] = useState(false);
-  const { inView: legendInView, ref: legendRef } = useReveal<HTMLDivElement>();
   const formats = WATER.filter(
     (water) =>
       filter === "All formats" ||
@@ -72,7 +61,6 @@ function WaterPage() {
           ? ["6 L", "10 L", "18.9 L"].includes(water.vol)
           : category(water) === filter),
   );
-  const formatCount = formats.length;
 
   return (
     <div className="rc rc-water">
@@ -81,62 +69,96 @@ function WaterPage() {
         Skip to water formats
       </a>
       <main id="water-top">
-        <section className="water-hero rc-wrap" aria-labelledby="water-title">
-          <div className="water-hero-copy">
-            <Link to="/" className="water-back">
-              Rocarm <span aria-hidden="true">/</span> Our water
-            </Link>
-            <p className="water-eyebrow">Garni Crystalline · Natural water, 140 m deep</p>
-            <h1 id="water-title">
-              Born of
-              <br />
-              <em>basalt.</em>
-              <br />
-              Made to refresh.
-            </h1>
-            <p className="water-lede">
-              From 140 metres beneath the Garni mountains to your everyday table. Natural Armenian
-              water, bottled still or sparkling.
-            </p>
-            <div className="water-actions">
-              <a className="water-explore" href="#water-range">
-                Find your format <span aria-hidden="true">↓</span>
+        <section className="water-hero" aria-labelledby="water-title">
+          <div className="water-hero-inner rc-wrap">
+            <div className="water-hero-heading">
+              <div className="water-hero-brand">
+                <img
+                  src={`${ASSETS}/garni-wordmark.svg`}
+                  alt="Garni Crystalline"
+                  width={117}
+                  height={40}
+                />
+                <p>
+                  Natural water
+                  <br />
+                  From Garni, Armenia
+                </p>
+              </div>
+              <h1 id="water-title">
+                Naturally
+                <br />
+                <span>Armenian.</span>
+              </h1>
+              <p className="water-hero-statement">
+                One origin. Still or sparkling.
+                <br />A little of Armenia in every bottle.
+              </p>
+            </div>
+            <div className="water-hero-copy">
+              <a className="water-button water-explore" href="#water-range">
+                Explore the collection <ArrowDown size={20} aria-hidden="true" />
               </a>
-              <a className="water-text-link" href="#water-source">
-                Meet the source <span aria-hidden="true">↗</span>
+              <span className="water-hero-availability">PET &amp; glass · 0.33–18.9 L</span>
+            </div>
+            <div className="water-hero-art">
+              <p className="water-hero-edition">The Garni Crystalline collection</p>
+              <figure className="water-hero-product water-hero-product--still">
+                <img
+                  className="water-hero-bottle"
+                  src={`${ASSETS}/water-15-source.jpg`}
+                  alt="Garni Crystalline 1.5 L still water in its original bottle"
+                  width={881}
+                  height={2489}
+                  fetchPriority="high"
+                />
+                <figcaption>
+                  <span>Still</span>
+                  <span>1.5 L</span>
+                </figcaption>
+              </figure>
+              <figure className="water-hero-product water-hero-product--sparkling">
+                <img
+                  className="water-hero-bottle"
+                  src={`${ASSETS}/water-05-gas-source.jpg`}
+                  alt="Garni Crystalline 0.5 L sparkling water in its original bottle"
+                  width={937}
+                  height={2583}
+                />
+                <figcaption>
+                  <span>Sparkling</span>
+                  <span>0.5 L</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div className="water-hero-provenance">
+            <div className="water-hero-provenance-inner rc-wrap">
+              <p className="water-hero-since">
+                <span>Bottled in Armenia</span>
+                <strong>Since 1999.</strong>
+              </p>
+              <p className="water-hero-range">
+                <strong>
+                  One source.
+                  <br />
+                  Eleven formats.
+                </strong>
+                <span>
+                  For everyday moments.
+                  <br />
+                  For every table.
+                </span>
+              </p>
+              <a className="water-hero-origin" href="#water-source">
+                <span>
+                  It starts in Garni<small>Discover our source</small>
+                </span>
+                <ArrowUpRight size={28} aria-hidden="true" />
               </a>
             </div>
-            <p className="water-hero-note">140 m natural source. Bottling in Yerevan since 1999.</p>
           </div>
-          <figure className="water-hero-photo">
-            <img
-              src={`${ASSETS}/water-still-basalt.webp`}
-              alt="Garni Crystalline still water bottle on wet basalt in the Garni gorge"
-              width={1126}
-              height={1397}
-              fetchPriority="high"
-            />
-            <figcaption>
-              <span>Garni Crystalline</span>
-              <span>0.5 L · Still</span>
-            </figcaption>
-          </figure>
         </section>
-
-        <nav className="water-chapters rc-wrap" aria-label="Water page sections">
-          <a href="#water-range">
-            <span>01</span> The collection
-          </a>
-          <a href="#water-source">
-            <span>02</span> Our source
-          </a>
-          <a href="#quality">
-            <span>03</span> Quality
-          </a>
-          <a href="#water-quote">
-            <span>04</span> Trade enquiries
-          </a>
-        </nav>
 
         <section
           className="water-range water-section"
@@ -146,17 +168,10 @@ function WaterPage() {
           <div className="rc-wrap">
             <div className="water-section-heading">
               <div>
-                <p className="water-eyebrow">01 / The collection</p>
-                <h2 id="water-range-title">
-                  A format for
-                  <br />
-                  <em>every day.</em>
-                </h2>
+                <p className="water-eyebrow">The collection</p>
+                <h2 id="water-range-title">Choose your format.</h2>
               </div>
-              <p className="water-lede">
-                A small bottle on the move. A place at the table. Water for the whole office. Find
-                the size that fits.
-              </p>
+              <p className="water-lede">Still or sparkling. PET, glass and large formats.</p>
             </div>
             <div className="water-range-toolbar">
               <div className="water-filters" role="group" aria-label="Filter water formats">
@@ -168,12 +183,13 @@ function WaterPage() {
                     aria-controls="water-products"
                     onClick={() => setFilter(option)}
                   >
+                    {filter === option && <Check size={15} aria-hidden="true" />}
                     {option}
                   </button>
                 ))}
               </div>
               <p className="water-range-count" role="status">
-                {formatCount} {formatCount === 1 ? "format" : "formats"}
+                {formats.length} formats
               </p>
             </div>
             <ul className="water-products" id="water-products">
@@ -181,6 +197,7 @@ function WaterPage() {
                 <li key={water.img}>
                   <a
                     className="water-product"
+                    data-kind={category(water)}
                     href="#water-quote"
                     aria-label={`Request a quote for ${water.vol} ${formatKind(water).toLowerCase()} water`}
                     onClick={() => {
@@ -189,382 +206,216 @@ function WaterPage() {
                     }}
                   >
                     <div className="water-product-photo">
-                      <span className="water-product-kind">{formatKind(water)}</span>
-                      <WaterProductPhoto image={water.img} />
+                      <WaterProductPhoto image={water.img} framing="compact" />
                     </div>
-                    <div className="water-product-title">
-                      <h3>{water.vol}</h3>
-                      <span aria-hidden="true">↗</span>
+                    <div className="water-product-info">
+                      <div className="water-product-title">
+                        <h3>{water.vol}</h3>
+                        <span aria-hidden="true">
+                          <ArrowUpRight size={20} />
+                        </span>
+                      </div>
+                      <p className="water-product-meta">
+                        <span className="water-product-kind">
+                          {category(water) === "For coolers" ? "Cooler" : category(water)}
+                        </span>
+                        <span>
+                          {water.meta.startsWith("Glass")
+                            ? "Glass"
+                            : water.meta.startsWith("Returnable")
+                              ? "Returnable"
+                              : "PET"}
+                        </span>
+                      </p>
+                      <span className="water-product-enquire">Request a quote</span>
                     </div>
-                    <p>{water.meta}</p>
-                    <span className="water-product-enquire">Enquire about this format</span>
                   </a>
                 </li>
               ))}
-              {filter === "All formats" ? (
+              {filter === "All formats" && (
                 <li className="water-range-custom">
-                  <p className="water-eyebrow">Private label</p>
-                  <h3>
-                    Your name.
-                    <br />
-                    <em>Our water.</em>
-                  </h3>
-                  <p>The same source and certified bottling line, with your brand on the label.</p>
+                  <div>
+                    <p className="water-eyebrow">Private label</p>
+                    <h3>
+                      Your brand.
+                      <br />
+                      Our source.
+                    </h3>
+                    <p className="water-custom-copy">
+                      Still and sparkling water, bottled under your own label.
+                    </p>
+                  </div>
                   <a className="water-text-link" href="#water-private-label">
-                    Make it yours <span aria-hidden="true">↗</span>
+                    Explore private label <ArrowUpRight size={20} aria-hidden="true" />
                   </a>
                 </li>
-              ) : null}
+              )}
             </ul>
-            <p className="water-range-footnote">
-              Planning a shipment? Ask for case counts and a container loading plan with your quote.
-            </p>
-          </div>
-        </section>
-
-        <section className="water-story water-section rc-wrap" aria-labelledby="water-story-title">
-          <p className="water-eyebrow water-story-eyebrow">Before the paperwork</p>
-          <h2 id="water-story-title" className="water-story-title">
-            Not the river.
-            <br />
-            <em>The mountain beneath it.</em>
-          </h2>
-          <ul className="water-story-frames">
-            <li>
-              <figure>
-                <img
-                  src={`${ASSETS}/water-story-basalt.webp`}
-                  alt="Garni Crystalline bottle standing before towering basalt columns in the Azat gorge"
-                  width={880}
-                  height={1092}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span className="water-story-tag" aria-hidden="true">
-                    I
-                  </span>
-                  <p>
-                    Not the stream in front of you. Our water is drawn from 140 metres underground,
-                    beneath the same basalt that shapes this gorge.
-                  </p>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img
-                  src={`${ASSETS}/water-story-spring.webp`}
-                  alt="A mountain stream running over wet basalt in the gorge beside a Garni Crystalline bottle"
-                  width={880}
-                  height={1092}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span className="water-story-tag" aria-hidden="true">
-                    II
-                  </span>
-                  <p>
-                    It reaches us from the Garni mountains — the range that has watched over this
-                    valley since long before the temple did.
-                  </p>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img
-                  src={`${ASSETS}/water-story-supply.webp`}
-                  alt="Large-format Garni Crystalline bottle carried from the basalt gorge toward the plant"
-                  width={880}
-                  height={1092}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span className="water-story-tag" aria-hidden="true">
-                    III
-                  </span>
-                  <p>
-                    140 metres of stone between it and the surface — bottled in Yerevan the same day
-                    it&rsquo;s drawn, in every case we ship.
-                  </p>
-                </figcaption>
-              </figure>
-            </li>
-          </ul>
-          <div
-            className="water-legend"
-            aria-labelledby="water-legend-title"
-            data-in={legendInView}
-            ref={legendRef}
-          >
-            <p className="water-eyebrow">The legend</p>
-            <h3 id="water-legend-title">Not the river. The mountain that keeps it.</h3>
-            <figure className="water-legend-photo">
-              <img
-                src={`${ASSETS}/water-legend.webp`}
-                alt="Mist rising through the basalt columns of the Azat gorge near Garni, a pool of water glowing at their base"
-                width={1856}
-                height={2304}
-                loading="lazy"
-              />
-            </figure>
-            <div className="water-legend-body">
-              <p>Long before Garni had a bottle, it had a legend.</p>
-              <p>
-                Below the temple, the gorge is lined with something the eye doesn&rsquo;t expect from
-                stone: hundreds of six-sided columns, straight as pillars, shoulder to shoulder for
-                the length of a valley. Armenians call it the Symphony of the Stones — basalt that
-                cooled slowly enough, deep enough, to set into music instead of rubble.
-              </p>
-              <p>
-                In the first century, King Trdat I — a ruler the chronicles remember for wrestling
-                bulls with his bare hands — raised a temple at the mouth of that gorge and gave it to
-                Mihr, god of the sun: colonnade facing east, altar turned to the valley, built from
-                the same black stone as the Symphony below it. What the mountain guarded best, though,
-                was never what stood above ground.
-              </p>
-              <p>
-                A hundred and forty metres beneath the temple&rsquo;s foundations, sealed in that same
-                basalt, it kept a reservoir of its own — untouched by season, by war, by two thousand
-                years of pilgrims crossing the gorge overhead.
-              </p>
-              <p>
-                No one drank from it. No one was meant to — not until someone finally listened to what
-                the mountain had been holding, and asked, gently, to let a little of it through.
-              </p>
-              <p>
-                That is the water in this bottle. Not the stream you can see. A promise the Garni
-                mountains kept longer than anyone was watching — opened at last, 140 metres down, one
-                case at a time.
-              </p>
+            <div className="water-range-footnote">
+              <p>Planning a mixed shipment? Let’s find your combination.</p>
+              <ProductSheetLink />
             </div>
           </div>
         </section>
 
         <section
-          className="water-source water-section rc-wrap"
+          className="water-source water-section"
           id="water-source"
           aria-labelledby="water-source-title"
         >
-          <figure className="water-source-photo">
+          <div className="water-source-grid rc-wrap">
+            <div className="water-source-copy">
+              <p className="water-eyebrow">Our origin</p>
+              <h2 id="water-source-title">
+                Beneath the
+                <br />
+                Garni mountains.
+              </h2>
+              <div className="water-source-story">
+                <p className="water-source-depth">
+                  <strong>
+                    140<span>m</span>
+                  </strong>
+                  <span>beneath the Garni mountains</span>
+                </p>
+                <p>
+                  Drawn beneath Armenian basalt. Bottled in Yerevan since 1999. The same source, in
+                  every bottle.
+                </p>
+              </div>
+            </div>
+            <div className="water-film">
+              <div className="water-film-player">
+                {filmPlaying ? (
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/M8kg-Njyb8s?autoplay=1&playsinline=1&rel=0"
+                    title="Garni Crystalline brand film by DOMINO Production"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    onLoad={(event) => event.currentTarget.focus()}
+                  />
+                ) : (
+                  <button
+                    className="water-film-play"
+                    type="button"
+                    aria-label="Play the Garni Crystalline brand film"
+                    onClick={() => setFilmPlaying(true)}
+                  >
+                    <img
+                      src={`${ASSETS}/garni-film-poster.jpg`}
+                      alt="The bottling line shown in the Garni Crystalline brand film"
+                      width={1280}
+                      height={720}
+                      loading="lazy"
+                    />
+                    <span>
+                      <Play size={18} fill="currentColor" aria-hidden="true" /> Watch the film
+                    </span>
+                  </button>
+                )}
+              </div>
+              <p className="water-film-credit">
+                <span>Garni, Armenia</span>
+                <span>Film by DOMINO Production</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className="water-business water-section rc-wrap">
+          <section className="water-quality" id="quality" aria-labelledby="water-quality-title">
+            <div className="water-quality-intro">
+              <p className="water-eyebrow">Source &amp; standards</p>
+              <h2 id="water-quality-title">Quality, documented.</h2>
+              <p>
+                From food safety to the composition of your batch. The details are available for
+                your review.
+              </p>
+            </div>
+            <div className="water-quality-evidence">
+              <div className="water-standards" aria-label="Quality standards">
+                {[
+                  ["ISO 22000", "cert-iso22000.webp", "Food safety"],
+                  ["ISO 9001", "cert-iso9001.webp", "Quality management"],
+                  ["EAC", "cert-eac.webp", "Conformity"],
+                ].map(([name, img, caption]) => (
+                  <div key={name}>
+                    <img src={`${ASSETS}/${img}`} alt="" width={60} height={60} loading="lazy" />
+                    <strong>{name}</strong>
+                    <span>{caption}</span>
+                  </div>
+                ))}
+              </div>
+              <DocCta
+                href="#water-quote"
+                label="Request the quality report"
+                tag="PDF on request"
+                onClick={() => setQualityRequest(true)}
+              />
+              <details className="water-analysis">
+                <summary>
+                  What is in the batch analysis?
+                  <Plus size={20} aria-hidden="true" />
+                </summary>
+                <div className="water-analysis-body">
+                  <p>
+                    Mineral composition and pH are reported for each batch. Request the signed
+                    report for the values relevant to your order.
+                  </p>
+                  <table>
+                    <caption>Values are supplied in the batch certificate.</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Unit</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PARAMETERS.map((row) => (
+                        <tr key={row.name}>
+                          <td>{row.name}</td>
+                          <td>{row.unit}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </div>
+          </section>
+          <section
+            className="water-private"
+            id="water-private-label"
+            aria-labelledby="water-private-title"
+          >
+            <div className="water-private-copy">
+              <p className="water-eyebrow">Private label</p>
+              <h2 id="water-private-title">
+                Made for
+                <br />
+                your brand.
+              </h2>
+              <p>Natural Armenian water, bottled for your brand on the same certified line.</p>
+              <ul className="water-private-list">
+                <li>Still and sparkling formats</li>
+                <li>Your artwork and market-specific label</li>
+                <li>Packaging agreed with your quote</li>
+              </ul>
+              <a className="water-button" href="#water-quote">
+                Discuss private label <ArrowUpRight size={20} aria-hidden="true" />
+              </a>
+            </div>
             <img
-              src={`${ASSETS}/plate-temple-wide.webp`}
-              alt="Garni Temple overlooking the Azat river gorge in Armenia"
-              width={2000}
-              height={1116}
+              className="water-private-photo"
+              src={`${ASSETS}/photo-crates.webp`}
+              alt="Garni branded crates with glass bottles at the plant"
+              width={1600}
+              height={900}
               loading="lazy"
             />
-            <figcaption>Garni Temple · Azat river gorge · Armenia</figcaption>
-          </figure>
-          <div className="water-source-copy">
-            <p className="water-eyebrow">02 / A sense of place</p>
-            <h2 id="water-source-title">
-              An extraordinary
-              <br />
-              <em>place to begin.</em>
-            </h2>
-            <p className="water-lede">
-              Basalt columns. A mountain range holding water 140 metres down. Garni is where ours
-              begins, and the place that gives it its name.
-            </p>
-            <p>
-              Our water is drawn from 140 metres underground in the Garni mountains, not the river
-              visible in the gorge. We bottle it in Yerevan, carrying that Armenian origin into
-              every format.
-            </p>
-            <dl className="water-source-facts">
-              <div>
-                <dt>Our origin</dt>
-                <dd>Garni, Armenia</dd>
-              </div>
-              <div>
-                <dt>Source depth</dt>
-                <dd>140 m</dd>
-              </div>
-              <div>
-                <dt>Bottling since</dt>
-                <dd>1999</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
-
-        <section className="water-film rc-wrap" aria-labelledby="water-film-title">
-          <div className="water-film-heading">
-            <div>
-              <p className="water-eyebrow">A closer look</p>
-              <h2 id="water-film-title">Meet Garni Crystalline.</h2>
-            </div>
-            <a
-              className="water-text-link"
-              href="https://www.youtube.com/watch?v=M8kg-Njyb8s"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch on YouTube <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <div className="water-film-player">
-            {filmPlaying ? (
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/M8kg-Njyb8s?autoplay=1&playsinline=1&rel=0"
-                title="Garni Crystalline brand film by DOMINO Production"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-                onLoad={(event) => event.currentTarget.focus()}
-              />
-            ) : (
-              <button
-                type="button"
-                className="water-film-play"
-                aria-label="Play the Garni Crystalline brand film"
-                onClick={() => setFilmPlaying(true)}
-              >
-                <img
-                  src={`${ASSETS}/garni-film-poster.jpg`}
-                  alt=""
-                  width={1280}
-                  height={720}
-                  loading="lazy"
-                />
-                <span>
-                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" fill="currentColor" />
-                  </svg>{" "}
-                  Play film
-                </span>
-              </button>
-            )}
-          </div>
-          <p className="water-film-credit">Film by DOMINO Production</p>
-        </section>
-
-        <section
-          className="water-quality water-section"
-          id="quality"
-          aria-labelledby="water-quality-title"
-        >
-          <div className="rc-wrap">
-            <div className="water-section-heading">
-              <div>
-                <p className="water-eyebrow">03 / Source &amp; standards</p>
-                <h2 id="water-quality-title">
-                  Clear water.
-                  <br />
-                  <em>Clear standards.</em>
-                </h2>
-              </div>
-              <div>
-                <p className="water-lede">
-                  Know what goes into your shipment. Request our quality documents and the
-                  laboratory analysis for the batch.
-                </p>
-                <DocCta
-                  href="#water-quote"
-                  label="Request the quality report"
-                  tag="PDF on request"
-                  onClick={() => setQualityRequest(true)}
-                />
-              </div>
-            </div>
-            <div className="water-standards">
-              <article>
-                <img
-                  src={`${ASSETS}/cert-iso22000.webp`}
-                  alt=""
-                  width={84}
-                  height={84}
-                  loading="lazy"
-                />
-                <div>
-                  <h3>ISO 22000</h3>
-                  <p>Food safety management across the bottling line.</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src={`${ASSETS}/cert-iso9001.webp`}
-                  alt=""
-                  width={84}
-                  height={84}
-                  loading="lazy"
-                />
-                <div>
-                  <h3>ISO 9001</h3>
-                  <p>Quality management for a consistent process.</p>
-                </div>
-              </article>
-              <article>
-                <img src={`${ASSETS}/cert-eac.webp`} alt="" width={84} height={84} loading="lazy" />
-                <div>
-                  <h3>EAC</h3>
-                  <p>Conformity for the Eurasian Economic Union.</p>
-                </div>
-              </article>
-            </div>
-            <details className="water-analysis">
-              <summary>
-                <span>What is in the batch analysis?</span>
-                <span className="water-analysis-toggle" aria-hidden="true">
-                  +
-                </span>
-              </summary>
-              <div className="water-analysis-body">
-                <p>
-                  Mineral composition and pH are reported for each production batch. Request the
-                  signed report for the values relevant to your order.
-                </p>
-                <table>
-                  <caption>Values are supplied in the batch certificate.</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Parameter</th>
-                      <th scope="col">Unit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {PARAMETERS.map((row) => (
-                      <tr key={row.name}>
-                        <td>{row.name}</td>
-                        <td>{row.unit}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </details>
-          </div>
-        </section>
-
-        <section
-          className="water-private water-section rc-wrap"
-          id="water-private-label"
-          aria-labelledby="water-private-title"
-        >
-          <div>
-            <p className="water-eyebrow">Made for your market</p>
-            <h2 id="water-private-title">
-              Our source.
-              <br />
-              <em>Your signature.</em>
-            </h2>
-          </div>
-          <div>
-            <p className="water-lede">
-              Build your water range with Rocarm. We fill the water under your own brand on the same
-              certified line, working from your artwork.
-            </p>
-            <ul>
-              <li>Still and sparkling water</li>
-              <li>Your branding and market-specific label</li>
-              <li>Packaging and order details agreed with your quote</li>
-            </ul>
-            <a className="water-text-link" href="#water-quote">
-              Discuss private label <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <section
           className="water-quote water-section"
@@ -572,16 +423,12 @@ function WaterPage() {
           aria-labelledby="water-quote-title"
         >
           <div className="water-quote-grid rc-wrap">
-            <div>
-              <p className="water-eyebrow">04 / Trade enquiries</p>
-              <h2 id="water-quote-title">
-                Bring Garni
-                <br />
-                <em>to your market.</em>
-              </h2>
+            <div className="water-quote-copy">
+              <p className="water-eyebrow">Trade enquiries</p>
+              <h2 id="water-quote-title">Let’s talk water.</h2>
               <p className="water-lede">
-                Tell us your destination, preferred formats and indicative volume. Our export desk
-                will help you plan the next step.
+                Share your destination, preferred formats and indicative volume. Our export team
+                will prepare your quote.
               </p>
               <dl className="water-trade-facts">
                 <div>
@@ -589,38 +436,38 @@ function WaterPage() {
                   <dd>1,000 units</dd>
                 </div>
                 <div>
-                  <dt>Available terms</dt>
+                  <dt>Shipping terms</dt>
                   <dd>FOB Poti / CIF your port</dd>
                 </div>
                 <div>
-                  <dt>Prefer to email?</dt>
-                  <dd>
-                    <a href="mailto:info@rocarm.am">info@rocarm.am ↗</a>
-                  </dd>
+                  <dt>Our reply</dt>
+                  <dd>Within one working day</dd>
                 </div>
               </dl>
+              <a className="water-quote-email" href="mailto:info@rocarm.am">
+                info@rocarm.am <ArrowUpRight size={20} aria-hidden="true" />
+              </a>
             </div>
             <div className="water-enquiry">
-              {selection ? (
+              {selection && (
                 <div className="water-selection" role="status">
                   <WaterProductPhoto image={selection.img} />
                   <div>
                     <span>Your selected format</span>
-                    <strong>
-                      {`${selection.vol} · ${formatKind(selection)}`}
-                    </strong>
+                    <strong>{`${selection.vol} · ${formatKind(selection)}`}</strong>
                   </div>
                   <button
                     type="button"
                     aria-label="Clear selected water format"
                     onClick={() => {
                       setSelection(null);
+                      setProduct("Garni Crystalline still");
                     }}
                   >
-                    ×
+                    <X size={20} aria-hidden="true" />
                   </button>
                 </div>
-              ) : null}
+              )}
               <QuoteForm
                 qualityRequest={qualityRequest}
                 onCancelQualityRequest={() => setQualityRequest(false)}

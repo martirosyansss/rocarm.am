@@ -53,6 +53,19 @@ export function DocCta({
   );
 }
 
+/** Public assortment sheet; no enquiry is needed to download it. */
+export function ProductSheetLink() {
+  return (
+    <a className="rc-product-sheet" href="/documents/rocarm-product-range.pdf" download>
+      <span>
+        <strong>Product range &amp; formats</strong>
+        <small>Download PDF · 2 pages</small>
+      </span>
+      <span aria-hidden="true">↓</span>
+    </a>
+  );
+}
+
 /** Closing banner. The ground inverts to accent on hover. */
 export function BannerCta({ href, note, title }: { href: string; note: string; title: string }) {
   return (

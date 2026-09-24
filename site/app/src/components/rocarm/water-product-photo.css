@@ -35,3 +35,13 @@
   object-fit: contain;
   filter: none;
 }
+
+.rc-water-shot[data-framing="compact"] {
+  aspect-ratio: 5 / 6;
+}
+.rc-water-shot[data-framing="compact"][data-source="studio"] .rc-water-shot__bottle {
+  top: auto;
+  bottom: -2%;
+  height: 125%;
+  object-fit: cover;
+}

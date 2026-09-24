@@ -4,6 +4,15 @@ import { useEffect, useRef } from "react";
 import { QuoteCta } from "@/components/rocarm/ctas";
 import { ASSETS } from "@/lib/catalog";
 
+function RocarmMark({ inNav = false }: { inNav?: boolean }) {
+  return (
+    <Link className={`rc-brand-mark${inNav ? " rc-nav__mark" : ""}`} to="/" aria-label="Rocarm home">
+      <img alt="" height={458} src={`${ASSETS}/logo-rocarm.webp`} width={520} />
+      <span className="rc-nav__wordmark">Rocarm</span>
+    </Link>
+  );
+}
+
 /** Shared header. One line at desktop, 72px tall. */
 export function SiteNav({ quoteHref = "/#quote" }: { quoteHref?: string }) {
   const menu = useRef<HTMLDetailsElement>(null);
@@ -33,10 +42,7 @@ export function SiteNav({ quoteHref = "/#quote" }: { quoteHref?: string }) {
   return (
     <header className="rc-nav">
       <div className="rc-nav__inner">
-        <Link className="rc-nav__mark" to="/">
-          <img alt="Rocarm" height={458} src={`${ASSETS}/logo-rocarm.webp`} width={520} />
-          <span className="rc-nav__wordmark">Rocarm</span>
-        </Link>
+        <RocarmMark inNav />
         <nav aria-label="Sections" className="rc-nav__links">
           <Link className="rc-nav__link" to="/water">
             Water
@@ -104,13 +110,7 @@ export function SiteFooter() {
     <footer className="rc-foot">
       <div className="rc-wrap rc-foot__grid">
         <div>
-          <img
-            alt="Garni Crystalline"
-            height={436}
-            src={`${ASSETS}/logo-garni.webp`}
-            style={{ height: "46px", width: "auto" }}
-            width={520}
-          />
+          <RocarmMark />
           <p className="rc-body" style={{ marginTop: "18px", maxWidth: "38ch" }}>
             Rocarm LLC. Natural spring water and soft drinks, bottled in Armenia since 1999.
           </p>

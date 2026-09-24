@@ -33,6 +33,8 @@ export function QuoteForm({
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [chosenProduct, setChosenProduct] = useState("");
+  const currentProduct = product ?? chosenProduct;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -150,28 +152,33 @@ export function QuoteForm({
         <input autoComplete="email" maxLength={200} id="email" name="email" required type="email" />
       </div>
 
-      <div className="rc-field rc-field--wide">
-        <label htmlFor="product">Product of interest</label>
-        <select
-          {...(product === undefined ? { defaultValue: PRODUCTS[0] } : { value: product })}
-          onChange={(event) => onProductChange?.(event.target.value)}
-          id="product"
-          name="product"
-        >
-          {PRODUCTS.map((product) => (
-            <option key={product} value={product}>
-              {product}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <details className="rc-form__optional">
-        <summary>Add order details (optional)</summary>
+        <summary>
+          Product &amp; order details (optional)
+          {currentProduct ? <span className="rc-form__product">{currentProduct}</span> : null}
+        </summary>
         <div className="rc-form__optional-grid">
+          <div className="rc-field rc-field--wide">
+            <label htmlFor="product">Product of interest</label>
+            <select
+              value={currentProduct}
+              onChange={(event) => {
+                setChosenProduct(event.target.value);
+                onProductChange?.(event.target.value);
+              }}
+              id="product"
+              name="product"
+            >
+              <option value="">Help me choose</option>
+              {PRODUCTS.map((item) => (
+                <option key={item} value={item}>{item}</option>
+              ))}
+            </select>
+          </div>
           <div className="rc-field">
             <label htmlFor="role">You are</label>
-            <select defaultValue={ROLES[0]} id="role" name="role">
+            <select defaultValue="" id="role" name="role">
+              <option value="">Select your business</option>
               {ROLES.map((role) => (
                 <option key={role} value={role}>
                   {role}
@@ -193,7 +200,8 @@ export function QuoteForm({
 
           <div className="rc-field">
             <label htmlFor="privateLabel">Private label</label>
-            <select defaultValue="No" id="privateLabel" name="privateLabel">
+            <select defaultValue="" id="privateLabel" name="privateLabel">
+              <option value="">Not specified</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
               <option value="Maybe">Want to discuss</option>
@@ -204,19 +212,18 @@ export function QuoteForm({
             <label htmlFor="website">Company website</label>
             <input autoComplete="url" maxLength={300} id="website" name="website" type="text" />
           </div>
+          <div className="rc-field rc-field--wide">
+            <label htmlFor="message">Anything we should know</label>
+            <textarea
+              id="message"
+              name="message"
+              maxLength={3800}
+              placeholder="Formats, destination, sample request..."
+              rows={3}
+            />
+          </div>
         </div>
       </details>
-
-      <div className="rc-field rc-field--wide">
-        <label htmlFor="message">Anything we should know</label>
-        <textarea
-          id="message"
-          name="message"
-          maxLength={3800}
-          placeholder="Formats, destination, sample request..."
-          rows={3}
-        />
-      </div>
 
       <div className="rc-field rc-field--wide">
         <button
